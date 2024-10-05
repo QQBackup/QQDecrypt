@@ -21,7 +21,7 @@ npm run docs:dev
 ├─ docs
 │  ├─ .vitepress(VitePress 配置文件、开发服务器缓存、构建输出和可选主题自定义代码的位置)
 │  │  ├─theme
-|  |  └─ config.mts  
+│  │  └─ config.mts  
 │  ├─Contributors（贡献者） 
 │  ├─decrypt（解密相关文档）     
 │  ├─thanks（致谢）
