@@ -33,7 +33,7 @@ export default defineConfig({
       copyright: 'Copyright © 2024'
     },
     editLink: {
-      pattern: 'https://github.com/weasuxl/QQDecrypt/edit/main/docs/:path',
+      pattern: 'https://github.com/QQBackup/QQDecrypt/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页'
     },
     prev: '上一页',
@@ -44,7 +44,7 @@ export default defineConfig({
     sidebarMenuLabel: '菜单',
     returnToTopLabel: '回到顶部',
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/weasuxl/QQDecrypt' },
+      { icon: 'github', link: 'https://github.com/QQBackup/QQDecrypt' },
     ]
   }
 })

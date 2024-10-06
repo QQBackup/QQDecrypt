@@ -7,7 +7,6 @@ title: 致谢
 - 若有希望补充/想从致谢名单中移除的，可在GitHub开issues或通过[issues@sbcnm.top](mailto:issues@sbcnm.top)联系我修改
 
 <div class="card-container">
-  <!-- 卡片1 -->
   <div class="card">
     <a href="https://github.com/QQBackup/qq-win-db-key" target="_blank">
       <div class="card-image">
@@ -20,7 +19,6 @@ title: 致谢
     </a>
   </div>
   
-  <!-- 卡片2 -->
   <div class="card">
     <a href="https://blog.reincarnatey.net/2024/0707-qqnt-history-export/" target="_blank">
       <div class="card-image">
@@ -32,6 +30,19 @@ title: 致谢
       </div>
     </a>
   </div>
+ 
+   <div class="card">
+    <a href="https://github.com/mobyw/GroupChatAnnualReport" target="_blank">
+      <div class="card-image">
+        <img src="/thanks/GroupChatAnnualReport.jpeg" alt="">
+      </div>
+      <div class="card-content">
+        <h3>GroupChatAnnualReport</h3>
+        <p>为nt_msg表中列名信息提供了参考</p>
+      </div>
+    </a>
+  </div> 
+  
 
   <!-- 添加更多卡片 -->
 </div>
