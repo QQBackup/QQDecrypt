@@ -1,0 +1,23 @@
+name: Mirror to weasUXL/QQDecrypt
+
+on:
+  push:
+    branches:
+      - main 
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v2
+        with:
+          repository: QQBackup/QQDecrypt
+          token: ${{ secrets.GH_TOKEN }}  
+          path: source
+
+      - name: Push to target repo
+        run: |
+          cd source
+          git remote add target https://github.com/weasUXL/QQDecrypt.git
+          git push target main --force  
