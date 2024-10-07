@@ -94,17 +94,43 @@ const members = [
     ]
   }
 ]
+
+
+const contributors = [
+  {
+    avatar: "https://ooo.0x0.ooo/2024/10/07/O4wGIc.jpg",
+    name: "Raincarnator",
+    title: "贡献者",
+    desc: '提交了 <a href="https://github.com/QQBackup/QQDecrypt/pull/1#issue-2568844396" target="_blank">PR #1</a>: docs: add more information',
+    links: [
+      { icon: 'github', link: "https://github.com/Raincarnator" }
+    ]
+  },
+
+]
 </script>
 
 <VPTeamPage>
+
   <VPTeamPageTitle>
     <template #title>
-      仓库贡献者
+      仓库成员
     </template>
     <template #lead>
-      若需要修改/增删信息可在仓库发起pr或通过 <a href="mailto:issues@sbcnm.top">issues@sbcnm.top</a> 联系我修改
+      若需要修改/增删信息可在仓库发起 PR 或通过 <a href="mailto:issues@sbcnm.top">issues@sbcnm.top</a> 联系我修改
     </template>
   </VPTeamPageTitle>
   
   <VPTeamMembers :members="members" />
+
+  <VPTeamPageTitle>
+    <template #title>
+       仓库贡献者
+    </template>
+    <template #lead>
+      这些成员为项目做出了贡献
+    </template>
+  </VPTeamPageTitle>
+  
+  <VPTeamMembers :members="contributors" />
 </VPTeamPage>
