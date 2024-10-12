@@ -1,3 +1,6 @@
+> [!WARNING]
+> 教程中可能对数据库进行不可逆操作，请注意备份数据库文件
+
 ## 说明
 本仓库**并非面向纯小白的教程**，而是在**假设您已经有一定逆向、动态调试等知识**的前提下提供的参考资料。尽管开发者可能会为了便捷提供详细教程或完整脚本，您也应当**有一定自行修改、调试的能力**。另外，请在提问前先**完整阅读** [qq-win-db-key](https://github.com/QQBackup/qq-win-db-key/issues) 与 [QQ-History-Backup](https://github.com/QQBackup/QQ-History-Backup/issues) 的**所有 issue**。如果您无论怎么改都跑不起来，请自由开 [issue](https://github.com/QQBackup/qq-win-db-key/issues)。（当然如果您感觉教程太烂了或者愿意补充，也可以直接开 PR，记得`@QQBackup`以通知维护者 merge）
 
