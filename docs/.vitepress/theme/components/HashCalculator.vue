@@ -1,4 +1,3 @@
-<!-- .vitepress/theme/components/HashCalculator.vue -->
 <template>
   <div class="hash-calculator">
     <h3>计算 QQ_path_hash 和数据库密钥</h3>
@@ -8,13 +7,17 @@
       <input 
         v-model="uin" 
         id="uin" 
-        placeholder="例如：u_l0Go-PF8zHrwJFSia6E8EA" 
+        placeholder="例如：u_mIicAReWrdCB-kST6TXH7A" 
         @input="validateUin" 
         :class="{ invalid: uinError }"
       />
       <span v-if="uinError" class="error">{{ uinError }}</span>
     </div>
     
+    <div v-if="qqPathHash" class="result">
+      <p><strong>QQ_path_hash:</strong> {{ qqPathHash }}</p>
+    </div>
+
     <div class="input-group">
       <label for="rand">请输入 rand:</label>
       <input 
@@ -26,16 +29,15 @@
       />
       <span v-if="randError" class="error">{{ randError }}</span>
     </div>
-    
-    <div v-if="isValid && qqPathHash && key" class="result">
-      <p><strong>QQ_path_hash:</strong> {{ qqPathHash }}</p>
+
+    <div v-if="key" class="result">
       <p><strong>Key:</strong> {{ key }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import md5 from 'crypto-js/md5'
 
 // 定义响应式变量
@@ -51,16 +53,15 @@ const key = ref('')
 // 验证 UIN
 function validateUin() {
   const uinValue = uin.value.trim()
-  // 更新后的正则表达式，允许字母、数字、下划线和破折号
   const uinPattern = /^u_[A-Za-z0-9_-]{22}$/
 
   if (!uinPattern.test(uinValue)) {
     uinError.value = 'UIN 必须以 "u_" 开头，且总长度为24位，只包含英文、数字、下划线 (_) 和破折号 (-)。'
+    qqPathHash.value = ''
   } else {
     uinError.value = ''
+    calculateQQPathHash()
   }
-  
-  calculateHashes()
 }
 
 // 验证 Rand
@@ -70,32 +71,32 @@ function validateRand() {
 
   if (!randPattern.test(randValue)) {
     randError.value = 'Rand 必须是8位纯英文和数字组成的值。'
+    key.value = ''
   } else {
     randError.value = ''
+    calculateKey()
   }
-  
-  calculateHashes()
 }
 
-// 计算 Hashes
-function calculateHashes() {
-  if (isValid.value) {
+// 计算 QQ_path_hash
+function calculateQQPathHash() {
+  if (uin.value && !uinError.value) {
     const uidHash = md5(uin.value).toString()
-    const qqPathHashValue = md5(uidHash + 'nt_kernel').toString()
-    const keyValue = md5(uidHash + rand.value).toString()
-
-    qqPathHash.value = qqPathHashValue
-    key.value = keyValue
+    qqPathHash.value = md5(uidHash + 'nt_kernel').toString()
   } else {
     qqPathHash.value = ''
+  }
+}
+
+// 计算 Key
+function calculateKey() {
+  if (uin.value && rand.value && !uinError.value && !randError.value) {
+    const uidHash = md5(uin.value).toString()
+    key.value = md5(uidHash + rand.value).toString()
+  } else {
     key.value = ''
   }
 }
-
-// 计算表单是否有效
-const isValid = computed(() => {
-  return uin.value && rand.value && !uinError.value && !randError.value
-})
 </script>
 
 <style scoped>
