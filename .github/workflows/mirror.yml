@@ -3,7 +3,9 @@ name: Mirror to weasUXL/QQDecrypt
 on:
   push:
     branches:
-      - main 
+      - main
+  workflow_dispatch: 
+
 jobs:
   mirror:
     runs-on: ubuntu-latest
