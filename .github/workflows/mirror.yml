@@ -3,7 +3,9 @@ name: Mirror to weasUXL/QQDecrypt
 on:
   push:
     branches:
-      - main 
+      - main
+  workflow_dispatch:  
+
 jobs:
   mirror:
     runs-on: ubuntu-latest
@@ -16,8 +18,15 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}  
           path: source
 
+      - name: Configure Git
+        run: |
+          git config --global user.name "QQbackup"
+          git config --global user.email "issues@sbcnm.top"
+
       - name: Push to target repo
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd source
-          git remote add target https://github.com/weasUXL/QQDecrypt.git
-          git push target main --force  
+          git remote add target https://weasUXL:${GH_TOKEN}@github.com/weasUXL/QQDecrypt.git
+          git push target main --force
