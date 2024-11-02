@@ -151,7 +151,7 @@ python android_get_key.py 8.9.58
 
 需要授予手机QQ读写存储权限
 
-下载[android_dump.js](/files/android_dump.js)
+<a href="/files/android_dump.js" download>下载 android_dump.js</a>
 
 如果先前已经运行过，则先删除上一次运行生成的`/sdcard/Download/plaintext.db`
 
