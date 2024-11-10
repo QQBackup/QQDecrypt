@@ -1,7 +1,11 @@
 ## 获取聊天记录文件
 
+>[!TIP]
+>腾讯于2024年11月4日发布了TIM4.0.95版本，从该版本起腾讯TIM也将使用NT架构，经实际测试发现其数据库解密方式与[NTQQ(Android)](NTQQ%20(Android).md#方法1-推荐)方法一相同
+
 > 注：以下提到的“电脑”泛指一切可以运行此程序的环境，如安卓手机上的 Termux 也属于此列
 > 注：以下内容假设您使用的是 QQ 而非 TIM，如果您在使用 TIM，请将`com.tencent.mobileqq`改为`com.tencent.tim`，将`MobileQQ`改为`Tim`
+
 
 如果手机已获得 root 权限，聊天记录可在以下路径找到。
 
