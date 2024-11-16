@@ -14,7 +14,7 @@
 
 需要 Python 以及 Frida：`pip install frida`
 > [!IMPORTANT]
-建议firda版本为16.4.10，16.5的版本因为windows系统特性的原因不好使。[issue41](https://github.com/QQBackup/qq-win-db-key/issues/41#issue-2561561696)
+建议frida版本为16.4.10，16.5的版本因为windows系统特性的原因不好使。[issue41](https://github.com/QQBackup/qq-win-db-key/issues/41#issue-2561561696)
 
 备份`Msg3.0.db` -> 打开 QQ -> `python pcqq_dump.py` -> 登录 -> 得到 key，同时解密并修复后的数据库文件将自动生成在运行目录下
 

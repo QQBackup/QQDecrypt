@@ -125,6 +125,18 @@ title: 文件下载
       2024/08/18 12:40
     </div>
   </div>
+  
+  <div class="file-item">
+    <div class="file-icon">
+      <img src="/icons/python.svg" alt="Python" />
+    </div>
+    <div class="file-name">
+      <a href="/files/linux_qq_get_key.py" download>linux_qq_get_key.py</a>
+    </div>
+    <div class="file-date">
+      2024/11/9 19:48
+    </div>
+  </div>  
   <!-- 文件项结束 -->
 </div>
 
@@ -143,22 +155,10 @@ title: 文件下载
   display: flex;
   align-items: center;
   justify-content: space-between;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s forwards;
-  animation-delay: calc(0.1s * var(--i));
+  /* 移除动画效果 */
+  opacity: 1; 
+  transform: translateY(0); 
 }
-
-.file-item:nth-child(1) { --i: 1; }
-.file-item:nth-child(2) { --i: 2; }
-.file-item:nth-child(3) { --i: 3; }
-.file-item:nth-child(4) { --i: 4; }
-.file-item:nth-child(5) { --i: 5; }
-.file-item:nth-child(6) { --i: 6; }
-.file-item:nth-child(7) { --i: 7; }
-.file-item:nth-child(8) { --i: 8; }
-.file-item:nth-child(9) { --i: 9; }
-.file-item:nth-child(10) { --i: 10; }
 
 .file-icon img {
   width: 40px;
@@ -181,22 +181,15 @@ title: 文件下载
   font-size: 0.9rem;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 响应式调整 */
 @media (max-width: 600px) {
   .file-item {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .file-date {
     margin-top: 0.5rem;
   }
 }
+
 </style>
