@@ -107,6 +107,16 @@ const contributors = [
     ]
   },
 
+  {
+    avatar: "https://ooo.0x0.ooo/2024/11/16/OHL7jx.png",
+    name: "Wenz-jam",
+    title: "贡献者",
+    desc: '提交了 <a href="https://github.com/QQBackup/qq-win-db-key/pull/46" target="_blank">PR #46</a>:添加一种linux下获取密钥的方式',
+    links: [
+      { icon: 'github', link: "https://github.com/Wenz-jam" }
+    ]
+  },
+
 ]
 </script>
 
