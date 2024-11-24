@@ -1,22 +1,16 @@
 # PCQQ (非 NT 架构)
 
+本教程针对 QQ Windows 版（非 NT 架构），即 QQ9 以前的版本，可以在[官网](https://im.qq.com/pcqq/index.shtml)选择“往期怀旧版下载”下载。
+
+警告：本文件中列出的方式**风险较大**，请参考项目首页的[警告](/decrypt/)使用。
+
 ## 预先准备
 
-> [!CAUTION]
-**备份数据库！备份数据库！备份数据库！**
-默认数据库路径为：`C:\Users\<用户名>\Documents\Tencent Files\<QQ号>\Msg3.0.db`
+备份数据库！备份数据库！备份数据库！默认数据库路径为：`C:\Users\<用户名>\Documents\Tencent Files\<QQ号>\Msg3.0.db`
 
 测试可用的 QQ 版本：`QQ9.7.3.28.94`、`QQ9.7.6 (28997)`、`QQ9.7.9 (29059)`、`QQ9.7.23 (29368)`，其它版本也可能可用。
 
 如果出现异常，可以尝试消灭`QQProtect`后重试：<https://www.zhihu.com/question/265963430/answer/2492603110>
-
-## 跑（自动，建议）
-
-需要 Python 以及 Frida：`pip install frida`
-> [!IMPORTANT]
-建议frida版本为16.4.10，16.5的版本因为windows系统特性的原因不好使。[issue41](https://github.com/QQBackup/qq-win-db-key/issues/41#issue-2561561696)
-
-备份`Msg3.0.db` -> 打开 QQ -> `python pcqq_dump.py` -> 登录 -> 得到 key，同时解密并修复后的数据库文件将自动生成在运行目录下
 
 ## 跑（手动）
 
@@ -37,6 +31,14 @@
 ### 修复
 
 得到的`Msg3.0.db`开头有 1024 字节的扩展头，删掉。
+
+## 跑（自动，有风险）
+
+本方法可能导致 QQ 自身的聊天记录数据库被破坏，请谨慎使用！
+
+需要 Python 以及 Frida：`pip install frida`
+
+备份`Msg3.0.db` -> 打开 QQ -> `python pcqq_dump.py` -> 登录 -> 得到 key，同时解密并修复后的数据库文件将自动生成在运行目录下
 
 ## 毁灭（必定损坏原始数据）
 
@@ -67,6 +69,12 @@ python 重写的 qmsg_unpakcer, 带有可以直接运行的文件 不过依然�
 <https://github.com/Mrs4s/qq-db-key-injector>
 
 <https://github.com/Akegarasu/qmsg-unpacker>
+
+## 疑难解答
+
+> Q: 报错：frida.NotSupportedError: unexpectedly failed with error code: 0x00000057 ([#41](https://github.com/QQBackup/qq-win-db-key/issues/41))
+
+可能是由于 Windows 10 与 Frida 16.5 不兼容，可以尝试降级到 Frida 16.4.10 版本。
 
 ## 另一种方式
 
