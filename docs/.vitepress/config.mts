@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import AutoSidebar from 'vite-plugin-vitepress-auto-sidebar'
+import markdownItTaskLists from 'markdown-it-task-lists'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -16,6 +17,9 @@ export default defineConfig({
   markdown: {
     // 行号显示
     lineNumbers: true,
+    config: (md) => {
+      md.use(markdownItTaskLists);
+    },    
   },
   themeConfig: {
     logo: "/icons/logo.png", // 页面上显示的logo
