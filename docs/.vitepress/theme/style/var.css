@@ -1,0 +1,36 @@
+:root {
+  --vp-c-brand-1: #005f9e; /* 浅蓝 */
+  --vp-c-brand-2: #0077cc; /* 中蓝 */
+  --vp-c-brand-3: #0088ff; /* 深蓝 */
+}
+
+.dark {
+  --vp-c-brand-1: #3399ff; /* 浅蓝（深色模式） */
+  --vp-c-brand-2: #0077cc; /* 中蓝（深色模式） */
+  --vp-c-brand-3: #005f9e; /* 深蓝（深色模式） */
+}
+
+/* 以前的vp-c-brand已弃用 */
+
+:root {
+  /* hero标题渐变色 */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #0044cc, #0099ff);
+
+  /* hero logo背景渐变色 */
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #0044cc 50%, #0099ff 50%);
+  --vp-home-hero-image-filter: blur(40px);
+}
+
+
+/* :root {
+  --vp-button-brand-border: #99ccff;
+  --vp-button-brand-text: #99ccff;
+  --vp-button-brand-bg: #0044cc;
+
+  --vp-button-brand-hover-border: #99ccff;
+  --vp-button-brand-hover-text: #fff;
+  --vp-button-brand-hover-bg: #0044cc;
+
+  --vp-button-brand-active-border: #99ccff;
+} */

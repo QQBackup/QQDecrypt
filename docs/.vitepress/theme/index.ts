@@ -2,8 +2,8 @@
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import HashCalculator from './components/HashCalculator.vue'
-import './style.css'
-import { Theme } from 'vitepress' // 确保导入 Theme 类型
+import { Theme } from 'vitepress' 
+import './style/index.css'
 
 export default {
   ...DefaultTheme,

@@ -1,6 +1,8 @@
 ---
 title: 致谢
 sidebar: false
+next: false 
+prev: false
 ---
 
 **文档内容参考/引用了以下网站的内容，在此表达最诚挚的谢意（排名不分先后）：**
@@ -87,15 +89,15 @@ sidebar: false
 }
 
 .card {
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 8px;
   width: 100%;
   max-width: 700px;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   text-decoration: none;
   overflow: hidden;
   margin: 0 auto;
@@ -103,7 +105,8 @@ sidebar: false
 
 .card:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  background-color: var(--card-hover-bg);
 }
 
 .card-image {
@@ -133,11 +136,11 @@ sidebar: false
 .card-content h3 {
   font-size: 1.2rem;
   margin: 0;
-  color: #333;
+  color: var(--card-text);
 }
 
 .card-content p {
-  color: #666;
+  color: var(--card-text);
   font-size: 0.9rem;
   margin: 0;
   white-space: nowrap;
@@ -150,4 +153,5 @@ sidebar: false
 .card:hover .card-content p {
   white-space: normal;
 }
+
 </style>
