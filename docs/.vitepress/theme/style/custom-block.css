@@ -1,5 +1,4 @@
-/* .vitepress/theme/style/custom-block.css */
-/* 深浅色卡 */
+/* 默认浅色模式 */
 :root {
     --custom-block-info-left: #cccccc;
     --custom-block-info-bg: #fafafa;
@@ -23,6 +22,7 @@
     --custom-block-caution-bg: #fde4e8;
 }
 
+/* 深色模式 */
 .dark {
     --custom-block-info-left: #cccccc;
     --custom-block-info-bg: #474748;
