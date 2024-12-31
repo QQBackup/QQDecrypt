@@ -6,14 +6,30 @@ import markdownItTaskLists from 'markdown-it-task-lists'
 export default defineConfig({
   title: "QQDecrypt",
   description: "解密QQ聊天数据库",
-  head: [
+  lang: 'zh-CN', 
+  head: [   
+    [
+      'script',
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-6TSGD7CVS3' }
+    ],
+    [
+      'script',
+      {},
+      `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6TSGD7CVS3');`
+    ],
     ['link', { rel: 'icon', href: '/icons/logo.jpg' }],
-  ],  
+  ],
   vite: {
     plugins: [
       AutoSidebar({ deletePrefix: 'index', ignoreIndexItem: true })
     ]
   },
+  sitemap: {
+    hostname: 'https://qq.sbcnm.top'
+  },  
   markdown: {
     // 行号显示
     lineNumbers: true,
