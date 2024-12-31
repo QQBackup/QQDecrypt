@@ -9,7 +9,7 @@
 请确认项目在编辑后能够正常运行且显示正常。请善用以下命令：
 
 ```shell
-npm run docs:dev
+pnpm run docs:dev
 ```
 
 如有不明白的操作，请参阅[主题官方教程](https://vitepress.dev/zh/guide/getting-started)。
@@ -25,6 +25,7 @@ npm run docs:dev
 │  ├─Contributors（贡献者） 
 │  ├─decrypt（解密相关文档）     
 │  ├─thanks（致谢）
+│  ├─plan(数据库解析计划)
 │  ├─public（媒体文件存放）                                          
 │  │ ├─img（媒体文件存放）                                  
 │  │ ├─icon                                                                                        
