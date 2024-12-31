@@ -31,14 +31,15 @@ export default defineConfig({
     hostname: 'https://qq.sbcnm.top'
   },  
   markdown: {
-    // 行号显示
     lineNumbers: true,
     config: (md) => {
       md.use(markdownItTaskLists);
-    },    
+    },
+    image: {
+      lazyLoading: true
+    },        
   },
   themeConfig: {
-    logo: "/icons/logo.png", // 页面上显示的logo
     lastUpdated: {
       text: '最后更新于'
     },    
