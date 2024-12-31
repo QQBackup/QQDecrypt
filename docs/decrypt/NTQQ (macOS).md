@@ -1,3 +1,9 @@
+---
+title: NTQQ (macOS)
+description: NTQQ (macOS)解密教程
+---
+
+# NTQQ (macOS)
 本文发表于 [冷月的博客](https://lengyue.me/2023/09/19/ntqq-db/), 基于 CC BY-NC-SA 4.0 共享.
 
 ## 0. 引言

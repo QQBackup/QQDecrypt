@@ -1,3 +1,9 @@
+---
+title: NTQQ (Windows)
+description: NTQQ (Windows)解密教程
+---
+
+# NTQQ (Windows)
 ## 使用 frida hook
 1. 定位 `nt_sqlite3_key_v2:`
 

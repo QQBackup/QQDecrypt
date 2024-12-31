@@ -1,20 +1,22 @@
-# Android
+---
+title: NTQQ(Android)
+description: NTQQ(Android)解密教程
+---
+
+# NTQQ(Android)
 
 ## 方法1（推荐）
 
-> [!TIP] 说明
+> [!TIP] 
 >本方法不需要 root，只需要使用系统自带的备份功能导出 QQ 的数据即可。由于 QQ 限制，部分系统可能无法导出 QQ 数据，此时可以>使用“聊天记录迁移”功能迁移到其他设备上。
->
->经测试适用于`9.0.65`与`9.0.75`版本，更低版本可能无法使用此方法。
->
-以下的`md5`函数返回结果均为 32 位，字符均为小写，在Python中等价于以下函数：`def md5(s): i=__import__('hashlib').md5();i.update(s.encode('utf8'));return i.hexdigest()`
->
->为了方便起见，假设 QQ 号（表示为`uin`）为`390251789`，`uid`为`u_mIicAReWrdCB-kST6TXH7A`。
->
->一切以`/data/user/0/com.tencent.mobileqq/`开头的路径均表示root后可以访问到的绝对路径，若为处理备份文件，则此路径可>能有所不同。
 
-便捷获取
-<HashCalculator />
+经测试适用于`9.0.65`与`9.0.75`版本，更低版本可能无法使用此方法。
+
+以下的`md5`函数返回结果均为 32 位，字符均为小写，在Python中等价于以下函数：`def md5(s): i=__import__('hashlib').md5();i.update(s.encode('utf8'));return i.hexdigest()`
+为了方便起见，假设 QQ 号（表示为`uin`）为`390251789`，`uid`为`u_mIicAReWrdCB-kST6TXH7A`。
+一切以`/data/user/0/com.tencent.mobileqq/`开头的路径均表示root后可以访问到的绝对路径，若为处理备份文件，则此路径可>能有所不同。
+
+
 
 ### 获取uid
 
@@ -68,7 +70,7 @@
 ## 方法2
 
 此方法要求您拥有手机的 root 权限。
-> [!TIP] 说明
+> [!TIP] 
 > 建议QQ版本为9.0.65或更低
 
 ### 基础环境

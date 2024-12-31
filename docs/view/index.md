@@ -1,4 +1,12 @@
-## 说明
-目前还没有一个完整开箱即用的方式来对所有信息进行解码，欢迎提出您的宝贵建议（
+---
+title: NTQQ 读取数据库
+description: NTQQ 读取数据库说明
+---
 
-目前尚未完成完全解析，因此信息较为杂乱
+# NTQQ 读取数据库
+
+阅读本文前，您应当已经通过其他方法，获取到了数据库的已解密文件。如果没有，请参考：[NTQQ 解密数据库](/decrypt/NTQQ%20解密数据库.md)。
+
+以下以 `nt_msg.db` 代指已解密的数据库文件。
+
+目前已知消息格式为`protobuf`，较为复杂，可使用 [CyberChef](https://gchq.github.io/CyberChef/#recipe=Protobuf_Decode('',false,false)Decode_text('UTF-8%20(65001)')) 工具进行自动解析，相关解密代码可以参考[这份 Python 代码](https://github.com/QQBackup/QQ-History-Backup/issues/9#issuecomment-1929105881)与[这份 protobuf 定义](https://github.com/QQBackup/qq-win-db-key/issues/38#issuecomment-2294619828)，完整实现暂无，待补充。
