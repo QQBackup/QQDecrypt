@@ -21,14 +21,14 @@ features:
   - icon: 🗝
     title: 解密
     details: 获取数据库密钥
-    link: /decrypt
+    link: /decrypt/
   - icon: 👁‍
     title: 查看
     details: 打开数据库/读取信息
-    link: /view
+    link: /view/
   - icon:  🧑  
     title: 贡献者
     details: 感谢为此项目做出贡献的所有开发者ヾ(≧▽≦*)o)
-    link: /Contributors
+    link: /Contributors/
 ---
 
