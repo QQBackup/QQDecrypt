@@ -10,7 +10,6 @@ export default defineConfig({
   ],  
   vite: {
     plugins: [
-      // add plugin directly as an object property
       AutoSidebar({ deletePrefix: 'index', ignoreIndexItem: true })
     ]
   },
@@ -45,6 +44,10 @@ export default defineConfig({
     returnToTopLabel: '回到顶部',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/QQBackup/QQDecrypt' },
-    ]
+    ],
+    outline: {
+      level: [2, 3], 
+      label: '页面目录',
+    },
   }
 })
