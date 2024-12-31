@@ -1,5 +1,6 @@
 ---
 title: 文件下载
+sidebar: false
 ---
 
 # 文件下载

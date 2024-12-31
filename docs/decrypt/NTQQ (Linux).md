@@ -1,3 +1,9 @@
+---
+title: NTQQ (Linux)
+description: NTQQ (Linux)解密教程
+---
+
+# NTQQ (Linux)
 三种方法，其中搜索内存的方法可能更简单，但效率低并且不一定稳定。Frida hook 需要每次去找相关函数地址、参数列表，并适当修改。
 
 ## Frida hook

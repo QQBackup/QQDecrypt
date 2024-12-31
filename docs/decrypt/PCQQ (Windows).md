@@ -1,3 +1,8 @@
+---
+title: PCQQ (非 NT 架构)
+description: PCQQ (非 NT 架构)解密教程
+---
+
 # PCQQ (非 NT 架构)
 
 本教程针对 QQ Windows 版（非 NT 架构），即 QQ9 以前的版本，可以在[官网](https://im.qq.com/pcqq/index.shtml)选择“往期怀旧版下载”下载。

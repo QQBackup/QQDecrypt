@@ -1,4 +1,9 @@
-# iOS
+---
+title: NTQQ(iOS)
+description: NTQQ(iOS)解密教程
+---
+
+# NTQQ(iOS)
 
 参考了 <https://github.com/QQBackup/QQ-History-Backup/issues/9> 以及 <https://github.com/QQBackup/qq-win-db-key> 中的各平台教程。
 
