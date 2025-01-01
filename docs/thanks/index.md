@@ -10,74 +10,65 @@ prev: false
 - 若有希望补充/想从致谢名单中移除的，可在 GitHub 开 issues 或通过 [issues@sbcnm.top](mailto:issues@sbcnm.top) 联系我修改
 
 <div class="card-container">
-  <div class="card">
-    <a href="https://github.com/QQBackup/qq-win-db-key" target="_blank">
-      <div class="card-image">
-        <img src="/icons/logo.jpg" alt="">
-      </div>
-      <div class="card-content">
-        <h3>qq-win-db-key</h3>
-        <p>文档大部分参考教程皆来源于此。</p>
-      </div>
-    </a>
-  </div>
-  
-  <div class="card">
-    <a href="https://blog.reincarnatey.net/2024/0707-qqnt-history-export/" target="_blank">
-      <div class="card-image">
-        <img src="/thanks/失迹.png" alt="">
-      </div>
-      <div class="card-content">
-        <h3>失迹の博客</h3>
-        <p>为 nt_msg 表中列名信息提供了参考</p>
-      </div>
-    </a>
-  </div>
- 
-  <div class="card">
-    <a href="https://github.com/mobyw/GroupChatAnnualReport" target="_blank">
-      <div class="card-image">
-        <img src="/thanks/GroupChatAnnualReport.jpg" alt="">
-      </div>
-      <div class="card-content">
-        <h3>GroupChatAnnualReport</h3>
-        <p>为 nt_msg 表中列名信息提供了参考</p>
-      </div>
-    </a>
-  </div>
-  <div class="card">
-    <a href="https://github.com/QQBackup/QQDecrypt" target="_blank">
-      <div class="card-image">
-        <img src="/thanks/github.png" alt="">
-      </div>
-      <div class="card-content">
-        <h3>GitHub</h3>
-        <p>为仓库源代码提供托管服务</p>
-      </div>
-    </a>
-  </div>
-  <div class="card">
-    <a href="https://vitepress.dev/" target="_blank">
-      <div class="card-image">
-        <img src="/thanks/vitepress.svg" alt="">
-      </div>
-      <div class="card-content">
-        <h3>VitePress</h3>
-        <p>网站使用的静态生成框架</p>
-      </div>
-    </a>
-  </div>
-  <div class="card">
-    <a href="https://vercel.com/" target="_blank">
-      <div class="card-image">
-        <img src="/thanks/vercel.png" alt="">
-      </div>
-      <div class="card-content">
-        <h3>vercel</h3>
-        <p>网站使用的静态网站自动化部署平台</p>
-      </div>
-    </a>
-  </div>  
+  <a class="card" href="https://github.com/QQBackup/qq-win-db-key" target="_blank">
+    <div class="card-image">
+      <img src="/icons/logo.jpg" alt="">
+    </div>
+    <div class="card-content">
+      <h3>qq-win-db-key</h3>
+      <p>文档大部分参考教程皆来源于此。</p>
+    </div>
+  </a>
+
+  <a class="card" href="https://blog.reincarnatey.net/2024/0707-qqnt-history-export/" target="_blank">
+    <div class="card-image">
+      <img src="/thanks/失迹.png" alt="">
+    </div>
+    <div class="card-content">
+      <h3>失迹の博客</h3>
+      <p>为 nt_msg 表中列名信息提供了参考</p>
+    </div>
+  </a>
+
+  <a class="card" href="https://github.com/mobyw/GroupChatAnnualReport" target="_blank">
+    <div class="card-image">
+      <img src="/thanks/GroupChatAnnualReport.jpg" alt="">
+    </div>
+    <div class="card-content">
+      <h3>GroupChatAnnualReport</h3>
+      <p>为 nt_msg 表中列名信息提供了参考</p>
+    </div>
+  </a>
+
+  <a class="card" href="https://github.com/QQBackup/QQDecrypt" target="_blank">
+    <div class="card-image">
+      <img src="/thanks/github.svg" alt="">
+    </div>
+    <div class="card-content">
+      <h3>GitHub</h3>
+      <p>为仓库源代码提供托管服务</p>
+    </div>
+  </a>
+
+  <a class="card" href="https://vitepress.dev/" target="_blank">
+    <div class="card-image">
+      <img src="/thanks/vitepress.svg" alt="">
+    </div>
+    <div class="card-content">
+      <h3>VitePress</h3>
+      <p>网站使用的静态生成框架</p>
+    </div>
+  </a>
+
+  <a class="card" href="https://vercel.com/" target="_blank">
+    <div class="card-image">
+      <img src="/thanks/vercel.png" alt="">
+    </div>
+    <div class="card-content">
+      <h3>vercel</h3>
+      <p>网站使用的静态网站自动化部署平台</p>
+    </div>
+  </a>
 </div>
 
 <style>
@@ -96,7 +87,7 @@ prev: false
   max-width: 700px;
   display: flex;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   text-decoration: none;
   overflow: hidden;
@@ -154,4 +145,19 @@ prev: false
   white-space: normal;
 }
 
+/* 颜色变量 */
+:root {
+  --card-bg: #ffffff; /* 浅色模式背景 */
+  --card-border: #e0e0e0; /* 浅色模式边框 */
+  --card-text: #333333; /* 浅色模式文字 */
+  --card-hover-bg: #f0f0f0; /* 浅色模式悬停背景 */
+}
+
+.dark {
+  --card-bg: rgba(32, 33, 39, 1); /* 深色模式背景 */
+  --card-border: #2a2a2e; /* 深色模式边框 */
+  --card-text: #dcdcdc; /* 深色模式文字 */
+  --card-hover-bg: rgba(40, 41, 49, 1); /* 深色模式悬停背景 */
+}
 </style>
+

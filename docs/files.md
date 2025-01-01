@@ -153,8 +153,8 @@ prev: false
 
 /* 文件项样式 */
 .file-item {
-  background-color: var(--file-bg);
-  border: 1px solid var(--file-border);
+  background-color: var(--file-bg-color);
+  border: 1px solid var(--file-border-color);
   border-radius: 10px;
   padding: 1rem;
   display: flex;
@@ -162,30 +162,39 @@ prev: false
   justify-content: space-between;
   opacity: 1; /* 无动画 */
   transform: translateY(0); /* 无动画 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.file-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 /* 文件图标样式 */
 .file-icon img {
   width: 40px;
   height: 40px;
+  border-radius: 5px; /* 添加圆角 */
 }
 
 /* 文件名样式 */
 .file-name a {
   text-decoration: none;
-  color: var(--file-text);
+  color: var(--file-text-color);
   font-weight: bold;
   margin-left: 1rem;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .file-name a:hover {
-  color: var(--file-hover);
+  color: var(--file-hover-color);
+  transform: scale(1.05); /* 放大效果 */
 }
 
 /* 文件日期样式 */
 .file-date {
-  color: var(--file-date-text);
+  color: var(--file-date-color);
   font-size: 0.9rem;
 }
 
@@ -201,22 +210,35 @@ prev: false
   }
 }
 
-/* 全局变量 */
+/* 全局变量：浅色模式 */
 :root {
-  --file-bg: #f5f5f5; /* 清新中性的灰白色背景 */
-  --file-border: #cccccc; /* 浅灰色边框 */
-  --file-text: #2e2e2e; /* 深灰色文字 */
-  --file-hover: #005bda; /* 清新的蓝色悬停效果 */
-  --file-date-text: #444444; /* 中性灰色日期文字 */
+  --file-bg-color: rgba(250, 250, 250, 1); /* 柔和白色背景 */
+  --file-border-color: rgba(220, 220, 220, 1); /* 浅灰色边框 */
+  --file-text-color: rgba(50, 50, 50, 1); /* 深灰色文字 */
+  --file-hover-color: rgba(0, 91, 218, 1); /* 鲜艳蓝色悬停效果 */
+  --file-date-color: rgba(100, 100, 100, 1); /* 中性灰色日期文字 */
 }
 
-/* 深色模式变量 */
+/* 深色模式 */
 .dark {
-  --file-bg: #1e1e1e; /* 深色背景，更贴近黑色但不刺眼 */
-  --file-border: #2e2e2e; /* 深灰色边框 */
-  --file-text: #dcdcdc; /* 明亮的灰白色文字 */
-  --file-hover: #6699ff; /* 柔和的蓝色悬停效果 */
-  --file-date-text: #a1a1a1; /* 浅灰色日期文字 */
+  --file-bg-color: rgba(32, 33, 39, 1); /* 深色背景 */
+  --file-border-color: rgba(48, 48, 48, 1); /* 较深的灰色边框 */
+  --file-text-color: rgba(220, 220, 220, 1); /* 浅灰白文字 */
+  --file-hover-color: rgba(102, 153, 255, 1); /* 柔和蓝色悬停效果 */
+  --file-date-color: rgba(161, 161, 161, 1); /* 浅灰色日期文字 */
 }
+
+.file-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px; 
+  transition: filter 0.3s ease;
+}
+
+/* 深色模式下调整图标颜色 */
+.dark .file-icon img {
+  filter: invert(1) brightness(2);
+}
+
 </style>
 
