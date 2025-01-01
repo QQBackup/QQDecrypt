@@ -9,7 +9,7 @@ export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
     // 注册全局组件
-    app.component('HashCalculator', HashCalculator)
+    app.component('HashCalculator', HashCalculator)  
 
   }
 } satisfies Theme

@@ -34,3 +34,7 @@
 
   --vp-button-brand-active-border: #99ccff;
 } */
+
+.vp-doc a {
+    text-decoration: none;
+}
