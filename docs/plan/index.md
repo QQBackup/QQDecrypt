@@ -1,6 +1,7 @@
 ---
 title: 数据库解析计划
 description: 数据库解析的长期规划
+collapsed: true
 ---
 
 1. 本文档用于记录QQ数据库解析进度
