@@ -92,6 +92,7 @@ prev: false
   text-decoration: none;
   overflow: hidden;
   margin: 0 auto;
+  padding: 1rem;
 }
 
 .card:hover {
@@ -105,7 +106,7 @@ prev: false
   height: 80px;
   overflow: hidden;
   border-radius: 50%;
-  margin: 15px;
+  margin-right: 1rem;
   flex-shrink: 0;
 }
 
@@ -117,10 +118,9 @@ prev: false
 }
 
 .card-content {
-  padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   flex: 1;
 }
 
@@ -131,33 +131,44 @@ prev: false
 }
 
 .card-content p {
-  color: var(--card-text);
+  color: var(--card-text); 
   font-size: 0.9rem;
   margin: 0;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
-  transition: white-space 0.3s ease;
-}
-
-.card:hover .card-content p {
   white-space: normal;
 }
 
-/* 颜色变量 */
-:root {
-  --card-bg: #ffffff; /* 浅色模式背景 */
-  --card-border: #e0e0e0; /* 浅色模式边框 */
-  --card-text: #333333; /* 浅色模式文字 */
-  --card-hover-bg: #f0f0f0; /* 浅色模式悬停背景 */
+@media (max-width: 600px) {
+  .card {
+    flex-direction: column; 
+    text-align: center;
+  }
+
+  .card-image {
+    margin: 0 auto 1rem;
+  }
+
+  .card-content h3,
+  .card-content p {
+    text-align: center;
+  }
 }
 
+/* 全局变量 */
+:root {
+  --card-border: rgba(200, 200, 200, 1); 
+  --card-text: rgba(50, 50, 50, 1); 
+}
+
+/* 深色模式 */
 .dark {
-  --card-bg: rgba(32, 33, 39, 1); /* 深色模式背景 */
-  --card-border: #2a2a2e; /* 深色模式边框 */
-  --card-text: #dcdcdc; /* 深色模式文字 */
-  --card-hover-bg: rgba(40, 41, 49, 1); /* 深色模式悬停背景 */
+  --card-bg: rgba(32, 33, 39, 1); 
+  --card-border: rgba(70, 70, 70, 1); 
+  --card-text: rgba(200, 200, 200, 1); 
+  --card-hover-bg: rgba(50, 50, 50, 1); 
 }
 </style>
+
+
 
