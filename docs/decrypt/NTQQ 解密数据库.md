@@ -36,9 +36,12 @@ description: NTQQ 解密数据库教程
 
 打开数据库可以通过 [SQLiteStudio](https://sqlitestudio.pl/)、[DB Browser for SQLite](https://sqlitebrowser.org/) 或`sqlcipher`命令行 等工具完成。
 
+::: tip 如打开就报错file is not a database
+请注意DB Browser应使用DB Browser (SQLCipher)而非DB Browser (SQLite)
+:::
 ## 通用配置选项
 
-见下。注意`cipher_hmac_algorithm`在旧版本中可能为`HMAC_SHA256`，以下部分截图也使用了此值，请自行尝试更改。
+见下。注意`cipher_hmac_algorithm`在一些版本中可能为`HMAC_SHA256`，以下部分截图也使用了此值，请自行尝试更改。
 
 ```shell
 PRAGMA key = 'pass';    -- pass 替换为之前得到的密码（32字节字符串）

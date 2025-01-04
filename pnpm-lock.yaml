@@ -23,13 +23,13 @@ importers:
       vite-plugin-vitepress-auto-sidebar:
         specifier: ^1.7.1
         version: 1.7.1(@typescript-eslint/parser@8.19.0(eslint@9.17.0)(typescript@5.7.2))(eslint@9.17.0)(typescript@5.7.2)(vite@5.4.11)(vitepress@1.5.0(@algolia/client-search@5.18.0)(axios@1.7.9)(postcss@8.4.49)(search-insights@2.17.3)(typescript@5.7.2))
-      vue:
-        specifier: ^3.5.10
-        version: 3.5.13(typescript@5.7.2)
     devDependencies:
       vitepress:
         specifier: ^1.5.0
         version: 1.5.0(@algolia/client-search@5.18.0)(axios@1.7.9)(postcss@8.4.49)(search-insights@2.17.3)(typescript@5.7.2)
+      vue:
+        specifier: ^3.5.13
+        version: 3.5.13(typescript@5.7.2)
 
 packages:
 
