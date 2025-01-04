@@ -75,17 +75,17 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 1. 使用 IDA Pro 打开 `C:\Program Files\Tencent\QQNT\resources\app\versions\9.9.3-17412\wrapper.node`。打开 Strings 视图，搜索 `nt_sqlite3_key_v2: db=%p zDb=%s`
 
-    ![](/img/Myth7.png)
+    ![](/img/Myth1.png)
 
 
 
 2. 跳转到主视图，再跳转到引用该字符串的位置
-    ![](/img/Myth1.png)
-    JumpOpXref 后发现在    
     ![](/img/Myth2.png)
+    JumpOpXref 后发现在    
+    ![](/img/Myth3.png)
 
 3. 按下 F5 反编译此函数
-    ![](/img/Myth3.png)
+    ![](/img/Myth4.png)
     
     参考[文档](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sqlite3_key)可知 `sqlite3_key_v2` 的参数为：
 
@@ -102,12 +102,12 @@ QQ NT Windows 数据库解密+图片/文件清理
 4. 退出 QQ 并重新打开，但不要登录。打开 IDA Debug -> Attach to Process ，选择 QQ.exe
 ，或许等待后发现程序已经被停止了，卡在了登录界面，点一下继续，让它先跑起来
 然后登录 QQ，此时成功在断点处停下，打开 Locals 可以看到一些变量
-    ![](/img/Myth4.png)
+    ![](/img/Myth5.png)
 
     打开一个 Locals 视图(调试器视图->本地变量)查看参数的值
 
 5. 命中后，跳转到 a3 对应的位置，直到看到如下图所示的 16 位字符串。`#8xxxxxxxxxxx@uJ` 即为我们需要的 `passphrase` (不一定是这个格式，但总字符数是一样的)
-    ![](/img/Myth5.png)
+    ![](/img/Myth6.png)
 
 ### 导出/修复数据库
 
@@ -176,7 +176,7 @@ $ cat nt_msg.sql | sed -e 's|^ROLLBACK;\( -- due to errors\)*$|COMMIT;|g' | sqli
 
 下图是 `nt_msg.db` 中的表：
 
-![](/img/Myth6.png)
+![](/img/Myth7.png)
 
 注意 `c2c/group_msg_table` 中的 `40800`（消息内容）是 Protobuf 二进制。笔者暂时没有弄明白每个字段的意义
 
