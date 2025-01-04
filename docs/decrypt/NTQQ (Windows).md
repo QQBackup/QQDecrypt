@@ -5,7 +5,7 @@ description: NTQQ (Windows)解密教程
 
 # NTQQ (Windows)
 ## 使用 frida hook
-1. 定位 `nt_sqlite3_key_v2:`
+### 1. 定位 `nt_sqlite3_key_v2:`
 
    此处采用 [IDA](https://down.52pojie.cn/Tools/Disassemblers/IDA_Pro_v8.3_Portable.zip) 演示，您可以替换成您喜欢的任何反编译器
 
@@ -29,7 +29,7 @@ description: NTQQ (Windows)解密教程
    48 8B EA 48 8B D9 48 8D  15 33 05 A0 00 B9 08 00
    ```
 
-2. Hook 并找到 Key
+### 2. Hook 并找到 Key
 
    根据 <https://www.zetetic.net/sqlcipher/sqlcipher-api/#sqlite3_key> 指出
 
@@ -53,7 +53,7 @@ description: NTQQ (Windows)解密教程
 
    PS：有概率你会得到的一个长度为 20 的 key，但那不是我们想要的，可以挂上一个动态调试器来观察 key 对应的具体数据库
 
-3. 打开数据库
+### 3. 打开数据库
 
 请参考 [NTQQ 解密数据库](NTQQ%20解密数据库.md)。
 
@@ -62,7 +62,7 @@ description: NTQQ (Windows)解密教程
 [QQ NT Windows 数据库解密+图片/文件清理](https://github.com/Mythologyli/qq-nt-db)：本仓库使用 IDA debugger 完成了逆向分析到解密的全过程，并实现了图片与文件清理。
 
 > [!TIP] 转载说明
-原文发表于[Myth's Blog](https://myth.cx/p/qq-nt-db)，作者为Myth，根据 CC BY-SA 4.0 授权协议发布
+原文发表于[Myth's Blog](https://myth.cx/p/qq-nt-db)，作者为Myth，根据 CC BY-SA 4.0 授权协议发布，内容经[issues #50](https://github.com/QQBackup/qq-win-db-key/issues/50)补充
 >
 
 QQ NT Windows 数据库解密+图片/文件清理
@@ -73,20 +73,20 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 ### 找到数据库 `passphrase`
 
-1. 使用 IDA Pro 打开 `C:\Program Files\Tencent\QQNT\resources\app\versions\9.9.3-17412\wrapper.node`。打开 Strings 视图，搜索 `sqlite3_key_v2`
+1. 使用 IDA Pro 打开 `C:\Program Files\Tencent\QQNT\resources\app\versions\9.9.3-17412\wrapper.node`。打开 Strings 视图，搜索 `nt_sqlite3_key_v2: db=%p zDb=%s`
 
-    ![](/img/Myth1.png)
+    ![](/img/Myth7.png)
+
+
 
 2. 跳转到主视图，再跳转到引用该字符串的位置
-
+    ![](/img/Myth1.png)
+    JumpOpXref 后发现在    
     ![](/img/Myth2.png)
 
-    ![](/img/Myth3.png)
-
 3. 按下 F5 反编译此函数
-
-    ![](/img/Myth4.png)
-
+    ![](/img/Myth3.png)
+    
     参考[文档](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sqlite3_key)可知 `sqlite3_key_v2` 的参数为：
 
     ```c
@@ -99,15 +99,15 @@ QQ NT Windows 数据库解密+图片/文件清理
    
     可以猜测 a3 为我们所需的 `passphrase`。打上断点
 
-4. 退出 QQ 并重新打开，但不要登录。使用 IDA Debug 的 Attach to Process 功能，附加到 QQ 进程。之后登录，可以看到断点被命中
-
-    ![](/img/Myth5.png)
+4. 退出 QQ 并重新打开，但不要登录。打开 IDA Debug -> Attach to Process ，选择 QQ.exe
+，或许等待后发现程序已经被停止了，卡在了登录界面，点一下继续，让它先跑起来
+然后登录 QQ，此时成功在断点处停下，打开 Locals 可以看到一些变量
+    ![](/img/Myth4.png)
 
     打开一个 Locals 视图(调试器视图->本地变量)查看参数的值
 
 5. 命中后，跳转到 a3 对应的位置，直到看到如下图所示的 16 位字符串。`#8xxxxxxxxxxx@uJ` 即为我们需要的 `passphrase` (不一定是这个格式，但总字符数是一样的)
-
-    ![](/img/Myth6.png)
+    ![](/img/Myth5.png)
 
 ### 导出/修复数据库
 
@@ -176,7 +176,7 @@ $ cat nt_msg.sql | sed -e 's|^ROLLBACK;\( -- due to errors\)*$|COMMIT;|g' | sqli
 
 下图是 `nt_msg.db` 中的表：
 
-![](/img/Myth7.png)
+![](/img/Myth6.png)
 
 注意 `c2c/group_msg_table` 中的 `40800`（消息内容）是 Protobuf 二进制。笔者暂时没有弄明白每个字段的意义
 

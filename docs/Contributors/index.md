@@ -117,6 +117,16 @@ const contributors = [
       { icon: 'github', link: "https://github.com/Wenz-jam" }
     ]
   },
+  
+  {
+    avatar: "https://ooo.0x0.ooo/2025/01/04/OEHG9B.jpg",
+    name: "Dao1023",
+    title: "贡献者",
+    desc: '<a href="https://github.com/QQBackup/qq-win-db-key/issues/50" target="_blank">issues #50</a>:补充NTQQ(Windows)教程',
+    links: [
+      { icon: 'github', link: "https://github.com/Dao1023" }
+    ]
+  },  
 
 ]
 </script>
