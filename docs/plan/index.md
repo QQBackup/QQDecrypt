@@ -16,6 +16,6 @@ collapsed: true
 
 本项目仅供学习交流使用，严禁用于任何违反中国大陆法律法规、您所在地区法律法规、[QQ软件许可及服务协议](https://rule.tencent.com/rule/preview/46a15f24-e42c-4cb6-a308-2347139b1201)的行为，开发者不承担任何相关行为导致的直接或间接责任。
 
-本项目不对生成内容的完整性、准确性作任何担保，生成的一切内容
+本项目不对分析内容的完整性、准确性作任何担保
 
 本项目基本遵循[LICENSE](https://github.com/QQBackup/qq-win-db-key/blob/master/LICENSE)里的开源协议

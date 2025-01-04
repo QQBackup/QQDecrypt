@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import AutoSidebar from 'vite-plugin-vitepress-auto-sidebar'
 import markdownItTaskLists from 'markdown-it-task-lists'
+import timeline from 'vitepress-markdown-timeline'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -30,27 +31,29 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://qq.sbcnm.top'
   },  
-  markdown: {
-    lineNumbers: true,
-    config: (md) => {
-      md.use(markdownItTaskLists);
-    },
-    image: {
-      lazyLoading: true
-    },        
+markdown: {
+  lineNumbers: true,
+  config: (md) => {
+    md.use(markdownItTaskLists);
+    md.use(timeline);
   },
+  image: {
+    lazyLoading: true,
+  },
+},
+
   themeConfig: {
     lastUpdated: {
       text: '最后更新于'
     },    
     nav: [ // 页面右上角的导航
       { text: '主页', link: '/' },
-      { text: '致谢', link: '/thanks/' },
+      { text: '致谢', link: '/about/thanks' },
       { text: '文件', link: '/files' }         
     ],
     footer: {
-      message: ' CC BY-NC-SA 4.0 <a href="https://github.com/QQBackup/qq-win-db-key/blob/master/LICENSE"> License</a>.', 
-      copyright: 'Copyright © 2024'
+      message: ' CC BY-NC-SA 4.0 <a href="https://github.com/QQBackup/qq-win-db-key/blob/master/LICENSE"> License</a>', 
+      copyright: ' <a href="/about/碎碎念">Copyright © 2025 </a>'
     },
     editLink: {
       pattern: 'https://github.com/QQBackup/QQDecrypt/edit/main/docs/:path',
