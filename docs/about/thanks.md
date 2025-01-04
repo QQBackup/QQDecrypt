@@ -5,7 +5,7 @@ next: false
 prev: false
 ---
 
-**文档内容参考/引用了以下网站的内容，在此表达最诚挚的谢意（排名不分先后）：**
+**网站的编写离不开以下网站或应用的支持，在此表达最诚挚的谢意（排名不分先后）：**
 - 在原 qq-win-db-key 项目中引用的相关资料，此处不再全部列出
 - 若有希望补充/想从致谢名单中移除的，可在 GitHub 开 issues 或通过 [issues@sbcnm.top](mailto:issues@sbcnm.top) 联系我修改
 
@@ -69,6 +69,17 @@ prev: false
       <p>网站使用的静态网站自动化部署平台</p>
     </div>
   </a>
+
+  <a class="card" href="https://vitepress.dev/" target="_blank">
+    <div class="card-image">
+      <img src="/thanks/vitepress.svg" alt="">
+    </div>
+    <div class="card-content">
+      <h3>yiov的vitepress教程</h3>
+      <p>为网站美化提供了参考</p>
+    </div>
+  </a>
+  
 </div>
 
 <style>
@@ -166,7 +177,6 @@ prev: false
   --card-bg: rgba(32, 33, 39, 1); 
   --card-border: rgba(70, 70, 70, 1); 
   --card-text: rgba(200, 200, 200, 1); 
-  --card-hover-bg: rgba(50, 50, 50, 1); 
 }
 </style>
 

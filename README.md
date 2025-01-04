@@ -15,23 +15,23 @@ pnpm run docs:dev
 如有不明白的操作，请参阅[主题官方教程](https://vitepress.dev/zh/guide/getting-started)。
 本项目使用了部分插件，具体可在config.mts中查看
 
-本文档的主要文件储存在docx目录下。新增文件无需编辑目录，目录会自动生成。
+本文档的主要文件储存在docs目录下。新增文件无需编辑侧边栏，插件会自动生成。
 
 ```shell
 ├─ docs
-│  ├─ .vitepress(VitePress 配置文件、开发服务器缓存、构建输出和可选主题自定义代码的位置)
-│  │  ├─theme
-│  │  └─ config.mts  
-│  ├─Contributors（贡献者） 
-│  ├─decrypt（解密相关文档）     
-│  ├─thanks（致谢）
-│  ├─plan(数据库解析计划)
-│  ├─public（媒体文件存放）                                          
-│  │ ├─img（媒体文件存放）                                  
-│  │ ├─icon                                                                                        
-│  ├─ index.md
-│  └─ introduce.md（了解项目）
-└─ package.json
+├─ .vitepress((VitePress 配置文件、可选主题自定义代码的位置)
+│  ├─ theme
+│  ├─ config.mts
+├─ about()
+│  ├─ Contributors.md (贡献者)
+│  ├─ thanks.md (致谢)
+├─ decrypt (解密相关文档)
+├─ plan (数据库解析计划)
+├─ public (媒体文件存放)
+├─ view (查看)
+├─ files.md (文件)
+├─ index.md
+└─ introduce.md (了解项目) 
 ```
 
 **特别注意：贡献代码的仓库与实际部署网站所使用的仓库并不是一个，而是由组织中的仓库贡献代码，个人仓库通过fork获取更新的，这是由于成员没有权限将组织中的仓库作为vercel的库来源，所以本人想出来的馊主意（**

@@ -15,7 +15,7 @@ hero:
       link: /introduce
     - theme: alt
       text: 致谢
-      link: /thanks
+      link: /about/thanks
 
 features:
   - icon: 🗝
@@ -29,6 +29,6 @@ features:
   - icon:  🧑  
     title: 贡献者
     details: 感谢为此项目做出贡献的所有开发者ヾ(≧▽≦*)o)
-    link: /Contributors/
+    link: /about/Contributors
 ---
 

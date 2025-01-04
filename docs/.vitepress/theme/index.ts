@@ -4,6 +4,7 @@ import DefaultTheme from 'vitepress/theme'
 import HashCalculator from './components/HashCalculator.vue'
 import { Theme } from 'vitepress' 
 import './style/index.css'
+import "vitepress-markdown-timeline/dist/theme/index.css";
 
 export default {
   ...DefaultTheme,
