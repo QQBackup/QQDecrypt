@@ -17,7 +17,7 @@ description: NTQQ(Android)解密教程
 
 以下的`md5`函数返回结果均为 32 位，字符均为小写，在Python中等价于以下函数：`def md5(s): i=__import__('hashlib').md5();i.update(s.encode('utf8'));return i.hexdigest()`
 为了方便起见，假设 QQ 号（表示为`uin`）为`390251789`，`uid`为`u_mIicAReWrdCB-kST6TXH7A`。
-一切以`/data/user/0/com.tencent.mobileqq/`开头的路径均表示root后可以访问到的绝对路径，若为处理备份文件，则此路径可>能有所不同。
+一切以`/data/user/0/com.tencent.mobileqq/`开头的路径均表示root后可以访问到的绝对路径，若为处理备份文件，则此路径可能有所不同。
 
 # 便捷获取
 <HashCalculator />

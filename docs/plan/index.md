@@ -18,4 +18,4 @@ collapsed: true
 
 本项目不对分析内容的完整性、准确性作任何担保
 
-本项目基本遵循[LICENSE](https://github.com/QQBackup/qq-win-db-key/blob/master/LICENSE)里的开源协议
+本项目基本遵循[LICENSE](/about/LICENSE)里的开源协议
