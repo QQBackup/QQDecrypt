@@ -52,7 +52,7 @@ markdown: {
       { text: '文件', link: '/files' }         
     ],
     footer: {
-      message: ' CC BY-NC-SA 4.0 <a href="https://github.com/QQBackup/qq-win-db-key/blob/master/LICENSE"> License</a>', 
+      message: ' CC BY-NC-SA 4.0 <a href="/about/LICENSE"> License</a>', 
       copyright: ' <a href="/about/碎碎念">Copyright © 2025 </a>'
     },
     editLink: {
