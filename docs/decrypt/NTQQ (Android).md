@@ -5,9 +5,12 @@ description: NTQQ(Android)解密教程
 
 # NTQQ(Android)
 
+> [!TIP] 注意
+如果运行脚本时出现问题，请尝试将所有文件中的所有`libkernel`替换为`libbasic_share`。
+
 ## 方法1（推荐）
 
-> [!TIP] 说明
+> [!INFO] 说明
 >本方法不需要 root，只需要使用系统自带的备份功能导出 QQ 的数据即可。由于 QQ 限制，部分系统可能无法导出 QQ 数据，此时可以使用“聊天记录迁移”功能迁移到其他设备上。
 
 经测试适用于`9.0.65`与`9.0.75`版本，更低版本可能无法使用此方法。
@@ -16,7 +19,8 @@ description: NTQQ(Android)解密教程
 为了方便起见，假设 QQ 号（表示为`uin`）为`390251789`，`uid`为`u_mIicAReWrdCB-kST6TXH7A`。
 一切以`/data/user/0/com.tencent.mobileqq/`开头的路径均表示root后可以访问到的绝对路径，若为处理备份文件，则此路径可>能有所不同。
 
-
+# 便捷获取
+<HashCalculator />
 
 ### 获取uid
 
