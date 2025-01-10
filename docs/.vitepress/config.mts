@@ -25,7 +25,7 @@ export default defineConfig({
   ],
   vite: {
     plugins: [
-      AutoSidebar({ deletePrefix: 'index', ignoreIndexItem: true })
+      AutoSidebar({ deletePrefix: 'index', ignoreIndexItem: true,collapsed: false })
     ]
   },
   sitemap: {
