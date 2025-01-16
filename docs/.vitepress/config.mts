@@ -1,17 +1,15 @@
-import { defineConfig } from 'vitepress'
-import AutoSidebar from 'vite-plugin-vitepress-auto-sidebar'
-import markdownItTaskLists from 'markdown-it-task-lists'
-import timeline from 'vitepress-markdown-timeline'
+import { defineConfig } from 'vitepress';
+import AutoSidebar from 'vite-plugin-vitepress-auto-sidebar';
+import timeline from 'vitepress-markdown-timeline';
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "QQDecrypt",
-  description: "解密QQ聊天数据库",
-  lang: 'zh-CN', 
-  head: [   
+  title: 'QQDecrypt',
+  description: '解密QQ聊天数据库',
+  lang: 'zh-CN',
+  head: [
     [
       'script',
-      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-6TSGD7CVS3' }
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-6TSGD7CVS3' },
     ],
     [
       'script',
@@ -19,45 +17,42 @@ export default defineConfig({
       `window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-6TSGD7CVS3');`
+      gtag('config', 'G-6TSGD7CVS3');`,
     ],
     ['link', { rel: 'icon', href: '/icons/logo.jpg' }],
   ],
   vite: {
     plugins: [
-      AutoSidebar({ deletePrefix: 'index', ignoreIndexItem: true,collapsed: false })
-    ]
+      AutoSidebar({ deletePrefix: 'index', ignoreIndexItem: true, collapsed: false }),
+    ],
   },
   sitemap: {
-    hostname: 'https://qq.sbcnm.top'
-  },  
-markdown: {
-  lineNumbers: true,
-  config: (md) => {
-    md.use(markdownItTaskLists);
-    md.use(timeline);
+    hostname: 'https://qq.sbcnm.top',
   },
-  image: {
-    lazyLoading: true,
+  markdown: {
+    lineNumbers: true,
+    config: (md) => {
+      md.use(timeline);
+    },
+    image: {
+      lazyLoading: true,
+    },
   },
-},
-
   themeConfig: {
-    lastUpdated: {
-      text: '最后更新于'
-    },    
-    nav: [ // 页面右上角的导航
+    appearance: 'dark', 
+    lastUpdated: { text: '最后更新于' },
+    nav: [
       { text: '主页', link: '/' },
       { text: '致谢', link: '/about/thanks' },
-      { text: '文件', link: '/files' }         
+      { text: '文件', link: '/files' },
     ],
     footer: {
-      message: ' CC BY-NC-SA 4.0 <a href="/about/LICENSE"> License</a>', 
-      copyright: ' <a href="/about/碎碎念">Copyright © 2025 </a>'
+      message: ' CC BY-NC-SA 4.0 <a href="/about/LICENSE"> License</a>',
+      copyright: '<a href="/about/碎碎念">Copyright © 2025 </a>',
     },
     editLink: {
       pattern: 'https://github.com/QQBackup/QQDecrypt/edit/main/docs/:path',
-      text: '在 GitHub 上编辑此页'
+      text: '在 GitHub 上编辑此页',
     },
     prev: '上一页',
     next: '下一页',
@@ -70,8 +65,8 @@ markdown: {
       { icon: 'github', link: 'https://github.com/QQBackup/QQDecrypt' },
     ],
     outline: {
-      level: [2, 3], 
+      level: [2, 3],
       label: '页面目录',
     },
-  }
-})
+  },
+});

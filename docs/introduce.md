@@ -1,9 +1,10 @@
 ---
-layout: home
+layout: doc
+title: 网站说明
+sidebar: false
+next: false 
+prev: false
 
-
-hero:
-  name: QQDecrypt
 ---
 ## 关于该文档站 
 
@@ -21,3 +22,7 @@ hero:
 本项目基本遵循`LICENSE`里的开源协议，基本接近**标识项目地址**且**禁止商用**；部分文件同时以不同的协议发布，具体参见文件内对应的声明。
 
 如果哪天完全没人维护了直接开个新仓库接着搞就行。记得保留原作者信息（比如 commit 作者），建议在[本仓库的 issues](https://github.com/QQBackup/qq-win-db-key/issues) 宣传一下。
+
+## 隐私政策
+- 网站使用vercel静态部署托管
+- 网站使用Google analysis分析访问数据，不喜欢自行屏蔽即可
