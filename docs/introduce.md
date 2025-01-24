@@ -11,7 +11,7 @@ prev: false
 该文档站内容源于[qq-win-db-key](https://github.com/QQBackup/qq-win-db-key)项目，是为了更加方便于查找有而将教程进行整合而生的，感谢[原作者Young-Lord](https://github.com/Young-Lord)等贡献者的付出
 本项目用于导出并解密 PCQQ / QQ NT 等软件的聊天记录数据库。
 
-有任何问题和建议欢迎提issues或者通过邮箱[issues@sbcnm.top](mailto:issues@sbcnm.top)联系我
+有任何问题和建议欢迎提issues或者通过[邮箱](mailto:ovo@aaqwq.top)联系我
 
 ## 寻求合作者
 
