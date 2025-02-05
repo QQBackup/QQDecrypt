@@ -73,10 +73,15 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 ### 找到数据库 `passphrase`
 
-1. 使用 IDA Pro 打开 `C:\Program Files\Tencent\QQNT\resources\app\versions\9.9.3-17412\wrapper.node`。打开 Strings 视图，搜索 `nt_sqlite3_key_v2: db=%p zDb=%s`
+1. 使用 IDA Pro 打开 `C:\Program Files\Tencent\QQNT\resources\app\versions\9.9.3-17412\wrapper.node`。（弹出让选择PDB文件路径记得取消）
 
-    ![](/img/Myth1.png)
+**建议晚上睡觉时打开分析捏＞﹏＜分析时间很长而且会生成超大超大的ida文件(⊙﹏⊙)**
 
+分析完成后打开 Strings 视图（如果没有同时按shift+F12或按图片示例打开），CTRL+F搜索 `nt_sqlite3_key_v2: db=%p zDb=%s`字符串
+
+
+![](/img/strings-view.png)
+![](/img/Myth1.png)
 
 
 2. 跳转到主视图，再跳转到引用该字符串的位置
@@ -99,14 +104,26 @@ QQ NT Windows 数据库解密+图片/文件清理
    
     可以猜测 a3 为我们所需的 `passphrase`。打上断点
 
-4. 退出 QQ 并重新打开，但不要登录。打开 IDA Debug -> Attach to Process ，选择 QQ.exe
-，或许等待后发现程序已经被停止了，卡在了登录界面，点一下继续，让它先跑起来
+4. 退出 QQ 并重新打开，但不要登录。在上端工具栏右侧选择**Local Windows debugger**
+   ![](/img/debug_windows.png)
+   打开 IDA Debug -> Attach to Process ，选择 QQ.exe
+   ::: details 有多个QQ进程不知道附加哪个？
+   1 可以先CTRL+SHIFT+ESC或者任务栏右键打开任务管理器，然后如图所示勾选显示PID和命令行
+    ![](/img/Crafty_QQ_process1.png)
+   2 找到QQ进程双击展开，其中不带任何附加参数的进程即为要附加的进程
+    ![](/img/Crafty_QQ_process2.png)  
+   3 在IDA中选择即可
+    ![](/img/Crafty_QQ_process3.png)
+   :::
+
+如果等待附加进程时QQ已经无响应了（卡在登录界面无法点击），点一下继续，让它先跑起来
+
+打开一个 Locals 视图(Debugger->Debugger windows->Locals)查看参数的值
+![](/img/locals.png)
+
 然后登录 QQ，此时成功在断点处停下，打开 Locals 可以看到一些变量
     ![](/img/Myth5.png)
-
-    打开一个 Locals 视图(调试器视图->本地变量)查看参数的值
-
-5. 命中后，跳转到 a3 对应的位置，直到看到如下图所示的 16 位字符串。`#8xxxxxxxxxxx@uJ` 即为我们需要的 `passphrase` (不一定是这个格式，但总字符数是一样的)
+5. 命中后，在 a3 对应的位置右键jump to，直到看到如下图所示的 16 位字符串。`#8xxxxxxxxxxx@uJ` 即为我们需要的 `passphrase` (不一定是这个格式，但总字符数是一样的)
     ![](/img/Myth6.png)
 
 ### 导出/修复数据库
