@@ -7,7 +7,7 @@ prev: false
 
 **网站的编写离不开以下网站或应用的支持，在此表达最诚挚的谢意（排名不分先后）：**
 - 在原 qq-win-db-key 项目中引用的相关资料，此处不再全部列出
-- 若有希望补充/想从致谢名单中移除的，可在 GitHub 开 issues 或通过 [issues@sbcnm.top](mailto:issues@sbcnm.top) 联系我修改
+- 若有希望补充/想从致谢名单中移除的，可在 GitHub 开 issues 联系我修改
 
 <div class="card-container">
   <a class="card" href="https://github.com/QQBackup/qq-win-db-key" target="_blank">

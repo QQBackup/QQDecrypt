@@ -140,7 +140,7 @@ const contributors = [
       仓库成员
     </template>
     <template #lead>
-      若需要修改/增删信息可在仓库发起 PR 或通过 <a href="mailto:ovo@aaqwq.top">邮箱</a> 联系我修改
+      若需要修改/增删信息可在仓库发起 PR 或issues
     </template>
   </VPTeamPageTitle>
   
