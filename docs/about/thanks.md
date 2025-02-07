@@ -16,7 +16,7 @@ prev: false
     </div>
     <div class="card-content">
       <h3>qq-win-db-key</h3>
-      <p>文档大部分参考教程皆来源于此。</p>
+      <p>文档大部分参考教程皆来源于此。<br>基于CC BY-NC-SA 4.0协议转载</br></p>
     </div>
   </a>
 
@@ -26,7 +26,7 @@ prev: false
     </div>
     <div class="card-content">
       <h3>失迹の博客</h3>
-      <p>为 nt_msg 表中列名信息提供了参考</p>
+      <p>为 nt_msg 表中列名信息提供了参考<br>基于CC BY-NC-SA 4.0协议转载</br></p>
     </div>
   </a>
 
@@ -36,7 +36,7 @@ prev: false
     </div>
     <div class="card-content">
       <h3>GroupChatAnnualReport</h3>
-      <p>为 nt_msg 表中列名信息提供了参考</p>
+      <p>为 nt_msg 表中列名信息提供了参考，为IDA教程提供补充,<br>（基于MIT协议转载）</br></p>
     </div>
   </a>
 
