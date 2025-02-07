@@ -1,5 +1,5 @@
 ## 致谢
-该文档站内容源于[qq-win-db-key](https://github.com/QQBackup/qq-win-db-key)项目，是为了更加方便于查找有而将教程进行整合而生的，感谢[原作者Young-Lord](https://github.com/Young-Lord)等贡献者的付出
+该文档站内容源于[qq-win-db-key](https://github.com/QQBackup/qq-win-db-key)项目，是为了将互联网有关NTQQ数据库解密教程整合而生的，感谢[原作者Young-Lord](https://github.com/Young-Lord)等贡献者的付出
 本项目用于导出并解密 PCQQ / QQ NT 等软件的聊天记录数据库。
 
 仍在测试阶段

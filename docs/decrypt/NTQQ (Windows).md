@@ -4,6 +4,78 @@ description: NTQQ (Windows)解密教程
 ---
 
 # NTQQ (Windows)
+## IDA分析
+
+[QQ NT Windows 数据库解密+图片/文件清理](https://github.com/Mythologyli/qq-nt-db)：本仓库使用 IDA debugger 完成了逆向分析到解密的全过程，并实现了图片与文件清理。
+
+[IDA](https://down.52pojie.cn/Tools/Disassemblers/IDA_Pro_v8.3_Portable.zip)下载（吾爱破解提供）
+
+> [!TIP] 转载说明
+原文发表于[Myth's Blog](https://myth.cx/p/qq-nt-db)，作者为Myth，根据 CC BY-SA 4.0 授权协议发布，内容经[issues #50](https://github.com/QQBackup/qq-win-db-key/issues/50)补充
+>
+>部分图片来自[GroupChatAnnualReport](https://github.com/mobyw/GroupChatAnnualReport)
+>
+
+QQ NT Windows 数据库解密+图片/文件清理
+
+笔者测试时使用的 QQ 版本：9.9.3-17412
+
+经验证的 QQ 版本：9.9.3-17749 9.9.12-26339
+
+### 找到数据库 `passphrase`
+
+1. 解压IDA压缩包，双击打开 `ida64.exe` ，选择 `new` , 在弹出的资源管理器界面中定位到 QQNT 安装目录下的 `./resources/app/versions/{version} `文件夹，其中 `{version}` 为 QQNT 的版本号。在右下角过滤器中选择全部文件，单击 `wrapper.node `文件，并点击右下角的 "Open" 按钮。
+![](/img/mobyw_ida_0.png)
+
+保持默认导入选项，点击 "OK" 按钮。如果有弹出让选择PDB文件相关提示框点击 "No"。等待文件加载完成。
+
+**建议晚上睡觉时打开分析捏＞﹏＜分析时间很长而且会生成超大超大的ida文件(⊙﹏⊙)**
+
+分析完成后打开 Strings 视图（如果没有同时按 <kbd>shift</kbd> + <kbd>F12</kbd> 或按图片示例打开），<kbd>CTRL</kbd>+<kbd>F</kbd>搜索 `nt_sqlite3_key_v2: db=%p zDb=%s` 字符串, 双击 `nt_sqlite3_key_v2: db=%p zDb=%s` 一行，跳转到 IDA View-A 标签的对应行。
+
+
+![](/img/strings-view.png)
+![](/img/Myth1.png)
+
+
+2. 在 IDA View-A 标签中，单击 `nt_sqlite3_key_v2` 的名称 `aNtSqlite3KeyV2`，按快捷键 <kbd>X</kbd> 打开交叉引用窗口。双击第一条结果，转到引用位置。
+    ![](/img/Myth2.png)
+    ![](/img/mobyw_ida_4.png)
+    JumpOpXref 后发现在    
+    ![](/img/Myth3.png)
+
+3. 按下 <kbd>F5</kbd> 反编译此函数, 如果有弹出窗口点击 "Yes"。等待反编译完成。单击引用语句的左侧蓝色圆点添加断点。
+    ![](/img/Myth4.png)
+    
+
+4. 退出 QQ 并重新打开，但不要登录。在上端工具栏右侧选择**Local Windows debugger**
+   ![](/img/debug_windows.png)
+   在 IDA 中点击顶部导航栏 "Debugger" 中的 "Attach to process..." 菜单项, 选择 QQ.exe
+   ::: details 有多个QQ进程不知道附加哪个？
+   1 可以先CTRL+SHIFT+ESC或者任务栏右键打开任务管理器，然后如图所示勾选显示PID和命令行
+    ![](/img/Crafty_QQ_process1.png)
+   2 找到QQ进程双击展开，其中不带任何附加参数的进程即为要附加的进程
+    ![](/img/Crafty_QQ_process2.png)  
+   3 在IDA中选择即可
+    ![](/img/Crafty_QQ_process3.png)
+   :::
+
+如果等待附加进程时QQ已经无响应了（卡在登录界面无法点击），等待加载完成后按快捷键 <kbd>F9</kbd> 继续运行。
+
+点击登录 QQ，此时成功在断点处停下，打开 Locals 可以看到一些变量
+    ![](/img/Myth5.png)
+    
+打开一个 Locals 视图(Debugger->Debugger windows->Locals)查看参数的值
+![](/img/locals.png)   
+
+5. 命中后，在 a3 对应的位置右键jump to，直到看到如下图所示的 16 位字符串。`#8xxxxxxxxxxx@uJ` 即为我们需要的 `passphrase` (不一定是这个格式，但总字符数是一样的)
+    ![](/img/mobyw_ida_b.png)
+    ![](/img/Myth6.png)
+
+### 打开数据库
+
+请参考 [NTQQ 解密数据库](NTQQ%20解密数据库.md)。
+
 ## 使用 frida hook
 ### 1. 定位 `nt_sqlite3_key_v2:`
 
@@ -56,151 +128,3 @@ description: NTQQ (Windows)解密教程
 ### 3. 打开数据库
 
 请参考 [NTQQ 解密数据库](NTQQ%20解密数据库.md)。
-
-## IDA分析
-
-[QQ NT Windows 数据库解密+图片/文件清理](https://github.com/Mythologyli/qq-nt-db)：本仓库使用 IDA debugger 完成了逆向分析到解密的全过程，并实现了图片与文件清理。
-
-> [!TIP] 转载说明
-原文发表于[Myth's Blog](https://myth.cx/p/qq-nt-db)，作者为Myth，根据 CC BY-SA 4.0 授权协议发布，内容经[issues #50](https://github.com/QQBackup/qq-win-db-key/issues/50)补充
->
-
-QQ NT Windows 数据库解密+图片/文件清理
-
-笔者测试时使用的 QQ 版本：9.9.3-17412
-
-经验证的 QQ 版本：9.9.3-17749 9.9.12-26339
-
-### 找到数据库 `passphrase`
-
-1. 使用 IDA Pro 打开 `C:\Program Files\Tencent\QQNT\resources\app\versions\9.9.3-17412\wrapper.node`。（弹出让选择PDB文件路径记得取消）
-
-**建议晚上睡觉时打开分析捏＞﹏＜分析时间很长而且会生成超大超大的ida文件(⊙﹏⊙)**
-
-分析完成后打开 Strings 视图（如果没有同时按shift+F12或按图片示例打开），CTRL+F搜索 `nt_sqlite3_key_v2: db=%p zDb=%s`字符串
-
-
-![](/img/strings-view.png)
-![](/img/Myth1.png)
-
-
-2. 跳转到主视图，再跳转到引用该字符串的位置
-    ![](/img/Myth2.png)
-    JumpOpXref 后发现在    
-    ![](/img/Myth3.png)
-
-3. 按下 F5 反编译此函数
-    ![](/img/Myth4.png)
-    
-    参考[文档](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sqlite3_key)可知 `sqlite3_key_v2` 的参数为：
-
-    ```c
-    int sqlite3_key_v2(
-        sqlite3 *db,                   /* Database to be keyed */
-        const char *zDbName,           /* Name of the database */
-        const void *pKey, int nKey     /* The key */
-    );
-    ```
-   
-    可以猜测 a3 为我们所需的 `passphrase`。打上断点
-
-4. 退出 QQ 并重新打开，但不要登录。在上端工具栏右侧选择**Local Windows debugger**
-   ![](/img/debug_windows.png)
-   打开 IDA Debug -> Attach to Process ，选择 QQ.exe
-   ::: details 有多个QQ进程不知道附加哪个？
-   1 可以先CTRL+SHIFT+ESC或者任务栏右键打开任务管理器，然后如图所示勾选显示PID和命令行
-    ![](/img/Crafty_QQ_process1.png)
-   2 找到QQ进程双击展开，其中不带任何附加参数的进程即为要附加的进程
-    ![](/img/Crafty_QQ_process2.png)  
-   3 在IDA中选择即可
-    ![](/img/Crafty_QQ_process3.png)
-   :::
-
-如果等待附加进程时QQ已经无响应了（卡在登录界面无法点击），点一下继续，让它先跑起来
-
-打开一个 Locals 视图(Debugger->Debugger windows->Locals)查看参数的值
-![](/img/locals.png)
-
-然后登录 QQ，此时成功在断点处停下，打开 Locals 可以看到一些变量
-    ![](/img/Myth5.png)
-5. 命中后，在 a3 对应的位置右键jump to，直到看到如下图所示的 16 位字符串。`#8xxxxxxxxxxx@uJ` 即为我们需要的 `passphrase` (不一定是这个格式，但总字符数是一样的)
-    ![](/img/Myth6.png)
-
-### 导出/修复数据库
-
-数据库位置：`C:\Users\<USERNAME>\Documents\Tencent Files\<QQ>\nt_qq\nt_db`
-
-你需要的是 .db 格式的文件。
-
-首先，每个数据库文件头部有 1024 个字符的无用内容，去除这部分内容：
-
-+ Windows
-    ```bash
-    type nt_msg.db | more +1025 > nt_msg.clean.db
-    ```
-
-+ UNIX
-    ```bash
-    cat nt_msg.db | tail -c +1025 > nt_msg.clean.db
-    ```
-
-此时文件已经可以通过 DB Browser for SQLCipher 直接查看，注意迭代次数填写 4000。
-
-下面解释直接解密数据库的方法。
-
-考虑到在 Windows 上编译 sqlcipher 较为困难，笔者使用了 MSYS2 环境并直接安装了`mingw-w64-x86_64-sqlcipher`
-
-笔者处理了 `nt_msg.db`、`files_in_chat.db` 两个文件，并将处理后的文件移动到 `data/clean_db`
-
-根据 sqlcipher 的文档，解密数据的流程为：
-
-1. 打开数据库
-
-    ```bash
-    $ sqlcipher
-    sqlite> .open nt_msg.clean.db
-    ```
-   
-2. 输入 `passphrase`
-
-    ```bash
-    sqlite> PRAGMA key = '#8xxxxxxxxxxx@uJ'; PRAGMA kdf_iter = '4000';
-    ```
-
-3. 导出无加密的数据库
-
-    ```bash
-    sqlite> ATTACH DATABASE 'nt_msg.db' AS plaintext KEY ''; SELECT sqlcipher_export('plaintext'); DETACH DATABASE plaintext;
-    sqlite> .exit 
-    ```
-
-不过，很有可能在导出时提示数据库损坏 `Runtime error: database disk image is malformed`。此时需要对数据库进行修复：
-
-```bash
-sqlite> .output nt_msg.sql
-sqlite> .dump
-sqlite> .exit
-```
-
-之后对得到的 `nt_msg.sql` 进行处理，并使用 `sqlite3` 生成无加密的数据库
-
-```bash
-$ cat nt_msg.sql | sed -e 's|^ROLLBACK;\( -- due to errors\)*$|COMMIT;|g' | sqlite3 nt_msg.db
-```
-将解密后的数据库移动到 `data/decrypted_db`
-
-### 图片/文件清理
-
-下图是 `nt_msg.db` 中的表：
-
-![](/img/Myth7.png)
-
-注意 `c2c/group_msg_table` 中的 `40800`（消息内容）是 Protobuf 二进制。笔者暂时没有弄明白每个字段的意义
-
-图片/文件清理可以参考仓库中的两个 Python 脚本
-
-### 致谢
-
-[QQBackup/qq-win-db-key](https://github.com/QQBackup/qq-win-db-key)
-
-[https://lengyue.me/2023/09/19/ntqq-db/](https://lengyue.me/2023/09/19/ntqq-db/)
