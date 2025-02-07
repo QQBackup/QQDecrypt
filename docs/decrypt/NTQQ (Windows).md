@@ -39,8 +39,9 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 
 2. 在 IDA View-A 标签中，单击 `nt_sqlite3_key_v2` 的名称 `aNtSqlite3KeyV2`，按快捷键 <kbd>X</kbd> 打开交叉引用窗口。双击第一条结果，转到引用位置。
-    ![](/img/Myth2.png)
     ![](/img/mobyw_ida_4.png)
+或者右键此处点击`Jump to xref to operand..`
+    ![](/img/Myth2.png)    
     JumpOpXref 后发现在    
     ![](/img/Myth3.png)
 
@@ -62,13 +63,10 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 如果等待附加进程时QQ已经无响应了（卡在登录界面无法点击），等待加载完成后按快捷键 <kbd>F9</kbd> 继续运行。
 
-点击登录 QQ，此时成功在断点处停下，打开 Locals 可以看到一些变量
-    ![](/img/Myth5.png)
-    
-打开一个 Locals 视图(Debugger->Debugger windows->Locals)查看参数的值
+点击登录 QQ，此时成功在断点处停下，打开一个 Locals 视图(Debugger->Debugger windows->Locals)查看参数的值
 ![](/img/locals.png)   
 
-5. 命中后，在 a3 对应的位置右键jump to，直到看到如下图所示的 16 位字符串。`#8xxxxxxxxxxx@uJ` 即为我们需要的 `passphrase` (不一定是这个格式，但总字符数是一样的)
+5. 在 a3 对应的位置右键jump to，直到看到如下图所示的 16 位字符串。`#8xxxxxxxxxxx@uJ` 即为我们需要的 `passphrase` (不一定是这个格式，但总字符数是一样的)
     ![](/img/mobyw_ida_b.png)
     ![](/img/Myth6.png)
 
