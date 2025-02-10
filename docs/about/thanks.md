@@ -36,7 +36,7 @@ prev: false
     </div>
     <div class="card-content">
       <h3>GroupChatAnnualReport</h3>
-      <p>为 nt_msg 表中列名信息提供了参考，为IDA教程提供补充,<br>（基于MIT协议转载）</br></p>
+      <p>为 nt_msg 表中列名信息提供了参考，为IDA教程提供补充,<br>基于MIT协议转载</br></p>
     </div>
   </a>
 
