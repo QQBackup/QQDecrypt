@@ -48,7 +48,8 @@ description:emoji.db分析……
 | 80943  | 原创表情 ID | 知道 ID 可在 ../{uin}/nt_qq/nt_data/Emoji/marketface/{ID} 找到已缓存的原创表情包 |
 | 80947  | 原创表情包名字 |                                                                                     |
 | 80948  | 表情包说明 |                                                                                     |
-`market_emoticon_table`
+
+`market_emoticon_table`：已下载的原创表情信息
 | 列名   | 含义       | 说明                                           |
 | ------ | ---------- | ---------------------------------------------- |
 | 80920  | 表情标识符 |                                                |
