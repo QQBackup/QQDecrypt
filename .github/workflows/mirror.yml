@@ -1,4 +1,4 @@
-name: Mirror to weasUXL/QQDecrypt
+name: Mirror to shenapex/QQDecrypt
 
 on:
   push:
@@ -22,12 +22,12 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.name "QQbackup"
-          git config --global user.email "issues@sbcnm.top"
+          git config --global user.email "172821606+shenapex@users.noreply.github.com"
 
       - name: Push to target repo
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd source
-          git remote add target https://weasUXL:${GH_TOKEN}@github.com/weasUXL/QQDecrypt.git
+          git remote add target https://shenapex:${GH_TOKEN}@github.com/shenapex/QQDecrypt.git
           git push target main --force
