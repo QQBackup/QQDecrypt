@@ -1,6 +1,7 @@
 ---
 title: NTQQ (Windows)
 description: NTQQ (Windows)解密教程
+order: 3
 ---
 
 # NTQQ (Windows)

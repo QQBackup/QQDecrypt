@@ -3,6 +3,7 @@ title: 致谢
 sidebar: false
 next: false 
 prev: false
+hidesidebar: true
 ---
 
 **网站的编写离不开以下网站或应用的支持，在此表达最诚挚的谢意（排名不分先后）：**

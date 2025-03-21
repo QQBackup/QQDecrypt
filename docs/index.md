@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 这是什么
-      link: /introduce
+      link: /what-is-this
     - theme: alt
       text: 致谢
       link: /about/thanks
@@ -21,11 +21,11 @@ features:
   - icon: 🗝
     title: 解密
     details: 获取数据库密钥
-    link: /decrypt/
+    link: /decrypt//说明（必看）
   - icon: 👁‍
     title: 查看
     details: 打开数据库/读取信息
-    link: /view/
+    link: /view/NTQQ 读取数据库
   - icon:  🧑  
     title: 贡献者
     details: 感谢为此项目做出贡献的所有开发者ヾ(≧▽≦*)o)

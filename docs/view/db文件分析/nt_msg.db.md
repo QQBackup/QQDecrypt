@@ -1,5 +1,5 @@
 ---
-title: 字段含义
+title: nt_msg.db
 description: 主要是nt_msg下私聊和群聊的部分消息定义
 ---
 

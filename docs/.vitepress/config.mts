@@ -41,9 +41,10 @@ export default defineConfig({
     lastUpdated: { text: '最后更新于' },
     sidebar: generateSidebar({
       documentRootPath: 'docs',
+      useTitleFromFrontmatter:true, 
+      frontmatterTitleFieldName:'sidebartitle',      
       excludeFilesByFrontmatterFieldName: 'hidesidebar', 
       hyphenToSpace: true,
-      useTitleFromFileHeading: true,
       sortMenusByFrontmatterOrder: true,
       useFolderLinkFromIndexFile: true
     }),

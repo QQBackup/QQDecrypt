@@ -3,6 +3,7 @@ title: 文件下载
 sidebar: false
 next: false 
 prev: false
+hidesidebar: true
 ---
 
 # 文件下载

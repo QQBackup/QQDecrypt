@@ -1,6 +1,7 @@
 ---
 title: NTQQ 解密数据库
 description: NTQQ 解密数据库教程
+order: 10
 ---
 
 # NTQQ 解密数据库
@@ -78,4 +79,4 @@ PRAGMA cipher = 'aes-256-cbc';
 
 ## 读取数据库内容
 
-请参考 [NTQQ 读取数据库](/view/)。
+请参考 [NTQQ 读取数据库](/view/NTQQ%20读取数据库)。
