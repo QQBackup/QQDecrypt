@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress';
-import AutoSidebar from 'vite-plugin-vitepress-auto-sidebar';
+import { generateSidebar } from 'vitepress-sidebar';
 import timeline from 'vitepress-markdown-timeline';
 
 export default defineConfig({
@@ -22,9 +22,7 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/icons/logo.jpg' }],
   ],
   vite: {
-    plugins: [
-      AutoSidebar({ deletePrefix: 'index', ignoreIndexItem: true, collapsed: false }),
-    ],
+    plugins: [],
   },
   sitemap: {
     hostname: 'https://qq.sbcnm.top',
@@ -38,9 +36,17 @@ export default defineConfig({
       lazyLoading: true,
     },
   },
-  themeConfig: {
-    appearance: 'dark', 
+  themeConfig: {  
+    appearance: 'dark',
     lastUpdated: { text: '最后更新于' },
+    sidebar: generateSidebar({
+      documentRootPath: 'docs',
+      excludeFilesByFrontmatterFieldName: 'hidesidebar', 
+      hyphenToSpace: true,
+      useTitleFromFileHeading: true,
+      sortMenusByFrontmatterOrder: true,
+      useFolderLinkFromIndexFile: true
+    }),
     nav: [
       { text: '主页', link: '/' },
       { text: '致谢', link: '/about/thanks' },
@@ -68,5 +74,5 @@ export default defineConfig({
       level: [2, 3],
       label: '页面目录',
     },
-  },
+  }
 });
