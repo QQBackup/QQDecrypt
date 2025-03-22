@@ -1,8 +1,6 @@
 ---
 layout: doc
 title: 网站说明
-next: false 
-prev: false
 hidesidebar: true
 ---
 ## 关于该文档站 

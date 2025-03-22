@@ -48,11 +48,19 @@ export default defineConfig({
       sortMenusByFrontmatterOrder: true,
       useFolderLinkFromIndexFile: true
     }),
-    nav: [
-      { text: '主页', link: '/' },
-      { text: '致谢', link: '/about/thanks' },
-      { text: '文件', link: '/files' },
-    ],
+nav: [
+  { text: '主页', link: '/' },
+  {
+    text: '关于',
+    items: [
+      { text: '贡献者名单', link: '/about/Contributors' },
+      { text: '项目致谢', link: '/about/Thanks' },
+      { text: '使用协议', link: '/about/LICENSE' },
+      { text: '社区项目', link: '/about/Projects' }
+    ]
+  },
+  { text: '文件', link: '/files' },
+],
     footer: {
       message: ' CC BY-NC-SA 4.0 <a href="/about/LICENSE"> License</a>',
       copyright: '<a href="/about/碎碎念">Copyright © 2025 </a>',

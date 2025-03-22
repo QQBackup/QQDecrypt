@@ -14,8 +14,8 @@ hero:
       text: 这是什么
       link: /what-is-this
     - theme: alt
-      text: 致谢
-      link: /about/thanks
+      text: GitHub
+      link: https://github.com/QQBackup/QQDecrypt
 
 features:
   - icon: 🗝
@@ -26,9 +26,9 @@ features:
     title: 查看
     details: 打开数据库/读取信息
     link: /view/NTQQ 读取数据库
-  - icon:  🧑  
-    title: 贡献者
-    details: 感谢为此项目做出贡献的所有开发者ヾ(≧▽≦*)o)
-    link: /about/Contributors
+  - icon: 🚀
+    title: 社区项目
+    details: 有关 NTQQ 数据库的项目
+    link: /about/projects
 ---
 
