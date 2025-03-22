@@ -29,6 +29,6 @@ features:
   - icon: 🚀
     title: 社区项目
     details: 有关 NTQQ 数据库的项目
-    link: /about/projects
+    link: /about/Projects
 ---
 
