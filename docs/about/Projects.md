@@ -65,6 +65,17 @@ License： MIT
 
 收录时间： 2025-03-22
 
+## ntdb-plaintext-extracter
+
+项目地址：[https://github.com/QQBackup/ntdb-plaintext-extracter](https://github.com/QQBackup/ntdb-plaintext-extracter)
+
+项目描述：提取QQ NT数据库 group_msg_table 中的纯文本
+
+License： AGPL-3.0
+
+收录时间： 2025-03-22
+
+
 ## QQ-Chat-Intimacy-Analyzer
 
 项目地址：[https://github.com/EndsOculus/QQ-Chat-Intimacy-Analyzer](https://github.com/EndsOculus/QQ-Chat-Intimacy-Analyzer)
