@@ -17,9 +17,6 @@ importers:
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
-      vitepress-markdown-timeline:
-        specifier: ^1.2.2
-        version: 1.2.2
     devDependencies:
       medium-zoom:
         specifier: ^1.1.0
@@ -668,9 +665,6 @@ packages:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
     engines: {node: '>= 12'}
 
-  dayjs@1.11.13:
-    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
-
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
@@ -1124,9 +1118,6 @@ packages:
         optional: true
       terser:
         optional: true
-
-  vitepress-markdown-timeline@1.2.2:
-    resolution: {integrity: sha512-eDFcvudmTW33pI7XdT+ZeUPvpc4CPXI0LZbsZZ54j36G56AN6qYEBiwZpDHl77E4QvqAIJMc8phXXvm7P/Lc+Q==}
 
   vitepress-sidebar@1.31.1:
     resolution: {integrity: sha512-Hx10z5le87jIIXVfKq4AtRrVqVJJ/1cQsZhmwT+ghVR/j4Yor9FjNMszyigJ54ktrEtoxSLO6C9tvuLauT4lZA==}
@@ -1758,8 +1749,6 @@ snapshots:
 
   data-uri-to-buffer@4.0.1: {}
 
-  dayjs@1.11.13: {}
-
   delayed-stream@1.0.0: {}
 
   dequal@2.0.3: {}
@@ -2248,10 +2237,6 @@ snapshots:
       fsevents: 2.3.3
       less: 4.2.1
       terser: 5.37.0
-
-  vitepress-markdown-timeline@1.2.2:
-    dependencies:
-      dayjs: 1.11.13
 
   vitepress-sidebar@1.31.1:
     dependencies:

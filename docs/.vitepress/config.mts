@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress';
 import { generateSidebar } from 'vitepress-sidebar';
-import timeline from 'vitepress-markdown-timeline';
 
 export default defineConfig({
   title: 'QQDecrypt',
@@ -30,7 +29,6 @@ export default defineConfig({
   markdown: {
     lineNumbers: true,
     config: (md) => {
-      md.use(timeline);
     },
     image: {
       lazyLoading: true,
