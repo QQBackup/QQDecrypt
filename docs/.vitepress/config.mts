@@ -18,7 +18,7 @@ export default defineConfig({
       gtag('js', new Date());
       gtag('config', 'G-6TSGD7CVS3');`,
     ],
-    ['link', { rel: 'icon', href: '/icons/logo.jpg' }],
+    ['link', { rel: 'icon', href: '/icons/favicon.ico' }],
   ],
   vite: {
     plugins: [],
