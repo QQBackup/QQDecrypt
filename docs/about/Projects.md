@@ -6,7 +6,7 @@ next: false
 prev: false
 ---
 
-## 说明
+## 投稿说明
 
 此页用于展示互联网上有关 `NTQQ` 数据库解析、导出的开源仓库
 
@@ -24,7 +24,9 @@ website：https://github.com/QQBackup/QQDecrypt （仓库链接）
 
 - 申请一般会在周末处理
 
-## qq-win-db-key
+## 用于解密数据库的项目
+
+### qq-win-db-key
 
 项目地址：[https://github.com/QQBackup/qq-win-db-key](https://github.com/QQBackup/qq-win-db-key)
 
@@ -34,7 +36,7 @@ License： CC BY-NC-SA 4.0
 
 收录时间： 2025-03-22
 
-## qq-nt-db
+### qq-nt-db
 
 项目地址：[https://github.com/Mythologyli/qq-nt-db](https://github.com/Mythologyli/qq-nt-db)
 
@@ -44,7 +46,7 @@ License： CC BY-NC-SA 4.0
 
 收录时间： 2025-03-22
 
-## qqnt_backup
+### qqnt_backup
 
 项目地址：[https://github.com/xCipHanD/qqnt_backup](https://github.com/xCipHanD/qqnt_backup)
 
@@ -54,28 +56,7 @@ License： unknown
 
 收录时间： 2025-03-22
 
-## GroupChatAnnualReport
-
-项目地址：[https://github.com/mobyw/GroupChatAnnualReport](https://github.com/mobyw/GroupChatAnnualReport)
-
-
-项目描述：使用 Windows QQNT 聊天记录制作群聊年度报告！
-
-License： MIT
-
-收录时间： 2025-03-22
-
-## QQNT_Export
-
-项目地址：[https://github.com/Tealina28/QQNT_Export](https://github.com/Tealina28/QQNT_Export)
-
-项目描述：读取并导出解密后的QQNT数据库中的聊天记录
-
-License： GPL-3.0
-
-收录时间： 2025-03-22
-
-## ntdb_unwrap
+### ntdb_unwrap
 
 项目地址：[https://github.com/artiga033/ntdb_unwrap](https://github.com/artiga033/ntdb_unwrap)
 
@@ -85,7 +66,30 @@ License： MIT
 
 收录时间： 2025-03-22
 
-## ntdb-plaintext-extracter
+## 有关解析数据库的项目
+
+### GroupChatAnnualReport
+
+项目地址：[https://github.com/mobyw/GroupChatAnnualReport](https://github.com/mobyw/GroupChatAnnualReport)
+
+项目描述：使用 Windows QQNT 聊天记录制作群聊年度报告！
+
+License： MIT
+
+收录时间： 2025-03-22
+
+### QQNT_Export
+
+项目地址：[https://github.com/Tealina28/QQNT_Export](https://github.com/Tealina28/QQNT_Export)
+
+项目描述：读取并导出解密后的QQNT数据库中的聊天记录
+
+License： GPL-3.0
+
+收录时间： 2025-03-22
+
+
+### ntdb-plaintext-extracter
 
 项目地址：[https://github.com/QQBackup/ntdb-plaintext-extracter](https://github.com/QQBackup/ntdb-plaintext-extracter)
 
@@ -95,7 +99,7 @@ License： AGPL-3.0
 
 收录时间： 2025-03-22
 
-## nt_msg.py
+### nt_msg.py
 
 项目地址：[https://github.com/BrokenC1oud/nt_msg.py](https://github.com/BrokenC1oud/nt_msg.py)
 
@@ -106,7 +110,7 @@ License： unknown
 收录时间： 2025-03-22
 
 
-## QQ-Chat-Intimacy-Analyzer
+### QQ-Chat-Intimacy-Analyzer
 
 项目地址：[https://github.com/EndsOculus/QQ-Chat-Intimacy-Analyzer](https://github.com/EndsOculus/QQ-Chat-Intimacy-Analyzer)
 

@@ -35,12 +35,13 @@ export default defineConfig({
     },
   },
   themeConfig: {  
-    appearance: 'dark',
+    appearance: true, 
     lastUpdated: { text: '最后更新于' },
     sidebar: generateSidebar({
       documentRootPath: 'docs',
-      useTitleFromFrontmatter:true, 
-      frontmatterTitleFieldName:'sidebartitle',      
+      useTitleFromFrontmatter:true,
+      useFolderTitleFromIndexFile:true, 
+      frontmatterTitleFieldName:'title',      
       excludeFilesByFrontmatterFieldName: 'hidesidebar', 
       hyphenToSpace: true,
       sortMenusByFrontmatterOrder: true,
@@ -67,8 +68,10 @@ nav: [
       pattern: 'https://github.com/QQBackup/QQDecrypt/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页',
     },
-    prev: '上一页',
-    next: '下一页',
+  docFooter: { 
+    prev: '上一篇',
+    next: '下一篇'
+  },
     darkModeSwitchLabel: '亮/暗模式',
     lightModeSwitchTitle: '调整为亮色模式',
     darkModeSwitchTitle: '调整为暗色模式',

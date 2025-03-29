@@ -1,6 +1,9 @@
 ---
 layout: doc
 title: 网站说明
+next:
+  text: '社区项目'
+  link: '/about/Projects'
 hidesidebar: true
 ---
 ## 关于该文档站 

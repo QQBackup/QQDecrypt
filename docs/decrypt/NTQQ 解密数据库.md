@@ -1,6 +1,7 @@
 ---
 title: NTQQ 解密数据库
 description: NTQQ 解密数据库教程
+next: false
 order: 10
 ---
 

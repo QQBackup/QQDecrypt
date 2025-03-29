@@ -1,6 +1,7 @@
 ---
 title: NTQQ 读取数据库
 description: NTQQ 读取数据库说明
+prev: false
 order: 1
 ---
 
