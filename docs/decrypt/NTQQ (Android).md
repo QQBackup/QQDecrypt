@@ -23,18 +23,18 @@ order: 2
 # 便捷获取
 <HashCalculator />
 
-### 获取uid
+### 获取nt_uid
 
-获取`uid`有多种方式，任意一种均可。
+获取`nt_uid`有多种方式，任意一种均可。
 
-- 将`/data/user/0/com.tencent.mobileqq/databases/beacon_db_com.tencent.mobileqq`文件作为纯文本文件打开，查找你的 QQ 号对应的`uid`，形式如`"home_uin": "390251789","uid":"u_mIicAReWrdCB-kST6TXH7A"`，其中`u_mIicAReWrdCB-kST6TXH7A`即为`uid`。
+- 将`/data/user/0/com.tencent.mobileqq/databases/beacon_db_com.tencent.mobileqq`文件作为纯文本文件打开，查找你的 QQ 号对应的`uid`，形式如`"home_uin": "390251789","uid":"u_mIicAReWrdCB-kST6TXH7A"`，其中`u_mIicAReWrdCB-kST6TXH7A`即为`nt_uid`。
 ![1](https://ooo.0x0.ooo/2024/10/05/O48sUY.jpg)
-- 在`/data/user/0/com.tencent.mobileqq/files/uid/`目录下，可见到文件名形如`390251789###u_mIicAReWrdCB-kST6TXH7A`的若干个文件，其中`u_mIicAReWrdCB-kST6TXH7A`即为`uid`。
+- 在`/data/user/0/com.tencent.mobileqq/files/uid/`目录下，可见到文件名形如`390251789###u_mIicAReWrdCB-kST6TXH7A`的若干个文件，其中`u_mIicAReWrdCB-kST6TXH7A`即为`nt_uid`。
 ![2](https://ooo.0x0.ooo/2024/10/05/O48Vyv.jpg)
 - 若使用了[QAuxiliary](https://github.com/cinit/QAuxiliary)模块，可以通过打开`[辅助功能]聊天和消息-[消息]转发消息点头像查看详细信息`功能，合并转发由自己发送的消息，查看消息的`senderUid`属性获取，详见[#32](https://github.com/QQBackup/qq-win-db-key/issues/32#issue-2418610093)。
 ![3](https://ooo.0x0.ooo/2024/10/05/O48Ysq.jpg)
 
-对`uid`取`md5`即可得到`QQ_UID_hash`（即`QQ_UID_hash = md5(uid) = md5("u_mIicAReWrdCB-kST6TXH7A") = "255c42fc0f4d295678e6ff0135fcf5dd"`）
+对`nt_uid`取`md5`即可得到`QQ_UID_hash`（即`QQ_UID_hash = md5(nt_uid) = md5("u_mIicAReWrdCB-kST6TXH7A") = "255c42fc0f4d295678e6ff0135fcf5dd"`）
 
 ### 获取聊天记录文件
 
@@ -52,7 +52,7 @@ order: 2
 
 2. 计算
     
-    对`QQ_UID_hash`进行如下运算即可得到`QQ_path_hash`：`QQ_path_hash = md5(md5(uid) + "nt_kernel") = md5("255c42fc0f4d295678e6ff0135fcf5ddnt_kernel") = "b69bfb8e74137f4e4253d1af3e99493a"
+    对`QQ_UID_hash`进行如下运算即可得到`QQ_path_hash`：`QQ_path_hash = md5(md5(nt_uid) + "nt_kernel") = md5("255c42fc0f4d295678e6ff0135fcf5ddnt_kernel") = "b69bfb8e74137f4e4253d1af3e99493a"
     
     则聊天记录路径为`/data/user/0/com.tencent.mobileqq/databases/nt_db/nt_qq_b69bfb8e74137f4e4253d1af3e99493a/nt_msg.db`
 
