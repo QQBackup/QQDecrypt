@@ -16,7 +16,8 @@ description: group_info.db分析……
 | ✅        | group_member_level_info | 群等级头衔信息                 |
 | ✅        | group_notify_list       | 群通知                         |
 
-`group_notify_list`与`doubt_group_notify_list` 群通知
+## `group_notify_list`与`doubt_group_notify_list` 
+群通知
 
 | 列名  | 含义         | 说明                                          |
 | ----- | ------------ | --------------------------------------------- |
@@ -46,7 +47,8 @@ description: group_info.db分析……
 
 被取消管理员权限：15
 
-`group_bulletin`群公告
+## `group_bulletin`
+群公告
 
 | 列名  | 含义            | 说明                 |
 | ----- | --------------- | -------------------- |
@@ -67,7 +69,8 @@ description: group_info.db分析……
 | │  ├─ 88-96     | 64226        | varint   | ctime（公告发布时间）   |
 | │       └─ 4-17 | 64452        | string   | 群公告内容              |
 
-`group_detail_info_ver1`群聊更多信息
+## `group_detail_info_ver1`
+群聊更多信息
 
 | 列名  | 含义             | 说明                      |
 | ----- | ---------------- | ------------------------- |
@@ -89,7 +92,8 @@ description: group_info.db分析……
 
 *注意到`group_list`表中信息与`group_detail_info_ver1`对应，不再单独分析*·~~如果有大佬能帮忙分析最好了~~
 
-`group_member3`群成员信息
+## `group_member3`
+群成员信息
 
 | 列名  | 含义                   | 说明                   |
 | ----- | ---------------------- | ---------------------- |
@@ -107,7 +111,8 @@ description: group_info.db分析……
 | 64023 | 群自定义头衔*          |                        |
 | 64035 | 群成员等级             |                        |
 
-`group_member_level_info`群等级头衔信息
+## `group_member_level_info`
+群等级头衔信息
 
 | 列名  | 含义           | 说明 |
 | ----- | -------------- | ---- |
@@ -115,7 +120,8 @@ description: group_info.db分析……
 | 67100 | 群等级         |      |
 | 67103 | 默认群头衔信息 |      |
 
-`group_essence`精华消息设置提醒
+## `group_essence`
+精华消息设置提醒
 
 | 列名  | 含义              | 说明                                   |
 | ----- | ----------------- | -------------------------------------- |

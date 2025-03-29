@@ -34,6 +34,26 @@ License： CC BY-NC-SA 4.0
 
 收录时间： 2025-03-22
 
+## qq-nt-db
+
+项目地址：[https://github.com/Mythologyli/qq-nt-db](https://github.com/Mythologyli/qq-nt-db)
+
+项目描述：QQ NT Windows 数据库解密+图片/文件清理
+
+License： CC BY-NC-SA 4.0
+
+收录时间： 2025-03-22
+
+## qqnt_backup
+
+项目地址：[https://github.com/xCipHanD/qqnt_backup](https://github.com/xCipHanD/qqnt_backup)
+
+项目描述：适用于Android_NT_QQ数据库解密
+
+License： unknown
+
+收录时间： 2025-03-22
+
 ## GroupChatAnnualReport
 
 项目地址：[https://github.com/mobyw/GroupChatAnnualReport](https://github.com/mobyw/GroupChatAnnualReport)
@@ -75,6 +95,16 @@ License： AGPL-3.0
 
 收录时间： 2025-03-22
 
+## nt_msg.py
+
+项目地址：[https://github.com/BrokenC1oud/nt_msg.py](https://github.com/BrokenC1oud/nt_msg.py)
+
+项目描述：A python repo to parse nt_msg.db
+
+License： unknown
+
+收录时间： 2025-03-22
+
 
 ## QQ-Chat-Intimacy-Analyzer
 
@@ -82,6 +112,6 @@ License： AGPL-3.0
 
 项目描述：QQ 群聊互动亲密度分析工具
 
-License： not
+License： unknown
 
 收录时间： 2025-03-22
