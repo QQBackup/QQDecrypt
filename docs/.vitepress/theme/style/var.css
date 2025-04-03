@@ -36,16 +36,3 @@ html.dark .vp-doc a {
 html.dark .vp-doc a:hover {
     color: var(--vp-c-brand-2) !important;
 }
-
-.medium-zoom-overlay {
-  background-color: var(--vp-c-bg) !important;
-  z-index: 100;
-}
-
-.medium-zoom-overlay ~ img {
-  z-index: 101;
-}
-
-.medium-zoom--opened .medium-zoom-overlay {
-  opacity: 0.9 !important;
-}

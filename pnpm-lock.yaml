@@ -18,9 +18,6 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
     devDependencies:
-      medium-zoom:
-        specifier: ^1.1.0
-        version: 1.1.0
       vitepress:
         specifier: ^1.6.3
         version: 1.6.3(@algolia/client-search@5.21.0)(@types/node@22.10.6)(axios@1.7.9)(less@4.2.1)(postcss@8.5.3)(search-insights@2.17.3)(terser@5.37.0)(typescript@5.7.2)
@@ -827,9 +824,6 @@ packages:
 
   mdast-util-to-hast@13.2.0:
     resolution: {integrity: sha512-QGYKEuUsYT9ykKBCMOEDLsU5JRObWQusAolFMeko/tYPufNkRffBAQjIE+99jbA87xv6FgmjLtwjh9wBWajwAA==}
-
-  medium-zoom@1.1.0:
-    resolution: {integrity: sha512-ewyDsp7k4InCUp3jRmwHBRFGyjBimKps/AJLjRSox+2q/2H4p/PNpQf+pwONWlJiOudkBXtbdmVbFjqyybfTmQ==}
 
   micromark-util-character@2.1.1:
     resolution: {integrity: sha512-wv8tdUTJ3thSFFFJKtpYKOYiGP2+v96Hvk4Tu8KpCAsTMs6yi+nVmGh1syvSCsaxz45J6Jbw+9DD6g97+NV67Q==}
@@ -1948,8 +1942,6 @@ snapshots:
       unist-util-position: 5.0.0
       unist-util-visit: 5.0.0
       vfile: 6.0.3
-
-  medium-zoom@1.1.0: {}
 
   micromark-util-character@2.1.1:
     dependencies:

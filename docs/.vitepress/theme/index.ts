@@ -3,7 +3,6 @@ import DefaultTheme from 'vitepress/theme'
 import HashCalculator from './components/HashCalculator.vue'
 import { onMounted, watch, nextTick } from 'vue'
 import { useRoute, useData } from 'vitepress'
-import mediumZoom from 'medium-zoom'
 import type { Theme } from 'vitepress'
 import NotFound from './NotFound.vue'
 import './style/index.css'
@@ -25,20 +24,6 @@ export default {
   },
 
   setup() {
-    const route = useRoute()
-    
-    const initZoom = () => {
-      mediumZoom('.main img', { background: 'var(--vp-c-bg)' })
-    }
-
-    onMounted(() => {
-      initZoom()
-    })
-
-    watch(
-      () => route.path,
-      () => nextTick(() => initZoom())
-    )
   },
 
   enhanceApp({ app }) {
