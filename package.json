@@ -10,7 +10,9 @@
   "dependencies": {
     "axios": "^1.7.7",
     "crypto-js": "^4.2.0",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "viewerjs": "^1.11.7",
+    "vitepress-plugin-image-viewer": "^1.1.6"
   },
   "devDependencies": {
     "vitepress": "^1.6.3",

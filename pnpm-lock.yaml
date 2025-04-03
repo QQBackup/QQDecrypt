@@ -17,6 +17,12 @@ importers:
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
+      viewerjs:
+        specifier: ^1.11.7
+        version: 1.11.7
+      vitepress-plugin-image-viewer:
+        specifier: ^1.1.6
+        version: 1.1.6
     devDependencies:
       vitepress:
         specifier: ^1.6.3
@@ -1082,6 +1088,9 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
+  viewerjs@1.11.7:
+    resolution: {integrity: sha512-0JuVqOmL5v1jmEAlG5EBDR3XquxY8DWFQbFMprOXgaBB0F7Q/X9xWdEaQc59D8xzwkdUgXEMSSknTpriq95igg==}
+
   vite@5.4.14:
     resolution: {integrity: sha512-EK5cY7Q1D8JNhSaPKVK4pwBFvaTmZxEnoKXLG/U9gmdDcihQGNzFlgIvaxezFR4glP1LsuiedwMBqCXH3wZccA==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -1112,6 +1121,9 @@ packages:
         optional: true
       terser:
         optional: true
+
+  vitepress-plugin-image-viewer@1.1.6:
+    resolution: {integrity: sha512-ZfYy1s/bXju6vGVsE/5gPXT449+KaXZ6ZIPAvcmPM07VmC7Bv57bCvFar2II7C2EjexxfPQsxUh70vSBbe14kQ==}
 
   vitepress-sidebar@1.31.1:
     resolution: {integrity: sha512-Hx10z5le87jIIXVfKq4AtRrVqVJJ/1cQsZhmwT+ghVR/j4Yor9FjNMszyigJ54ktrEtoxSLO6C9tvuLauT4lZA==}
@@ -2219,6 +2231,8 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
+  viewerjs@1.11.7: {}
+
   vite@5.4.14(@types/node@22.10.6)(less@4.2.1)(terser@5.37.0):
     dependencies:
       esbuild: 0.21.5
@@ -2229,6 +2243,10 @@ snapshots:
       fsevents: 2.3.3
       less: 4.2.1
       terser: 5.37.0
+
+  vitepress-plugin-image-viewer@1.1.6:
+    dependencies:
+      viewerjs: 1.11.7
 
   vitepress-sidebar@1.31.1:
     dependencies:
