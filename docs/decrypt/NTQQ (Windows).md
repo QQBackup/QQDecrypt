@@ -25,12 +25,14 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 ### 找到数据库 `passphrase`
 
-1. 解压IDA压缩包，双击打开 `ida64.exe` ，选择 `new` , 在弹出的资源管理器界面中定位到 QQNT 安装目录下的 `./resources/app/versions/{version} `文件夹，其中 `{version}` 为 QQNT 的版本号。在右下角过滤器中选择全部文件，单击 `wrapper.node `文件，并点击右下角的 "Open" 按钮。
+1. 解压IDA压缩包，双击打开 `ida64.exe` ，选择 `new` , 在弹出的资源管理器界面中定位到 QQNT 安装目录下的 `./versions/{version}/resources/app`文件夹，其中 `{version}` 为 QQNT 的版本号。在右下角过滤器中选择全部文件，单击 `wrapper.node `文件，并点击右下角的 "Open" 按钮。
 ![](/img/mobyw_ida_0.png)
+>[!note] wrapper.node文件路径说明
+早期 Windows QQ_NT 版本 `wrapper.node` 文件位于 `./resources/app/versions/{version}` 文件夹中
 
 保持默认导入选项，点击 "OK" 按钮。如果有弹出让选择PDB文件相关提示框点击 "No"。等待文件加载完成。
 
-**建议晚上睡觉时打开分析捏＞﹏＜分析时间很长而且会生成超大超大的ida文件(⊙﹏⊙)**
+**分析时间较长，请耐心等待**
 
 分析完成后打开 Strings 视图（如果没有同时按 <kbd>shift</kbd> + <kbd>F12</kbd> 或按图片示例打开），<kbd>CTRL</kbd>+<kbd>F</kbd>搜索 `nt_sqlite3_key_v2: db=%p zDb=%s` 字符串, 双击 `nt_sqlite3_key_v2: db=%p zDb=%s` 一行，跳转到 IDA View-A 标签的对应行。
 
