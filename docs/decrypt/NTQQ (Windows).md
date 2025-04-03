@@ -54,17 +54,9 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 4. 退出 QQ 并重新打开，但不要登录。在上端工具栏右侧选择**Local Windows debugger**
    ![](/img/debug_windows.png)
-   在 IDA 中点击顶部导航栏 "Debugger" 中的 "Attach to process..." 菜单项, 选择 QQ.exe
-   ::: details 有多个QQ进程不知道附加哪个？
-   1 可以先CTRL+SHIFT+ESC或者任务栏右键打开任务管理器，然后如图所示勾选显示PID和命令行
-    ![](/img/Crafty_QQ_process1.png)
-   2 找到QQ进程双击展开，其中不带任何附加参数的进程即为要附加的进程
-    ![](/img/Crafty_QQ_process2.png)  
-   3 在IDA中选择即可
-    ![](/img/Crafty_QQ_process3.png)
-   :::
-
-如果等待附加进程时QQ已经无响应了（卡在登录界面无法点击），等待加载完成后按快捷键 <kbd>F9</kbd> 继续运行。
+在 IDA 中点击顶部导航栏 "Debugger" 中的 "Attach to process..." 菜单项, 从列表最后开始找到第一个 `QQ.exe` 进程，双击打开。
+![](/img/Attach_to_process.png)
+>如果等待附加进程时QQ已经无响应了（卡在登录界面无法点击），等待加载完成后按快捷键 <kbd>F9</kbd> 继续运行。
 
 点击登录 QQ，此时成功在断点处停下，打开一个 Locals 视图(Debugger->Debugger windows->Locals)查看参数的值
 ![](/img/locals.png)   
