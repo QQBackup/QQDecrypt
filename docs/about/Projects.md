@@ -36,6 +36,8 @@ License： CC BY-NC-SA 4.0
 
 收录时间： 2025-03-22
 
+![GitHub Last Commit](https://img.shields.io/github/last-commit/QQBackup/qq-win-db-key)
+
 ### qq-nt-db
 
 项目地址：[https://github.com/Mythologyli/qq-nt-db](https://github.com/Mythologyli/qq-nt-db)
@@ -45,6 +47,8 @@ License： CC BY-NC-SA 4.0
 License： CC BY-NC-SA 4.0
 
 收录时间： 2025-03-22
+
+![GitHub Last Commit](https://img.shields.io/github/last-commit/Mythologyli/qq-nt-db)
 
 ### qqnt_backup
 
@@ -56,6 +60,8 @@ License： unknown
 
 收录时间： 2025-03-22
 
+![GitHub last commit](https://img.shields.io/github/last-commit/xCipHanD/qqnt_backup)
+
 ### ntdb_unwrap
 
 项目地址：[https://github.com/artiga033/ntdb_unwrap](https://github.com/artiga033/ntdb_unwrap)
@@ -65,6 +71,8 @@ License： unknown
 License： MIT
 
 收录时间： 2025-03-22
+
+![GitHub last commit](https://img.shields.io/github/last-commit/artiga033/ntdb_unwrap)
 
 ## 有关解析数据库的项目
 
@@ -78,6 +86,8 @@ License： MIT
 
 收录时间： 2025-03-22
 
+![GitHub last commit](https://img.shields.io/github/last-commit/mobyw/GroupChatAnnualReport)
+
 ### QQNT_Export
 
 项目地址：[https://github.com/Tealina28/QQNT_Export](https://github.com/Tealina28/QQNT_Export)
@@ -88,6 +98,7 @@ License： GPL-3.0
 
 收录时间： 2025-03-22
 
+![GitHub last commit](https://img.shields.io/github/last-commit/Tealina28/QQNT_Export)
 
 ### ntdb-plaintext-extracter
 
@@ -99,6 +110,8 @@ License： AGPL-3.0
 
 收录时间： 2025-03-22
 
+![GitHub last commit](https://img.shields.io/github/last-commit/QQBackup/ntdb-plaintext-extracter)
+
 ### nt_msg.py
 
 项目地址：[https://github.com/BrokenC1oud/nt_msg.py](https://github.com/BrokenC1oud/nt_msg.py)
@@ -109,6 +122,7 @@ License： unknown
 
 收录时间： 2025-03-22
 
+![GitHub last commit](https://img.shields.io/github/last-commit/BrokenC1oud/nt_msg.py)
 
 ### QQ-Chat-Intimacy-Analyzer
 
@@ -119,3 +133,5 @@ License： unknown
 License： unknown
 
 收录时间： 2025-03-22
+
+![GitHub last commit](https://img.shields.io/github/last-commit/EndsOculus/QQ-Chat-Intimacy-Analyzer)
