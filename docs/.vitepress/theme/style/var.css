@@ -36,3 +36,22 @@ html.dark .vp-doc a {
 html.dark .vp-doc a:hover {
     color: var(--vp-c-brand-2) !important;
 }
+
+blockquote {
+  border-left: 4px solid #42b983;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  color: #666;
+  font-style: italic;
+  background-color: #f8f8f8;
+}
+
+blockquote.single-line {
+  text-align: center;
+  padding: 1rem;
+  border-left: none;
+  font-size: 1.2em;
+  background: transparent;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}

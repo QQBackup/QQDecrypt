@@ -6,12 +6,20 @@ next:
   link: '/about/Projects'
 hidesidebar: true
 ---
-## 关于该文档站 
 
-该文档站内容源于[qq-win-db-key](https://github.com/QQBackup/qq-win-db-key)项目，是为了更加方便于查找有而将教程进行整合而生的，感谢[原作者Young-Lord](https://github.com/Young-Lord)等贡献者的付出
-本项目用于导出并解密 PCQQ / QQ NT 等软件的聊天记录数据库。
+<blockquote class="single-line">
+被加密的心跳在光标尽头坍缩成星<br>
+腾讯铸就的云端铁幕永不锈蚀
+</blockquote>
 
-有任何问题和建议欢迎提issues
+
+## 网站介绍
+
+腾讯QQ作为国民级即时通讯工具，累计服务数亿用户却始终存在一个遗憾——聊天记录以加密形态尘封在本地数据库中。无论是珍贵回忆的永久留存，还是重要信息的便捷调用，都需要突破这层加密屏障。
+
+本站内容基于开源项目 [qq-win-db-key](https://github.com/QQBackup/qq-win-db-key) 构建，旨在提供跨平台QQ聊天数据库解密指南。特别感谢[原作者Young-Lord](https://github.com/Young-Lord)等开发者的开拓性工作，未来计划逐步扩展数据库解析方案。
+
+有任何问题和建议欢迎提[issues](https://github.com/QQBackup/QQDecrypt/issues/new/choose)
 
 ## 寻求合作者
 
@@ -20,8 +28,6 @@ hidesidebar: true
 ## 声明
 
 本项目基本遵循`LICENSE`里的开源协议，基本接近**标识项目地址**且**禁止商用**；部分文件同时以不同的协议发布，具体参见文件内对应的声明。
-
-如果哪天完全没人维护了直接开个新仓库接着搞就行。记得保留原作者信息（比如 commit 作者），建议在[本仓库的 issues](https://github.com/QQBackup/qq-win-db-key/issues) 宣传一下。
 
 ## 隐私政策
 - 网站使用vercel静态部署托管
