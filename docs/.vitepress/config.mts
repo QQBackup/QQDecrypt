@@ -58,7 +58,7 @@ nav: [
       { text: '社区项目', link: '/about/Projects' }
     ]
   },
-  { text: '文件', link: '/files' },
+  { text: '文件', link: 'https://pan.aaqwq.top/' },
 ],
     footer: {
       message: ' CC BY-NC-SA 4.0 <a href="/about/LICENSE"> License</a>',
