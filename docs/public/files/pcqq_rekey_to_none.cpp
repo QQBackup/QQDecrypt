@@ -1,336 +1,439 @@
 #include <iostream>
 #include <cstdio>
 #include <Windows.h>
-#include <unistd.h>
 #include <iomanip>
-//#include "sigscan.h"
-
-// g++ t1.cpp -Wall -Wextra
-// https://blog.csdn.net/cjz2005/article/details/104465290
-#pragma GCC diagnostic ignored "-Wunused-variable"
-#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
-#pragma GCC diagnostic ignored "-Wconversion-null"
+#include <vector>   
+#include <string>   
+#include <cstdlib>  
+#include <tchar.h>  
+#include <stdexcept> 
 
 // SigScan code from https://github.com/aikar/SigScan , copyright belongs to original authors.
-DWORD SigScan(const char* szPattern, int offset = 0);
-void InitializeSigScan(DWORD ProcessID, const char* szModule);
+// Minor modifications for safety, clarity, and TCHAR compatibility.
+DWORD_PTR SigScan(const char* szPattern, int offset = 0); 
+bool InitializeSigScan(DWORD ProcessID, const TCHAR* szModule); 
 void FinalizeSigScan();
 
 #include <tlhelp32.h>
-#include <map>
-#include <string>
-using std::map;
-using std::string;
-bool bIsLocal = false;
-bool bInitialized = false;
-BYTE *FFXiMemory = NULL;
-DWORD BaseAddress = NULL;
-DWORD ModSize = NULL;
+
+// --- Globals for SigScan ---
+namespace SigScanInternal {
+    bool bIsLocal = false;
+    bool bInitialized = false;
+    BYTE* moduleMemory = NULL;
+    DWORD_PTR baseAddress = NULL;
+    DWORD modSize = NULL;
+}
+// --- End Globals ---
 
 
-typedef struct checks
-{
-	short start;
-	short size;
-	checks() { start = NULL; size = 0; }
-	checks(short sstart, short ssize) { start = sstart; size = ssize; }
+// --- SigScan Struct ---
+typedef struct checks {
+    short start;
+    short size;
+    checks() : start(0), size(0) {}
+    checks(short sstart, short ssize) : start(sstart), size(ssize) {}
 } checks;
+// --- End SigScan Struct ---
 
-void InitializeSigScan(DWORD ProcessID, const char* Module)
-{
-	MODULEENTRY32 uModule;
-	SecureZeroMemory(&uModule, sizeof(MODULEENTRY32));
-	uModule.dwSize = sizeof(MODULEENTRY32); 
-	//Create snapshot of modules and Iterate them
-	HANDLE hModuleSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, ProcessID);
-	for(BOOL bModule = Module32First(hModuleSnapshot, &uModule);bModule;bModule = Module32Next(hModuleSnapshot, &uModule))
-	{
-		uModule.dwSize = sizeof(MODULEENTRY32); 
-		if(!_stricmp(uModule.szModule,Module))
-		{
-			FinalizeSigScan();
-			BaseAddress = (DWORD)uModule.modBaseAddr;
-			ModSize = uModule.modBaseSize;
-			if(GetCurrentProcessId() == ProcessID)
-			{
-				bIsLocal = true;
-				bInitialized = true;
-				FFXiMemory = (BYTE*)BaseAddress;
-			}else{
-				bIsLocal = false;
-				FFXiMemory = new BYTE[ModSize];
-				HANDLE hProcess = OpenProcess(PROCESS_VM_READ, FALSE, ProcessID);
-				if(hProcess)
-				{
-					if(ReadProcessMemory(hProcess,(LPCVOID)BaseAddress,FFXiMemory,ModSize,NULL))
-					{
-						bInitialized = true;
-					}
-					CloseHandle(hProcess);
-				}
-			}
-			break;
-		}
-	}
-	CloseHandle(hModuleSnapshot);
-}
-void FinalizeSigScan()
-{
-	if(FFXiMemory)
-	{
-		if(!bIsLocal)
-		{
-			delete FFXiMemory;
-		}
-		FFXiMemory = NULL;
-		bInitialized = false;
-	}
-}
-DWORD SigScan(const char* szPattern, int offset)
-{
-    // std::cout<<"SigScan init"<<std::endl;
-	//Get Pattern length
-	unsigned int PatternLength = strlen(szPattern);
-	//Pattern must be divisible by 2 to be valid.
-	if(PatternLength % 2 != 0 || PatternLength < 2 || !bInitialized || !FFXiMemory || !BaseAddress) {
-	   std::cout<<"SigScan check FAILED"<<std::endl;
-	   return NULL;
-	}
-	//Get the buffer size
-    // std::cout<<"SigScan check ok"<<std::endl;
-	unsigned int buffersize = PatternLength/2;
-	//Setup custom ptr location. Default to buffersize(first byte after signature)+offset
-	int PtrOffset = buffersize + offset;
-	bool Dereference = true;
-	if(memcmp(szPattern,"##",2)==0)
-	{
-		Dereference = false;
-		szPattern += 2;
-		PtrOffset = 0 + offset;
-		PatternLength -= 2;
-		buffersize--;
-	}
-	//Dont follow the pointer, return the exact end of signature+offset.
-	if(memcmp(szPattern,"@@",2)==0)
-	{
-		Dereference = false;
-		szPattern += 2;
-		PatternLength -= 2;
-	}
+// --- SigScan Implementation ---
+// (SigScan, InitializeSigScan, FinalizeSigScan implementations remain the same as the previous version)
+// ... (Paste the SigScan, InitializeSigScan, FinalizeSigScan functions from the previous answer here) ...
+// --- SigScan Implementation (Copied from previous answer) ---
+// Accepts TCHAR* for Module name for Windows API compatibility
+bool InitializeSigScan(DWORD ProcessID, const TCHAR* Module) {
+    using namespace SigScanInternal;
 
-	//Capitalize the strings and create a string for cache key.
-	char Pattern[1024];
-	ZeroMemory(Pattern,sizeof(Pattern));
-	strcpy_s(Pattern,sizeof(Pattern),szPattern);
-	_strupr_s(Pattern,sizeof(Pattern));
+    FinalizeSigScan(); // Clean up previous state if any
 
+    MODULEENTRY32 uModule;
+    SecureZeroMemory(&uModule, sizeof(MODULEENTRY32));
+    uModule.dwSize = sizeof(MODULEENTRY32);
 
-	//Create the buffer
-	unsigned char* buffer = new unsigned char[buffersize];
-	SecureZeroMemory(buffer,buffersize);
-
-	//array for bytes we need to check and temporary holders for size/start
-	checks memchecks[32];
-	short cmpcount = 0;
-	short cmpsize = 0;
-	short cmpstart = 0;
-	//Iterate the pattern and build the buffer.
-	for(size_t i = 0; i < PatternLength / 2 ; i++)
-	{
-		//Read the values of the bytes for usage to reduce use of STL.
-		unsigned char byte1 = Pattern[i*2];
-		unsigned char byte2 = Pattern[(i*2)+1];
-		//Check for valid hexadecimal digits.
-		if(((byte1 >= '0' && byte1 <= '9') || (byte1 <= 'F' && byte1 >= 'A')) || ((byte2 >= '0' && byte2 <= '9') || (byte2 <= 'F' && byte2 >= 'A')))
-		{
-			//Increase the comparison size.
-			cmpsize++;
-			//convert the 2 byte string to a byte value ("14" == 0x14 == 20)
-			if (byte1 <= '9') buffer[i] += byte1 - '0';
-			else buffer[i] += byte1 - 'A' + 10;
-			buffer[i] *= 16;	
-			if (byte2 <= '9') buffer[i] += byte2 - '0';
-			else buffer[i] += byte2 - 'A' + 10;
-			continue;
-		}
-		//Wasnt valid hex, is it a custom ptr location?
-		else if(byte1 == 'X' && byte2 == byte1 && (PatternLength/2) - i > 3) 
-		{
-			//Set the ptr to this current location + offset.
-			PtrOffset = i + offset;
-			//Fill the buffer with the ptr locations.
-			buffer[i++]	= 'X';
-			buffer[i++]	= 'X';
-			buffer[i++]	= 'X';
-			buffer[i]	= 'X';			
-		}
-		//Wasnt a custom ptr location nor valid hex, so set it as a wildcard.
-		else 
-		{
-			//? for wildcard, unknown byte value.
-			buffer[i]	= '?';
-		}
-		//Add the check to the array.
-		if(cmpsize>0) memchecks[cmpcount++] = checks(cmpstart,cmpsize);
-		//Increase the starting check byte and reset the size comparison size.
-		cmpstart = i+1;
-		cmpsize = 0;
-	}
-	//Add the final check 
-	if(cmpsize>0) memchecks[cmpcount++] = checks(cmpstart,cmpsize);
-	
-	//Get the current base address and module size.
-	char* mBaseAddr = (char*)FFXiMemory;
-	unsigned int mModSize = ModSize;
-	//Boolean that returns true or false for matching.
-	bool bMatching = true;
-	//Iterate the Module.
-	int Match_Count = 0;
-	DWORD Last_Address = NULL;
-	for	(char* 
-		addr = (char*)memchr(mBaseAddr	, buffer[0], mModSize - buffersize);
-		addr && (DWORD)addr < (DWORD)((DWORD)mBaseAddr + mModSize - buffersize); 
-		addr = (char*)memchr(addr+1		, buffer[0], mModSize - buffersize - (addr+1 - mBaseAddr))
-		)
-	{
-		bMatching = true;
-		//Iterate each comparison we need to do. (seperated by wildcards)
-		for(short c = 0;c<cmpcount; c++)
-		{
-			//Compare the memory.
-			if(memcmp(buffer + memchecks[c].start,(void*)(addr + memchecks[c].start),memchecks[c].size) != 0)
-			{
-				//Did not match, try next byte.
-				bMatching = false;
-				break;
-			}
-		}
-		//After full Pattern scan, check if it matched.
-		if(bMatching)
-		{
-			//Find address wanted in FFXI's memory space - not ours.
-			DWORD Address = NULL;
-			if(Dereference)
-			{
-				Address = (DWORD)*((void **)(addr + PtrOffset));
-			}else{
-				Address = BaseAddress + (DWORD)((addr + PtrOffset) - (DWORD)FFXiMemory);
-			}
-			//Clear buffer and return result.
-			//delete [] buffer;
-    //        std::cout<<"SigScan found success: "<<Address<<std::endl;
-            Last_Address = Address;
-            ++Match_Count;
-			//return Address;
-		}
-	}
-	//Nothing matched. Clear buffer
-	delete [] buffer;
-	if(Match_Count>1){
-	    std::cout<<"!!! MULTI Addr found. total: "<< Match_Count << std::endl;
-	}
-	if(Match_Count==1){
-    //    std::cout<<"SigScan return success: "<< Last_Address << std::endl;
-	    return Last_Address;
-	}
-    std::cout<<"SigScan ret 2 NULL"<<std::endl;
-	return NULL;
-}
-
-// SigScan code end.
-
-
-using namespace std;
-
-
-//DWORD SigScan(const char* szPattern, int offset = 0);
-//void InitializeSigScan(DWORD ProcessID, const char* Module);
-//void FinalizeSigScan();
-//#pragma comment(lib,"SigScanStatic.lib")
-#define ull unsigned long int
-
-static PVOID originalFuncAddress = 0;
-static PVOID sqlite3DbFilenameAddress = 0;
-
-static int callback(void *data, int argc, char **argv, char **azColName)
-{
-    int i;
-    printf( "%s ", (const char*)data);
-    for(i=0; i<argc; i++)
-    {
-        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    // Use TH32CS_SNAPMODULE32 for potentially better compatibility if targeting 32-bit specifically
+    HANDLE hModuleSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, ProcessID);
+    if (hModuleSnapshot == INVALID_HANDLE_VALUE) {
+        std::cerr << "Error: CreateToolhelp32Snapshot failed. Code: " << GetLastError() << std::endl;
+        return false;
     }
-    printf("\n");
+
+    bool foundModule = false;
+    // Use Module32First/Next which work with TCHAR versions of MODULEENTRY32 based on UNICODE define
+    for (BOOL bModule = Module32First(hModuleSnapshot, &uModule); bModule; bModule = Module32Next(hModuleSnapshot, &uModule)) {
+        // Use TCHAR-safe case-insensitive comparison
+        if (!_tcsicmp(uModule.szModule, Module)) { // <-- FIX: Use _tcsicmp
+            baseAddress = (DWORD_PTR)uModule.modBaseAddr; // Use DWORD_PTR
+            modSize = uModule.modBaseSize;
+
+            if (GetCurrentProcessId() == ProcessID) {
+                bIsLocal = true;
+                moduleMemory = (BYTE*)baseAddress; 
+                bInitialized = true;
+                foundModule = true;
+            }
+            else {
+                bIsLocal = false;
+                moduleMemory = new (std::nothrow) BYTE[modSize]; 
+                if (!moduleMemory) {
+                    std::cerr << "Error: Failed to allocate memory for module snapshot." << std::endl;
+                    break; 
+                }
+
+                HANDLE hProcess = OpenProcess(PROCESS_VM_READ, FALSE, ProcessID);
+                if (hProcess) {
+                    if (ReadProcessMemory(hProcess, (LPCVOID)baseAddress, moduleMemory, modSize, NULL)) {
+                        bInitialized = true;
+                        foundModule = true;
+                    }
+                    else {
+                        std::cerr << "Error: ReadProcessMemory failed. Code: " << GetLastError() << std::endl;
+                        delete[] moduleMemory;
+                        moduleMemory = NULL;
+                    }
+                    CloseHandle(hProcess);
+                }
+                else {
+                    std::cerr << "Error: OpenProcess failed. Code: " << GetLastError() << std::endl;
+                    delete[] moduleMemory; 
+                    moduleMemory = NULL;
+                }
+            }
+            break; 
+        }
+    }
+
+    CloseHandle(hModuleSnapshot);
+
+    if (!foundModule && !bInitialized) {
+        std::wcerr << L"Error: Module '" << Module << L"' not found or could not be read." << std::endl;
+        return false;
+    }
+    return bInitialized;
+}
+
+void FinalizeSigScan() {
+    using namespace SigScanInternal;
+    if (moduleMemory) {
+        if (!bIsLocal) {
+            delete[] moduleMemory;
+        }
+        moduleMemory = NULL;
+        bInitialized = false;
+        baseAddress = NULL; 
+        modSize = NULL; 
+        bIsLocal = false;
+    }
+}
+DWORD_PTR SigScan(const char* szPattern, int offset) {
+    using namespace SigScanInternal;
+    if (!bInitialized || !moduleMemory || !baseAddress || !szPattern) {
+        std::cerr << "SigScan Error: Not initialized or invalid parameters." << std::endl;
+        return NULL;
+    }
+
+    size_t patternLength = strlen(szPattern); 
+    if (patternLength < 2) {
+        std::cerr << "SigScan Error: Pattern too short." << std::endl;
+        return NULL;
+    }
+    bool dereference = true;
+    int ptrOffset = 0; 
+    bool offsetFromStart = false;
+
+    if (strncmp(szPattern, "##", 2) == 0) {
+        dereference = false;
+        szPattern += 2;
+        patternLength -= 2;
+        offsetFromStart = true; 
+        ptrOffset = offset;     
+    }
+    else if (strncmp(szPattern, "@@", 2) == 0) {
+        dereference = false;
+        szPattern += 2;
+        patternLength -= 2;
+    }
+
+    if (patternLength == 0 || patternLength % 2 != 0) {
+        std::cerr << "SigScan Error: Pattern length invalid after prefix handling." << std::endl;
+        return NULL;
+    }
+
+    size_t bufferSize = patternLength / 2; // Use size_t
+    if (!offsetFromStart) {
+        // Default: offset is from the end of the pattern bytes
+        ptrOffset = bufferSize + offset;
+    }
+
+
+    // Use std::vector for automatic memory management and safety
+    std::vector<unsigned char> buffer(bufferSize);
+    std::vector<bool> mask(bufferSize); // true = wildcard, false = compare byte
+
+    // Create the buffer and mask
+    for (size_t i = 0; i < bufferSize; ++i) {
+        char high = szPattern[i * 2];
+        char low = szPattern[(i * 2) + 1];
+
+        if (high == '?' && (low == '?' || low == '\0')) { // Handle single '?' or "??" as wildcard
+            buffer[i] = 0x00; // Value doesn't matter
+            mask[i] = true;   // Mark as wildcard
+            if (low == '?') { /* already handled by loop increment */ }
+            else { /* single '?' - technically malformed pattern but treat as wildcard */ }
+        }
+        else if (high == 'X' && low == 'X' && !offsetFromStart && (bufferSize - i >= 4)) {
+            ptrOffset = i + offset; // User offset is relative to 'XX' start
+            buffer[i] = 0x00; mask[i] = true; i++; // XX
+            buffer[i] = 0x00; mask[i] = true; i++; // XX
+            buffer[i] = 0x00; mask[i] = true; i++; // XX
+            buffer[i] = 0x00; mask[i] = true;      // XX
+        }
+        else {
+            // Convert hex chars to byte (allow lower case hex)
+            unsigned char byteVal = 0;
+            if (high >= '0' && high <= '9') byteVal = (high - '0') << 4;
+            else if (high >= 'A' && high <= 'F') byteVal = (high - 'A' + 10) << 4;
+            else if (high >= 'a' && high <= 'f') byteVal = (high - 'a' + 10) << 4;
+            else { std::cerr << "SigScan Error: Invalid pattern character '" << high << "'" << std::endl; return NULL; }
+
+            if (low >= '0' && low <= '9') byteVal |= (low - '0');
+            else if (low >= 'A' && low <= 'F') byteVal |= (low - 'A' + 10);
+            else if (low >= 'a' && low <= 'f') byteVal |= (low - 'a' + 10);
+            else { std::cerr << "SigScan Error: Invalid pattern character '" << low << "'" << std::endl; return NULL; }
+
+            buffer[i] = byteVal;
+            mask[i] = false; // Not a wildcard
+        }
+    }
+
+
+    // Iterate the Module memory
+    DWORD matchCount = 0;
+    DWORD_PTR lastAddress = NULL; // Use DWORD_PTR
+    // Ensure pointer arithmetic stays within bounds
+    if (modSize < bufferSize) return NULL; // Avoid underflow/wrap-around
+    BYTE* endAddr = moduleMemory + modSize - bufferSize;
+
+    for (BYTE* addr = moduleMemory; addr <= endAddr; ++addr) {
+        bool found = true;
+        for (size_t k = 0; k < bufferSize; ++k) {
+            if (!mask[k] && buffer[k] != addr[k]) { // If not wildcard and bytes don't match
+                found = false;
+                break;
+            }
+        }
+
+        if (found) {
+            matchCount++;
+            // Calculate the address based on the match location and offset logic
+            BYTE* resultPtrLocation = addr + ptrOffset;
+
+            // Ensure the calculated pointer location is within the module bounds
+            // Check both start and end of potential read/address calculation
+            size_t accessSize = (dereference ? sizeof(void*) : 1);
+            if (resultPtrLocation < moduleMemory || (resultPtrLocation + accessSize) >(moduleMemory + modSize)) {
+                std::cerr << "SigScan Warn: Calculated result pointer offset (0x" << std::hex << (DWORD_PTR)(resultPtrLocation - moduleMemory)
+                    << ") is out of module bounds for match at module offset 0x" << (DWORD_PTR)(addr - moduleMemory)
+                    << std::dec << ". Skipping this match." << std::endl;
+                continue; // Skip this match as the result address would be invalid
+            }
+
+            if (dereference) {
+                // Read the pointer from the target process memory
+                lastAddress = *(DWORD_PTR*)resultPtrLocation; // Read DWORD_PTR
+            }
+            else {
+                // Return the address itself relative to the actual module base
+                lastAddress = baseAddress + (DWORD_PTR)(resultPtrLocation - moduleMemory);
+            }
+            // Optional: break on first match if desired
+            // if (matchCount == 1) break;
+        }
+    }
+
+    if (matchCount > 1) {
+        std::cout << "SigScan Warn: Found " << matchCount << " matches for pattern. Returning last found address: 0x" << std::hex << lastAddress << std::dec << std::endl;
+    }
+    else if (matchCount == 0) {
+        std::cerr << "SigScan Error: Pattern not found." << std::endl;
+        return NULL;
+    }
+    // std::cout << "SigScan Success: Found address 0x" << std::hex << lastAddress << std::dec << std::endl; // Debug
+    return lastAddress;
+}
+// --- SigScan End ---
+
+
+// --- SQLite Function Pointer Types (Using void* for db handle) ---
+typedef int(__cdecl* psqlite3_key)(void* db, const void* pKey, int nKey);
+typedef int(__cdecl* psqlite3_open)(const char* filename, void** ppDb);
+typedef int(__cdecl* psqlite3_exec)(void* db, const char* sql,
+    int (*callback)(void*, int, char**, char**),
+    void* cbArg,
+    char** errmsg);
+typedef int(__cdecl* psqlite3_rekey)(void* db, const void* pKey, int nKey);
+typedef int(__cdecl* psqlite3_close)(void* db);
+// typedef void (__cdecl *psqlite3_free)(void *ptr); // Needed to free errmsg
+// --- End SQLite Types ---
+
+
+// --- Callback for sqlite3_exec ---
+static int callback(void* data, int argc, char** argv, char** azColName) {
+    // Suppress unused parameter warning if data is not used
+    (void)data;
+    std::cout << "--- Row ---" << std::endl;
+    for (int i = 0; i < argc; i++) {
+        std::cout << azColName[i] << " = " << (argv[i] ? argv[i] : "NULL") << std::endl;
+    }
+    std::cout << "-----------" << std::endl;
     return 0;
 }
-
-typedef int (__cdecl *psqlite3_key)(void *, const void *, int);
-typedef int (__cdecl *psqlite3_open)(
-  const char *filename,   /* Database filename (UTF-8) */
-  int **ppDb          /* OUT: SQLite db handle */
-);
-typedef int (__cdecl *psqlite3_exec)(void* db, const char *sql, 
-    int (*callback)(void*,int,char**,char**), /* Callback function */
-    void *, /* 1st argument to callback */
-    char **errmsg /* Error msg written here */
-);
-int empty_key[16] = {0};
-int main(){
-    HMODULE current_module = GetModuleHandle(NULL); 
-    HMODULE hModule = LoadLibraryEx("KernelUtil.Dll", NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
-    if (hModule == NULL){
-        cout << "error loading: " << GetLastError() << endl;
-        return 2;
+unsigned char hexCharToNibble(char c) {
+    if (c >= '0' && c <= '9') return c - '0';
+    if (c >= 'a' && c <= 'f') return c - 'a' + 10;
+    if (c >= 'A' && c <= 'F') return c - 'A' + 10;
+    throw std::runtime_error("Invalid hexadecimal character");
+}
+bool parseHexString(const std::string& hexString, unsigned char* buffer, size_t bufferSize) {
+    if (hexString.length() != bufferSize * 2) {
+        std::cerr << "Error: Hex string must be exactly " << bufferSize * 2 << " characters long." << std::endl;
+        return false;
     }
-    
-    InitializeSigScan(GetCurrentProcessId(), "KernelUtil.dll");
-    
-    /*psqlite3_key key = (psqlite3_key)((DWORD)hModule + 0x1);
-    psqlite3_open open = (psqlite3_open)((DWORD)hModule + 0x1);
-    psqlite3_exec exec = (psqlite3_exec)((DWORD)hModule + 0x1);
-    psqlite3_key impl = (psqlite3_key)((DWORD)hModule + 0x1);
-    psqlite3_key rekey = (psqlite3_key)((DWORD) hModule + 0x1);*/
-    
-    // cout<<sizeof(psqlite3_key)<<"test scan:"<<SigScan("##558BEC566B751011837D1010740D6817020000E8")<<endl;
-    
-    psqlite3_key akey = (psqlite3_key)(SigScan("##558BEC566B751011837D1010740D6817020000E8")); // ok
-    psqlite3_open aopen = (psqlite3_open)(SigScan("##558BEC6A006A06FF750CFF7508E8E0130200")); // ok
-    psqlite3_exec aexec = (psqlite3_exec)(SigScan("##558BEC8B45088B40505DC3")); // ok
-    // psqlite3_key aimpl = (psqlite3_key)(SigScan("##558BECFF7508E8D608FFFF5985C0750D687E010000"));// key line 17
-    psqlite3_key arekey = (psqlite3_key)(SigScan("##558BEC837D1010740D682F020000E8")); // ok
-    
-    /*cout<<hex;
-    cout << (ull)akey << endl << (ull)aopen << endl << (ull)aexec << endl << (ull)aimpl << endl << (ull)arekey << endl << endl;
-    cout << (ull)akey-(DWORD)hModule << endl << (ull)aopen-(DWORD)hModule << endl << (ull)aexec-(DWORD)hModule << endl << (ull)aimpl-(DWORD)hModule << endl << (ull)arekey-(DWORD)hModule << endl << endl;
-    cout << (ull)akey-(DWORD)current_module << endl << (ull)aopen-(DWORD)current_module << endl << (ull)aexec-(DWORD)current_module << endl << (ull)aimpl-(DWORD)current_module << endl << (ull)arekey-(DWORD)current_module << endl << endl;
-    cout << (ull)akey-(DWORD)current_module-(DWORD)hModule << endl << (ull)aopen-(DWORD)current_module-(DWORD)hModule << endl << (ull)aexec-(DWORD)current_module-(DWORD)hModule << endl << (ull)aimpl-(DWORD)current_module-(DWORD)hModule << endl << (ull)arekey-(DWORD)current_module-(DWORD)hModule << endl << endl;
-    cout<<setbase(10);*/
-    
-    FinalizeSigScan();
-    // cout<<"fined scan"<<endl;
-    //原始Key
-    BYTE pwdKey[16]={
-        // PLACE YOUR KEY HERE
-    };
-    //拓展Key
-    /*BYTE pwdKey1[272]={
-    
-    };*/
-    int* pDB = NULL;
-    int iRet = aopen("Msg3.0.db", &pDB);
-    cout << "open iRet=" << iRet << endl;
-    iRet = akey(pDB,(unsigned char *)pwdKey, 16);
-    cout << "key iRet=" << iRet << endl;
-    //iRet = aimpl(pDB, pwdKey1, 16*17);
-    
-    char select[]="SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;";
-    //char sql[] = "select from;";
+
+    try {
+        for (size_t i = 0; i < bufferSize; ++i) {
+            unsigned char highNibble = hexCharToNibble(hexString[i * 2]);
+            unsigned char lowNibble = hexCharToNibble(hexString[i * 2 + 1]);
+            buffer[i] = (highNibble << 4) | lowNibble;
+        }
+        return true;
+    }
+    catch (const std::runtime_error& e) {
+        std::cerr << "Error parsing hex string: " << e.what() << " in input '" << hexString << "'" << std::endl;
+        return false;
+    }
+}
+int main() {
+    const TCHAR* targetDll = _T("KernelUtil.dll");
+    const char* dbFilename = "Msg3.0.db";
+
+    unsigned char pwdKey[16]; 
+    std::string keyHexString;
+    bool keyParsed = false;
+
+    std::cout << "请输入你的key，长度应为32位:" << std::endl;
+    std::cout << "(e.g., 11451419198101145141919810114514)" << std::endl;
+    std::cout << ": ";
+    std::cin >> keyHexString;
+    if (!parseHexString(keyHexString, pwdKey, sizeof(pwdKey))) {
+        std::cerr << "Invalid key format entered. Exiting." << std::endl;
+        return 1; 
+    }
+    std::cout << "Key received successfully." << std::endl;
+
+
+    std::cout << "\nLoading KernelUtil.dll..." << std::endl;
+    HMODULE hModule = LoadLibrary(targetDll);
+    if (hModule == NULL) {
+        std::cerr << "Error loading " << targetDll << ". Code: " << GetLastError() << std::endl;
+        return 1;
+    }
+    std::wcout << L"Module '" << targetDll << L"' loaded at address: 0x" << std::hex << (DWORD_PTR)hModule << std::dec << std::endl;
+
+
+    std::cout << "Initializing SigScan for current process..." << std::endl;
+    if (!InitializeSigScan(GetCurrentProcessId(), targetDll)) {
+        std::cerr << "Failed to initialize SigScan." << std::endl;
+        FreeLibrary(hModule);
+        return 1;
+    }
+
+    std::cout << "Scanning for SQLite function signatures..." << std::endl;
+    const char* sig_open = "##558BEC6A006A06FF750CFF7508E8????????85C0";
+    const char* sig_key = "##558BEC566B751011837D1010740D68????????E8";
+    const char* sig_exec = "##558BEC8B45088B40505DC3";
+    const char* sig_rekey = "##558BEC837D1010740D68????????E8";
+    const char* sig_close = "##558BEC8B45088B404C5DC3";
+
+    psqlite3_open aopen = (psqlite3_open)(void*)SigScan(sig_open);
+    psqlite3_key akey = (psqlite3_key)(void*)SigScan(sig_key);
+    psqlite3_exec aexec = (psqlite3_exec)(void*)SigScan(sig_exec);
+    psqlite3_rekey arekey = (psqlite3_rekey)(void*)SigScan(sig_rekey);
+    psqlite3_close aclose = (psqlite3_close)(void*)SigScan(sig_close);
+
+    if (!aopen || !akey || !aexec || !arekey || !aclose) {
+        std::cerr << "Error: Failed to find one or more required function signatures." << std::endl;
+        FinalizeSigScan();
+        FreeLibrary(hModule);
+        return 1;
+    }
+
+    std::cout << "Signatures found:" << std::hex << std::endl;
+    std::cout << "  sqlite3_open:  0x" << (DWORD_PTR)aopen << std::endl;
+    std::cout << std::dec;
+    unsigned char emptyKey[16] = { 0 };
+
+    void* pDB = NULL;
+    int iRet = -1;
     char* pErrmsg = NULL;
-    printf("====EXEC=========\n");
-    iRet = aexec(pDB, select, callback, NULL, &pErrmsg);
-    cout << "exec iRet=" << iRet << endl;
-    iRet = arekey(pDB, (unsigned char *)empty_key, 16);
-    cout << "rekey iRet=" << iRet << endl;
-    printf("====END=========\n");
+
+    std::cout << "\nAttempting to open database: " << dbFilename << std::endl;
+    iRet = aopen(dbFilename, &pDB);
+    std::cout << "sqlite3_open returned: " << iRet << (pDB ? " (DB handle acquired)" : " (DB handle is NULL)") << std::endl;
+
+    if (iRet == 0 && pDB != NULL) {
+        std::cout << "Database opened successfully." << std::endl;
+
+        std::cout << "Attempting to apply key..." << std::endl;
+        iRet = akey(pDB, pwdKey, sizeof(pwdKey));
+        std::cout << "sqlite3_key returned: " << iRet << std::endl;
+
+        if (iRet == 0) {
+            std::cout << "Key accepted. Executing query..." << std::endl;
+            const char* selectSQL = "SELECT name, sql FROM sqlite_master WHERE type='table' ORDER BY name;";
+            iRet = aexec(pDB, selectSQL, callback, NULL, &pErrmsg);
+            std::cout << "sqlite3_exec returned: " << iRet << std::endl;
+
+            if (iRet != 0 && pErrmsg) {
+                std::cerr << "sqlite3_exec error: " << pErrmsg << std::endl;
+                pErrmsg = NULL;
+            }
+            else if (pErrmsg) {
+                pErrmsg = NULL;
+            }
+            std::cout << "Attempting to rekey database with empty key..." << std::endl;
+            iRet = arekey(pDB, emptyKey, sizeof(emptyKey));
+            std::cout << "sqlite3_rekey returned: " << iRet << std::endl;
+            if (iRet == 0) {
+                std::cout << "Database rekeyed successfully (password removed)." << std::endl;
+            }
+            else {
+                std::cerr << "Warning: Failed to rekey database." << std::endl;
+            }
+
+        }
+        else {
+            std::cerr << "Error: Failed to apply key (Incorrect key?). Cannot query or rekey database." << std::endl;
+        }
+    }
+    else {
+        std::cerr << "Error: Failed to open database '" << dbFilename << "'." << std::endl;
+        if (pErrmsg) {
+            std::cerr << " Error details: " << pErrmsg << std::endl;
+            pErrmsg = NULL;
+        }
+    }
+    if (pDB != NULL) {
+        std::cout << "Closing database..." << std::endl;
+        iRet = aclose(pDB);
+        std::cout << "sqlite3_close returned: " << iRet << std::endl;
+    }
+
+    std::cout << "Finalizing SigScan..." << std::endl;
+    FinalizeSigScan();
+
+    std::cout << "Freeing library..." << std::endl;
+    FreeLibrary(hModule);
+
+    std::cout << "Execution finished." << std::endl;
     return 0;
 }

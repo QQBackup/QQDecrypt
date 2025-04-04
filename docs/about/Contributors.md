@@ -131,6 +131,16 @@ const contributors = [
     ]
   },  
 
+  {
+    avatar: "/head/Disa.png",
+    name: "Disa Tale",
+    title: "贡献者",
+    desc: '帮助修正 pcqq_rekey_to_none.cpp 中代码错误，并提供编译版本',
+    links: [
+      { icon: 'github', link: "https://github.com/DisaWdcba" }
+    ]
+  },  
+  
 ]
 </script>
 
