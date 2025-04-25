@@ -7,7 +7,7 @@ hero:
   text: "QQ 聊天数据库解密"
   tagline: 用于解密查看QQ数据库
   image:
-    src: /icons/sign.png
+    src: /icons/sign.webp
     alt: logo  
   actions:
     - theme: brand
