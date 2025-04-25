@@ -1,6 +1,5 @@
 ---
 title: NTQQ(iOS)
-description: NTQQ(iOS)解密教程
 order: 6
 ---
 

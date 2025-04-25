@@ -1,6 +1,5 @@
 ---
 title: NTQQ (macOS)
-description: NTQQ (macOS)解密教程
 order: 4
 ---
 

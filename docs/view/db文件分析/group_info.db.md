@@ -1,6 +1,5 @@
 ---
 title: group_info.db
-description: group_info.db分析……
 ---
 
 # group_info.db

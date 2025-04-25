@@ -1,7 +1,6 @@
 ---
 layout: page
 title: 贡献者
-description: 为网站内容做出贡献的成员
 sidebar: false
 hidesidebar: true
 ---

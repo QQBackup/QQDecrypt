@@ -1,6 +1,5 @@
 ---
 title: profile_info.db
-description: profile_info.db分析……
 ---
 
 # profile_info.db

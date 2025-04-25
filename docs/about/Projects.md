@@ -1,7 +1,6 @@
 ---
 layout: doc
 title: 社区项目
-description: 来自GitHub上的其他项目
 next: false 
 prev: false
 ---

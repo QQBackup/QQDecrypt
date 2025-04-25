@@ -1,6 +1,5 @@
 ---
 title: PCQQ (非 NT 架构)
-description: PCQQ (非 NT 架构)解密教程
 order: 7
 ---
 

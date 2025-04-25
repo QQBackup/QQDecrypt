@@ -1,6 +1,5 @@
 ---
 title: LICENSE
-description: 开源协议
 sidebar: false
 next: false 
 prev: false

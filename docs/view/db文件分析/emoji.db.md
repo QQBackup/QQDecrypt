@@ -1,6 +1,5 @@
 ---
 title:emoji.db
-description:emoji.db分析……
 ---
 
 # emoji.db
