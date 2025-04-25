@@ -6,18 +6,6 @@ export default defineConfig({
   description: '解密QQ聊天数据库',
   lang: 'zh-CN',
   head: [
-    [
-      'script',
-      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-6TSGD7CVS3' },
-    ],
-    [
-      'script',
-      {},
-      `window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6TSGD7CVS3');`,
-    ],
     ['link', { rel: 'icon', href: '/icons/favicon.ico' }],
   ],
   vite: {
@@ -47,19 +35,19 @@ export default defineConfig({
       sortMenusByFrontmatterOrder: true,
       useFolderLinkFromIndexFile: true
     }),
-nav: [
-  { text: '主页', link: '/' },
-  {
-    text: '关于',
-    items: [
-      { text: '贡献者名单', link: '/about/Contributors' },
-      { text: '项目致谢', link: '/about/Thanks' },
-      { text: '使用协议', link: '/about/LICENSE' },
-      { text: '社区项目', link: '/about/Projects' }
-    ]
-  },
-  { text: '文件', link: 'https://pan.aaqwq.top/' },
-],
+    nav: [
+      { text: '主页', link: '/' },
+      {
+        text: '关于',
+        items: [
+          { text: '贡献者名单', link: '/about/Contributors' },
+          { text: '项目致谢', link: '/about/Thanks' },
+          { text: '使用协议', link: '/about/LICENSE' },
+          { text: '社区项目', link: '/about/Projects' }
+        ]
+      },
+      { text: '文件', link: 'https://pan.aaqwq.top/' },
+    ],
     footer: {
       message: ' CC BY-NC-SA 4.0 <a href="/about/LICENSE"> License</a>',
       copyright: '<a href="/about/碎碎念">Copyright © 2025 </a>',
@@ -68,10 +56,10 @@ nav: [
       pattern: 'https://github.com/QQBackup/QQDecrypt/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页',
     },
-  docFooter: { 
-    prev: '上一篇',
-    next: '下一篇'
-  },
+    docFooter: { 
+      prev: '上一篇',
+      next: '下一篇'
+    },
     darkModeSwitchLabel: '亮/暗模式',
     lightModeSwitchTitle: '调整为亮色模式',
     darkModeSwitchTitle: '调整为暗色模式',
