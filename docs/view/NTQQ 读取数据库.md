@@ -18,14 +18,14 @@ order: 1
 | 是否完成分析 | 数据库名字                                                   | 分析                                         |
 | ------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | 🤔            | <span style="color:blue;">nt_msg.db</span>  | 聊天数据文件                               |
-| 🤔            | <span style="color:blue;">profile_info.db</span>        | 联系人信息                               |
+| ✅            | <span style="color:blue;">profile_info.db</span>        | 联系人信息                               |
 | 🤔            | <span style="color:blue;">rich_media.db</span>          | 群聊或私聊发送/接收的文件信息存贮路径    |
-| 🤔            | <span style="color:blue;">files_in_chat.db</span>       | 媒体文件信息（包括下载的图片视频路径）    |
+| ✅            | <span style="color:blue;">files_in_chat.db</span>       | 媒体文件信息（包括下载的图片视频路径）    |
 | 🤔            | <span style="color:blue;">recent_contact.db</span>      | (推测为黑名单，待测试)                       |
 | ❓             | <span style="color:blue;">gpro_v1-6_{nt_uid}.db</span> | (由于暂未实现数据库解密无法分析)             |
 | ✅            | <span style="color:blue;">group_info.db</span>          | 	群聊信息 |
 | 🤔            | <span style="color:blue;"> guild_msg.db</span>           | 频道聊天数据 |
-| 🤔 | collection.db | QQ收藏数据 |
+| ✅ | collection.db | QQ收藏数据 |
 | 🤔 | file_assistant.db | 已下载文件存放数据 |
 | 🤔 | misc.db | 见下表 |
 | ✅ | emoji.db | (存贮QQ表情包的数据库) |
