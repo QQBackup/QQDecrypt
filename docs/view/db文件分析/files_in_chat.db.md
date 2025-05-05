@@ -4,7 +4,7 @@ order: 6
 ---
 
 # files_in_chat.db
-
+接受的媒体文件信息
 ## files_in_chat_table
 
 | 列名  | 含义              | 注                                               |
