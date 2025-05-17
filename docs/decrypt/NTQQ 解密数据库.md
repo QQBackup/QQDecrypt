@@ -23,6 +23,10 @@ order: 10
 
 ## 移除无关文件头
 
+> [!TIP]  说明
+>
+> 推荐使用[此SQLite VFS扩展](https://github.com/artiga033/ntdb_unwrap/tree/main/sqlite_extension)来避免手动移除文件头的繁琐过程
+
 首先，将`nt_msg.db`文件删除前1024字节，这可以通过以下方式完成：
 
 使用二进制编辑器：Android 下的 [MT 管理器](https://d.binmt.cc/)（需要付费）、Windows 下的 [HxD](https://mh-nexus.de/en/hxd/) 等软件均可使用，细节从略。
