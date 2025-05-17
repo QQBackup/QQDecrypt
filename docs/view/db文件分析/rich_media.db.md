@@ -9,16 +9,16 @@ order: 7
 
 下载文件信息
 
-| 列名  | 含义            | 注           |
-| ----- | --------------- | ------------ |
-| 45401 | --              | 不明         |
-| 40001 | msgid           | 消息id       |
-| 45001 | elementid       |              |
-| 45402 | filename        | 文件名       |
-| 45403 | filepath        | 文件存贮路径 |
-| 45405 | filesize        | 文件大小     |
-| 45985 | attrType        | 未知         |
-| 45503 | fileUuid        | 文件唯一id   |
-| 40021 | peeruid         | 群号         |
-| 64914 | msgBigClubLevel |              |
+| 列名  | 类型 | 含义            | 注           |
+| ----- | ---- | --------------- | ------------ |
+| 45401 | int  | --              | 不明         |
+| 40001 | int  | msgid           | 消息id       |
+| 45001 | int  | elementid       |              |
+| 45402 | str  | filename        | 文件名       |
+| 45403 | str  | filepath        | 文件存贮路径 |
+| 45405 | int  | filesize        | 文件大小     |
+| 45985 | int  | attrType        | 未知         |
+| 45503 | str  | fileUuid        | 文件唯一id   |
+| 40021 | str  | peeruid         | 群号         |
+| 64914 | int  | msgBigClubLevel |              |
 
