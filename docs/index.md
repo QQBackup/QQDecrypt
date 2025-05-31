@@ -21,14 +21,14 @@ features:
   - icon: 🗝
     title: 解密
     details: 获取数据库密钥
-    link: /decrypt//说明（必看）
+    link: /decrypt/description
   - icon: 👁‍
     title: 查看
     details: 打开数据库/读取信息
-    link: /view/NTQQ 读取数据库
+    link: /view/decode_db
   - icon: 🚀
     title: 社区项目
     details: 有关 NTQQ 数据库的项目
-    link: /about/Projects
+    link: /about/projects
 ---
 

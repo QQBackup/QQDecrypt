@@ -16,7 +16,7 @@ order: 6
 | 45404 | str  | thumbpath         | 预览图缓存路径（多见于视频）                     |
 | 40020 | str  | nt_uid            | 发送者nt_uid                                     |
 | 40021 | str  | peeruid/senderuin | 来源群号/QQ号                                    |
-| 40010 | int  | chatType          | 聊天类型，具体[见此](/view/db文件分析/nt_msg.db) |
+| 40010 | int  | chatType          | 聊天类型，具体[见此](/view/db_file_analysis/nt_msg.db) |
 | 82301 | int  | 未查明            |                                                  |
 | 45002 | int  | ElementType       |                                                  |
 | 45003 | int  | subElementType    |                                                  |

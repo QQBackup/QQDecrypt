@@ -1,5 +1,5 @@
 ---
-title: 说明（必看）
+title: 说明(必看)
 prev: false
 order: 1
 ---

@@ -10,5 +10,5 @@ lastUpdated: false
 import { useRouter } from 'vitepress'
 
 const router = useRouter()
-router.go('/decrypt/说明（必看）') 
+router.go('/decrypt/description') 
 </script>

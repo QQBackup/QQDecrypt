@@ -83,4 +83,4 @@ PRAGMA cipher = 'aes-256-cbc';
 
 ## 读取数据库内容
 
-请参考 [NTQQ 读取数据库](/view/NTQQ%20读取数据库)。
+请参考 [NTQQ 读取数据库](/view/read_db)。

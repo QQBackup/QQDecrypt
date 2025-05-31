@@ -82,4 +82,4 @@ gdb -x <PATH_TO_LINUX_QQ_GET_KEY_PY> qq
 
 # 打开数据库
 
-请参考 [NTQQ 解密数据库](NTQQ%20解密数据库.md)。
+请参考 [NTQQ 解密数据库](decode_db.md)。

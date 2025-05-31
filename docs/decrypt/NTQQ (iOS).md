@@ -260,4 +260,4 @@ frida -H 192.168.1.163:27043 QQ -l ios_get_key.js
 
 8. 打开数据库
 
-请参考 [NTQQ 解密数据库](NTQQ%20解密数据库.md)。
+请参考 [NTQQ 解密数据库](decode_db.md)。

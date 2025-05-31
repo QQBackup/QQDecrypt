@@ -40,10 +40,10 @@ export default defineConfig({
       {
         text: '关于',
         items: [
-          { text: '贡献者名单', link: '/about/Contributors' },
-          { text: '项目致谢', link: '/about/Thanks' },
+          { text: '贡献者名单', link: '/about/contributors' },
+          { text: '项目致谢', link: '/about/thanks' },
           { text: '使用协议', link: '/about/LICENSE' },
-          { text: '社区项目', link: '/about/Projects' }
+          { text: '社区项目', link: '/about/projects' }
         ]
       },
       { text: '文件', link: 'https://pan.aaqwq.top/' },

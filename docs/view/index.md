@@ -10,5 +10,5 @@ lastUpdated: false
 import { useRouter } from 'vitepress'
 
 const router = useRouter()
-router.go('/view/NTQQ%20读取数据库') 
+router.go('/view/read_db') 
 </script>

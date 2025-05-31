@@ -66,7 +66,7 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 ### 打开数据库
 
-请参考 [NTQQ 解密数据库](NTQQ%20解密数据库.md)。
+请参考 [NTQQ 解密数据库](decode_db.md)。
 
 ## 使用 frida hook
 ### 1. 定位 `nt_sqlite3_key_v2:`
@@ -119,4 +119,4 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 ### 3. 打开数据库
 
-请参考 [NTQQ 解密数据库](NTQQ%20解密数据库.md)。
+请参考 [NTQQ 解密数据库](decode_db.md)。

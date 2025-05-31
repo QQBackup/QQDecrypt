@@ -67,7 +67,7 @@ order: 2
 
 #### 打开数据库
 
-请参考 [NTQQ 解密数据库](NTQQ%20解密数据库.md)。
+请参考 [NTQQ 解密数据库](decode_db.md)。
 
 如果文件头中出现`HMAC_SHA1`字样（[示例](https://github.com/QQBackup/qq-win-db-key/issues/29#issuecomment-2227660390)），则将其作为`cipher_hmac_algorithm`的值。否则，可尝试`HMAC_SHA512`（默认值）或`HMAC_SHA256`。
 
@@ -143,7 +143,7 @@ python android_get_key.py 8.9.58
 
 ### 打开数据库
 
-请参考 [NTQQ 解密数据库](NTQQ%20解密数据库.md)。
+请参考 [NTQQ 解密数据库](decode_db.md)。
 
 ## 方法3
 
