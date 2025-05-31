@@ -20,9 +20,9 @@ pnpm run docs:dev
 │  ├─ theme
 │  ├─ config.mts
 ├─ about(关于)
-│  ├─ Contributors.md (贡献者)
+│  ├─ contributors.md (贡献者)
 │  ├─ thanks.md (致谢)
-│  ├─ Projects.md (社区项目)
+│  ├─ projects.md (社区项目)
 ├─ decrypt (解密数据库相关文档)
 ├─ public (媒体文件存放)
 ├─ view (读取数据库相关文档)
