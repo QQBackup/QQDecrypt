@@ -25,7 +25,7 @@ features:
   - icon: 👁‍
     title: 查看
     details: 打开数据库/读取信息
-    link: /view/decode_db
+    link: /view/read_db
   - icon: 🚀
     title: 社区项目
     details: 有关 NTQQ 数据库的项目

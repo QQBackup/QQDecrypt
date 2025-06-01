@@ -34,7 +34,7 @@ chatimg:{MD5}
 
 例如：Cache_d20372e27ef63b0 普通图片位于./chatimg/3b0/Cache_d20372e27ef63b0
 
-若需原图路径，只需将代码中的 `chatimg` 替换为 `chatraw`，再进行CRC64运算即可
+若需原图路径，只需将代码中的 `chatimg` 替换为 `chatraw`，再进行CRC64运算即可，`chatthumb`同理
 
  示例脚本代码
 
@@ -44,30 +44,27 @@ chatimg:{MD5}
 import os
 
 def crc64(s):
-    POLY = 0x9A6C9329AC4BC9B5
-    table = []
+    _crc64_table = [0] * 256
     for i in range(256):
-        crc = i
+        bf = i
         for _ in range(8):
-            if crc & 1:
-                crc = (crc >> 1) ^ POLY
-            else:
-                crc >>= 1
-        table.append(crc)
-    value = 0xFFFFFFFFFFFFFFFF
+            bf = bf >> 1 ^ -7661587058870466123 if bf & 1 else bf >> 1
+        _crc64_table[i] = bf
+    v = -1
     for c in s:
-        value = table[(ord(c) ^ value) & 0xFF] ^ (value >> 8)
-    return value
+        v = _crc64_table[(ord(c) ^ v) & 255] ^ v >> 8
+    return v
 
-def generate_pic_path(md5, folder="chatimg"):
+def get_img_path(md5, folder):
     url = f"{folder}:{md5}"
-    crc_value = crc64(url)
-    filename = f"Cache_{crc_value:x}"
-    subdir = filename[-3:]
-    return os.path.join(f"./{folder}/", subdir, filename)
+    filename = 'Cache_' + hex(crc64(url)).replace('0x', '')
+    return os.path.join(f"./{folder}/", filename[-3:], filename).replace("\\", "/")
 :::
 
 ¹关于发送是否为原图，可通过`MsgRecord`查询`original`得出
+
+>[!TIP]说明
+当`original`=flase时，图片位于`chatraw`文件夹中，而非位于`chatimg`中
 
 
 ## 已挖到的api
