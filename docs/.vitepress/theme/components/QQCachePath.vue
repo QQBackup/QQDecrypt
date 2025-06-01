@@ -4,7 +4,6 @@
     <p class="generator-description">
 预测 安卓QQ 本地缓存图片路径
     </p>
-
     <div class="input-wrapper">
       <input
         type="text"
