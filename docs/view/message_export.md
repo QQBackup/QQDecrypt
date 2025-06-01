@@ -7,14 +7,22 @@ order: 3
 
 ## 关于聊天图片本地缓存路径
 
+<QQCachePath />
+
 QQ的图片缓存路径位于`/storage/emulated/0/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/chatpic`，以下用`./`代指
 
 这个目录下包含三个文件夹：
 
-- `chatraw`：原图，**只有在发送图片时勾选发送原图**才会有¹
+- `chatraw`：原图，**只有在发送图片时勾选发送原图**才会有
 - `chatimg`：压缩后的普通图片
 - `chatthumb`：缩略图，聊天界面的小图预览
 
+>[!TIP]说明
+当`original`=0时，图片位于`chatraw`文件夹中，而非位于`chatimg`中
+>
+>关于发送是否为原图，可通过查询`original`（对应40080的Field Number=45418）判断
+>
+>0为非原图，1为原图
 
 路径生成规律：
 
@@ -60,14 +68,6 @@ def get_img_path(md5, folder):
     filename = 'Cache_' + hex(crc64(url)).replace('0x', '')
     return os.path.join(f"./{folder}/", filename[-3:], filename).replace("\\", "/")
 :::
-
-¹关于发送是否为原图，可通过查询`original`（对应40080的Field Number=45418）得出
-
-0为非原图，1为原图
-
->[!TIP]说明
-当`original`=0时，图片位于`chatraw`文件夹中，而非位于`chatimg`中
-
 
 ## 已挖到的api
 -   群头像
