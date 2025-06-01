@@ -18,7 +18,7 @@ QQ的图片缓存路径位于`/storage/emulated/0/Android/data/com.tencent.mobil
 
 路径生成规律：
 
-在图片消息的MsgRecord中，会存在 md5HexStr 值，以下称为 ``{MD5}``,**格式为32位大写**
+在图片消息的<a href="https://qq.sbcnm.top/view/db_file_analysis/nt_msg.db.html#:~:text=%E6%AD%A4%E5%AD%97%E6%AE%B5-,40080,-protobuf" target="_blank">40080</a> 值中，`Field Number`45406称作 `md5HexStr` 值，以下称为 ``{MD5}``,**格式为32位大写**
 
 将目标文件夹名与 `{MD5}` 拼接，格式：
 ```
@@ -61,10 +61,12 @@ def get_img_path(md5, folder):
     return os.path.join(f"./{folder}/", filename[-3:], filename).replace("\\", "/")
 :::
 
-¹关于发送是否为原图，可通过`MsgRecord`查询`original`得出
+¹关于发送是否为原图，可通过查询`original`（对应40080的Field Number=45418）得出
+
+0为非原图，1为原图
 
 >[!TIP]说明
-当`original`=flase时，图片位于`chatraw`文件夹中，而非位于`chatimg`中
+当`original`=0时，图片位于`chatraw`文件夹中，而非位于`chatimg`中
 
 
 ## 已挖到的api
