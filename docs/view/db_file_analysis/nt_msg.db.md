@@ -300,39 +300,70 @@ amr语音文件消息：6，0
 
 消息段（48000）的部分字段含义如下：
 
-| Field Number | 类型                                      | 含义                                                     | 说明               |
-| ------------ | ----------------------------------------- | -------------------------------------------------------- | ------------------ |
-| 45001        | int                                       | 消息段 ID                                                |                    |
-| 45002        | int                                       | 消息类型                                                 | 见下表             |
-| 45101        | str                                       | 消息文本                                                 | 适用于文本消息     |
-| 45102        | str                                       | 图片文件名                                               | 适用于图片消息     |
-| 45402        | str                                       | 图片文件名                                               | 适用于图片消息     |
-| 45411        | int                                       | 图片宽度（压制后）                                       | 适用于图片消息     |
-| 45412        | int                                       | 图片高度（压制后）                                       | 适用于图片消息     |
-| 45812        | str                                       | 本地缓存目录                                             | 适用于图片消息     |
-| 45815        | str                                       | 替代文本，如 "[动画表情]"                                | 适用于图片消息     |
-| 47402        | int                                       | 原消息序号                                               | 适用于引用消息     |
-| 47403        | int                                       | 原消息发送者                                             | 适用于引用消息     |
-| 47404        | int                                       | 原消息时间                                               | 适用于引用消息     |
-| 47410        | <span style="color:blue;">protobuf</span> | 格式复杂，存储原消息文本，疑似原消息过期后用以替代 47423 | 适用于引用消息     |
-| 47413        | str                                       | 显示的引用文本                                           | 适用于引用消息     |
-| 47423        | <span style="color:blue;">protobuf</span> | 引用消息段（嵌套）                                       | 适用于引用消息     |
-| 47713        | str                                       | 撤回消息后缀                                             | 适用于系统撤回消息 |
-| 48602        | str                                       | XML 消息内容                                             | 适用于 XML 消息    |
+| Field Number | 类型          | MsgRecord            | 说明                                                         | 所属Element                  |
+| ------------ | ------------- | -------------------- | ------------------------------------------------------------ | ---------------------------- |
+| 40010        | int           | chatType             |                                                              |                              |
+| 45001        | int           | elementId            | 元素id，与msgid一样，具有唯一性                              |                              |
+| 45002        | int           | elementType          |                                                              | [详见下表](#elementtype说明) |
+| 45003        | int           | subElementType       | ？未确定                                                     |                              |
+| 45004        | str           | msgid                | +faceType                                                    |                              |
+| 45101        | str           | content              | 文本消息                                                     | text                         |
+| 45102        | str           | text                 | 语音转文字                                                   | pttElement                   |
+| 45402        | str           | fileName             | 文件名                                                       | file、ptt                    |
+| 45403        | str           | filePath             | 文件路径                                                     | file 、ptt                   |
+| 45405        | int           | fileSize             | 文件大小                                                     | fileElement 、pttElement     |
+| 45406        | int           | md5HexStr            | 视频消息中对应videoMD5                                       | fileElement                  |
+| 45407        | bytes         | file10MMD5           |                                                              | file、ptt 文件消息才存在     |
+| 45408        | bytes         | fileSha              |                                                              | file文件消息才存在           |
+| 45409        | bytes         | fileSha3             |                                                              | file 文件消息才存在          |
+| 45410        | int           | videotime            | 视频时间                                                     | videoElement、fileElement    |
+| 45411        | int           | thumbWidth           | 预览封面宽度                                                 | videoElement                 |
+| 45412        | int           | thumbHeight          | 预览封面高度                                                 | videoElement                 |
+| 45413        | int           | thumbWidth           | 预览封面宽度                                                 |                              |
+| 45414        | int           | thumbHeight          | 预览封面高度                                                 |                              |
+| 45415        | int           | thumbSize            | 预览封面大小                                                 | videoElement                 |
+| 45416        | int           | picType              | 图片类型，1000为静态图片，2000为GIF                          | picElement                   |
+| 45418        | int           | original             |                                                              |                              |
+| 45422        | str           | thumbfilename        | （非官方）预览封面路径<br>位于半私有目录/Tencent/MobileQQ/shortvideo/thumbs/ | videoElement                 |
+| 45424        | string\|bytes | originImageMd5       |                                                              |                              |
+| 45503        | str           | fileUuid             |                                                              |                              |
+| 45411        | int           | picWidth             | 原图宽度                                                     |                              |
+| 45412        | int           | picHeight            | 原图宽度                                                     |                              |
+| 45862        | bytes         | thumbMD5             | 预览封面MD5（对于45422文件）                                 | videoElement                 |
+| 45906        | int           | duration             | 语音持续时间                                                 | pttElement                   |
+| 45923        | str           | text                 | 语音转文字                                                   | pttElement                   |
+| 45925        | bytes         | waveAmplitudes       | 信号频率                                                     | pttElement                   |
+| 45954        | str           | picThumbPath         | 预览封面路径                                                 | fileElement                  |
+| 47401        | int           | replaymsgid          | 引用的消息msgid                                              | replyElement                 |
+| 47402        | int           | replayMsgSeq         | 引用的消息seq                                                | replyElement                 |
+| 47403        | int           | replymsgTime         | 引用的消息发送时间戳                                         | replyElement                 |
+| 47404        | int           | replymsgTime         | 引用的消息发送时间戳                                         | replyElement                 |
+| 47413        | str           | 引用的消息           | 仅文本                                                       | replyElement                 |
+| 47421        | str           | 引用方群昵称         |                                                              | replyElement                 |
+| 47422        | int           | sourceMsgIdInRecords |                                                              | replyElement                 |
+| 47601        | int           | faceindex            | 表情ID                                                       | faceElement                  |
+| 47602        | str           | facetext             | 表情含义（外显文字）                                         |                              |
+| 47901        | str           | bytesData            | 卡片详细信息                                                 |                              |
+| 49155        | int           | msgTime              | 发送时间                                                     |                              |
+| 95654        | int           | thumbSize            | 预览封面大小                                                 | fileElement                  |
+| 47713        | str           | 撤回消息后缀         | 适用于系统撤回消息                                           | 系统撤回消息                 |
+| 48602        | str           | XML 消息内容         | 适用于 XML 消息                                              | XML 消息                     |
 
-其中消息类型（45002）的已知消息类型与对应序号如下：
 
-| 45002 | 含义     | 说明                                                             |
-| ----- | ------ | -------------------------------------------------------------- |
-| 1     | 文本消息   | 普通纯文本消息，以及 at 消息本质上为**独立成消息段**且内容为 "@群昵称" 的消息，包含于此             |
-| 2     | 图片消息   |                                                                |
-| 3     | 文件消息   |                                                                |
-| 4     | 语音消息   |                                                                |
-| 6     | 表情     | https://bot.q.qq.com/wiki/develop/api/openapi/emoji/model.html |
-| 7     | 引用     | 即常说的“回复”，位于消息段开头，其后为正式消息                                       |
-| 8     | 系统消息   | 显示于屏幕中央的灰色小字提示，如撤回、接收文件                                        |
-| 10    | 应用消息   |                                                                |
-| 11    | 表情     |                                                                |
-| 16    | XML 消息 | 转发聊天记录本质上也是 XML 消息，包含于此                                        |
-| 21    | 通话消息   |                                                                |
-| 26    | 动态消息   |                                                                |
+### elementType说明
+| 值   | MsgRecord       | 说明                 |
+| ---- | --------------- | -------------------- |
+| 1    | textElement     | 文本段               |
+| 2    | picElement      | 图片段               |
+| 3    | fileElement     | 文件消息             |
+| 4    | pttElement      | 语音消息             |
+| 5    | videoElement    | 视频消息             |
+| 6    | faceElement     | QQ系统表情           |
+| 7    | replyElement    | 引用                 |
+| 8    | grayTipElement  | 系统消息（灰字提示） |
+| 9    | WalletElement   | 红包                 |
+| 10   | arkElement      | 卡片消息             |
+| 11   | markdownElement | 商城表情             |
+
+
+

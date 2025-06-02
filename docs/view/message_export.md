@@ -13,9 +13,9 @@ QQ的图片缓存路径位于`/storage/emulated/0/Android/data/com.tencent.mobil
 
 这个目录下包含三个文件夹：
 
-- `chatraw`：原图，**只有在发送图片时勾选发送原图**才会有
-- `chatimg`：压缩后的普通图片
-- `chatthumb`：缩略图，聊天界面的小图预览
+- `chatraw`：原图（所有图片类型均存在）
+- `chatimg`：压缩后的普通图片（未勾选发送原图才会存在）
+- `chatthumb`：缩略图，聊天界面的小图预览（收藏表情不存在）
 
 >[!TIP]说明
 当`original`=0时，图片位于`chatraw`文件夹中，而非位于`chatimg`中
