@@ -17,6 +17,9 @@ importers:
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
+      pnpm:
+        specifier: ^10.11.1
+        version: 10.11.1
       viewerjs:
         specifier: ^1.11.7
         version: 1.11.7
@@ -980,6 +983,11 @@ packages:
   pify@4.0.1:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
+
+  pnpm@10.11.1:
+    resolution: {integrity: sha512-5Rm592OYadyNXDxd/vc7PwkQlLCgBtcxc1PHKxJOgOGv1ClzLihwWta/oe6HnB/ORsEozOvTGSEB9D3WfGZ5Eg==}
+    engines: {node: '>=18.12'}
+    hasBin: true
 
   postcss@8.5.3:
     resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
@@ -2148,6 +2156,8 @@ snapshots:
 
   pify@4.0.1:
     optional: true
+
+  pnpm@10.11.1: {}
 
   postcss@8.5.3:
     dependencies:
