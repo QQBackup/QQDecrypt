@@ -351,19 +351,23 @@ amr语音文件消息：6，0
 
 
 ### elementType说明
-| 值   | MsgRecord       | 说明                 |
-| ---- | --------------- | -------------------- |
-| 1    | textElement     | 文本段               |
-| 2    | picElement      | 图片段               |
-| 3    | fileElement     | 文件消息             |
-| 4    | pttElement      | 语音消息             |
-| 5    | videoElement    | 视频消息             |
-| 6    | faceElement     | QQ系统表情           |
-| 7    | replyElement    | 引用                 |
-| 8    | grayTipElement  | 系统消息（灰字提示） |
-| 9    | WalletElement   | 红包                 |
-| 10   | arkElement      | 卡片消息             |
-| 11   | markdownElement | 商城表情             |
+| 值   | MsgRecord             | 说明                 |
+| ---- | --------------------- | -------------------- |
+| 1    | textElement           | 文本段               |
+| 2    | picElement            | 图片段               |
+| 3    | fileElement           | 文件消息             |
+| 4    | pttElement            | 语音消息             |
+| 5    | videoElement          | 视频消息             |
+| 6    | faceElement           | QQ系统表情           |
+| 7    | replyElement          | 引用                 |
+| 8    | grayTipElement        | 系统消息（灰字提示） |
+| 9    | WalletElement         | 红包消息             |
+| 10   | arkElement            | 卡片消息             |
+| 11   | marketFaceElement     | 商城表情             |
+| 14   | markdownElement       | markdown消息         |
+| 17   | inlineKeyboardElement | markdown按钮消息     |
+| 27   | faceBubbleElement     | 弹射表情包           |
+| 28   | shareLocationElement  | 位置共享             |
 
 
 
