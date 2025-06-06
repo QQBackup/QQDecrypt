@@ -13,20 +13,62 @@ QQ的图片缓存路径位于`/storage/emulated/0/Android/data/com.tencent.mobil
 
 这个目录下包含三个文件夹：
 
-- `chatraw`：原图（所有图片类型均存在）
-- `chatimg`：压缩后的普通图片（未勾选发送原图才会存在）
-- `chatthumb`：缩略图，聊天界面的小图预览（收藏表情不存在）
+- `chatraw`：原图
+- `chatimg`：压缩后的普通图片
+- `chatthumb`：缩略图，聊天界面的小图预览
+
+::: details 关于接收图片存放逻辑
+<img src="/misc/pic_categorized.svg" alt="pic_categorized" width="500" />
+
+①类图片会先将压缩过的图片存放至`chatimg`文件夹，在用户**手动点击下载原图**后将原图保存至`chatraw`文件夹中
+
+②③类会将图片放至`charaw`文件夹
+
+④类会将GIF本体保存在`chatraw`文件夹，静态预览图放在`chatimg`文件夹
+
+所有类型都将缩略图存放在`chattumb`文件夹
+
+
+|      | chatraw | chaimg | chattumb |
+| ---- | ------- | ------ | -------- |
+| ①    | ⬜       | ✔      | ✔        |
+| ②    | ✔       | ❌      | ✔        |
+| ③    | ✔       | ❌      | ✔        |
+| ④    | ✔       | ✔      | ✔        |
+
+⬜需手动触发下载 ✔存在 ❌不存在
+
+:::
+
+::: details 发送表情的分类
+
+QQ中的表情元素可分为四类
+
+| 类型        | 所属ElementType   | 说明                   |
+| ----------- | ----------------- | ---------------------- |
+| ①QQ系统表情 | FaceElement       | 超级表情与小黄脸表情   |
+| ②emoji表情  | TextElement       | 包括手机系统的原生表情 |
+| ③收藏表情   | PicElement        | 用户自主收藏的表情     |
+| ④原创表情   | marketFaceElement | 表情商城中的表情       |
+
+①类表情属于特殊Element，其公共表情可通过`faceid`在[QQBOT文档](https://bot.q.qq.com/wiki/develop/api-v2/openapi/emoji/model.html)中查询，在一些活动中QQ官方会增加**隐藏表情**，其`faceid`未被公开，但可通过已发送消息推断
+
+②类表情将以文本形式发送（所以有时出现显示异常）
+
+③类表情以图片形式发送
+
+④类表情属于特殊Element，文件缓存在`.emotionsm`文件夹中
+
+:::
 
 >[!TIP]说明
-当`original`=0时，图片位于`chatraw`文件夹中，而非位于`chatimg`中
->
 >关于发送是否为原图，可通过查询`original`（对应40080的Field Number=45418）判断
 >
 >0为非原图，1为原图
 
-路径生成规律：
+### 路径生成规律
 
-在图片消息的<a href="https://qq.sbcnm.top/view/db_file_analysis/nt_msg.db.html#:~:text=%E6%AD%A4%E5%AD%97%E6%AE%B5-,40080,-protobuf" target="_blank">40080</a> 值中，`Field Number`45406称作 `md5HexStr` 值，以下称为 ``{MD5}``,**格式为32位大写**
+在图片消息的<a href="https://qq.sbcnm.top/view/db_file_analysis/nt_msg.db.html#:~:text=%E6%AD%A4%E5%AD%97%E6%AE%B5-,40080,-protobuf" target="_blank">40080</a> 值中，Field Number`45406`称作 `md5HexStr` 值（32位小写），以下称为 ``{MD5}``,**所需格式为32位大写**
 
 将目标文件夹名与 `{MD5}` 拼接，格式：
 ```

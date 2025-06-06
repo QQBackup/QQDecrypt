@@ -20,9 +20,9 @@ order: 1
 |40011 | int | msgType | 消息类型，详见[下表](#_40011部分值信息解读) |
 |40012 | int | subMsgType | pb消息类型，详见[下表](#_40012部分值信息解读) |
 |40013 | int | sendType | 发送标志，本机发送的消息为1，其他客户端发送的为2，别人发的消息为0 ，转发消息为5，在已退出或被封禁的消息中为当日整点时间戳 |
-|40020 | str | senderUid | nt_uid, 对应  nt_uid_mapping_table|
-|40021 | str | peerUid | QQ群号 |
-|40027 | int | peerUin | 群号 |
+|40020 | str | senderuid | nt_uid, 对应  nt_uid_mapping_table|
+|40021 | str | peeruid | 会话ID |
+|40027 | int | peeruin | 会话ID |
 |40041 | int | sendStatus | 发送状态，2为成功，0为发送被阻止（如不是对方好友），1为尚未发送成功（比如网络问题），3为消息被和谐 |
 |40050 | int | msgTime | 发送消息时的完整时间戳，UTC+8：00 |
 |40090 | str | sendMemberName | 发送者群名片，旧版 QQ  迁移数据中格式为 `name(12345)` 或 `name<i@example.com>`， QQNT 中为群名片 |
