@@ -365,7 +365,9 @@ amr语音文件消息：6，0
 | 10   | arkElement            | 卡片消息             |
 | 11   | marketFaceElement     | 商城表情             |
 | 14   | markdownElement       | markdown消息         |
+| 16   | -                     | XML消息              |
 | 17   | inlineKeyboardElement | markdown按钮消息     |
+| 21   | avRecordElement       | 通话消息             |
 | 27   | faceBubbleElement     | 弹射表情包           |
 | 28   | shareLocationElement  | 位置共享             |
 
