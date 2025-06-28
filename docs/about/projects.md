@@ -15,10 +15,10 @@ prev: false
 
 - 若提交的项目非**GitHub仓库**，请尽量用以下示例格式提交申请，以方便后续整理
 ```plaintext
-name：QQDecrypt （项目名称）
-desc：QQ 聊天数据库解密 （项目描述）
+项目名称：QQDecrypt
+项目描述：QQ 聊天数据库解密
 License: CC BY-NC-SA 4.0 （开源协议）
-website：https://github.com/QQBackup/QQDecrypt （仓库链接）
+项目链接：https://github.com/QQBackup/QQDecrypt 
 ```
 
 - 申请一般会在周末处理
@@ -134,3 +134,15 @@ License： unknown
 收录时间： 2025-03-22
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/EndsOculus/QQ-Chat-Intimacy-Analyzer)
+
+### QQRootFastDecrypt
+
+项目地址： [https://github.com/miniyu157/QQRootFastDecrypt](https://github.com/miniyu157/QQRootFastDecrypt)
+
+项目描述：针对于已 root 安卓设备的快捷导出 QQ 聊天记录的脚本
+
+License: MIT License
+
+收录时间：2025-06-28
+
+![GitHub last commit](https://img.shields.io/github/last-commit/miniyu157/QQRootFastDecrypt)
