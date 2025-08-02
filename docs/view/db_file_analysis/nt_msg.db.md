@@ -27,7 +27,7 @@ order: 1
 |40050 | int | msgTime | 发送消息时的完整时间戳，UTC+8：00 |
 |40090 | str | sendMemberName | 发送者群名片，旧版 QQ  迁移数据中格式为 `name(12345)` 或 `name<i@example.com>`， QQNT 中为群名片 |
 |40093 | str | sendNickName | 发送者昵称，旧版 QQ  此字段为空，QQNT 中未设置群名片时才有此字段 |
-|40080 | <span style="color:blue;">protobuf</span> | 聊天消息，最为复杂 | 尚未解析完|
+|40800 | <span style="color:blue;">protobuf</span> | 聊天消息，最为复杂 | 尚未解析完|
 |40900 | <span style="color:blue;">protobuf</span> | 不同情况下存在不一样的数据（以列40011为区分） | 值为8时，列40900存贮转发聊天的缓存<br />值为9时，列40900存贮引用的消息|
 |40005 | int | 只知道自己发的消息一定概率存在数值 | 正常情况为0|
 |40058 | int | 当日 0 时整的时间戳格式 | 时区为 GMT+0800|

@@ -12,14 +12,13 @@ import {
   VPTeamPageTitle,
   VPTeamMembers
 } from 'vitepress/theme'
-
 // 定义成员信息
 const members = [
   {
     avatar: "/head/Young-Lord.jpg",
     name: "Young Lord",
     title: "开发者",
-    desc: "高考，所有项目2025年8月前不维护。愿意接手请联系下方邮箱。",
+    desc: "THE END IS NEVER THE END",
     links: [
       { icon: 'github', link: "https://github.com/Young-Lord" }
     ]
@@ -37,7 +36,7 @@ const members = [
     avatar: "/head/shenjackyuanjie.jpg",
     name: "Shen Jack",
     title: "开发者",
-    desc: "happy lazy |HWS with me |要寄了(不是) 2025年8月之前不保证任何项目维护（你知道的，高考）",
+    desc: "happy lazy | HWS with me",
     links: [
       { icon: 'github', link: "https://github.com/shenjackyuanjie" }
     ]
@@ -119,7 +118,7 @@ const contributors = [
       { icon: 'github', link: "https://github.com/Wenz-jam" }
     ]
   },
-  
+
   {
     avatar: "https://ooo.0x0.ooo/2025/01/04/OEHG9B.jpg",
     name: "Dao1023",
@@ -139,7 +138,27 @@ const contributors = [
       { icon: 'github', link: "https://github.com/DisaWdcba" }
     ]
   },  
-  
+
+  {
+    avatar: "https://ooo.0x0.ooo/2025/08/02/Of5O7S.png",
+    name: "miniyu157",
+    title: "贡献者",
+    desc: '<a href="https://github.com/QQBackup/QQDecrypt/issues/3" target="_blank">issues #3</a>:投稿社区项目<a href="https://github.com/miniyu157/QQRootFastDecrypt" target="_blank">QQRootFastDecrypt</a>',
+    links: [
+      { icon: 'github', link: "https://github.com/miniyu157" }
+    ]
+  },  
+
+  {
+    avatar: "https://ooo.0x0.ooo/2025/08/02/Of5aLN.png",
+    name: "C6H5FJokey",
+    title: "贡献者",
+    desc: '<a href="https://github.com/QQBackup/QQDecrypt/issues/4" target="_blank">issues #4</a>:帮助指出文档错误',
+    links: [
+      { icon: 'github', link: "https://github.com/C6H5FJokey" }
+    ]
+  },  
+
 ]
 </script>
 
@@ -153,7 +172,7 @@ const contributors = [
       若需要修改/增删信息可在仓库发起 PR 或issues
     </template>
   </VPTeamPageTitle>
-  
+
   <VPTeamMembers :members="members" />
 
   <VPTeamPageTitle>
@@ -164,6 +183,6 @@ const contributors = [
       这些成员为项目做出了贡献
     </template>
   </VPTeamPageTitle>
-  
+
   <VPTeamMembers :members="contributors" />
 </VPTeamPage>
