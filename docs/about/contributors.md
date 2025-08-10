@@ -159,6 +159,16 @@ const contributors = [
     ]
   },  
 
+  {
+    avatar: "https://ooo.0x0.ooo/2025/08/10/OfJZE1.png",
+    name: "star-picker",
+    title: "贡献者",
+    desc: '<a href="https://github.com/QQBackup/QQDecrypt/issues/5" target="_blank">issues #5</a>:投稿社区项目<a href="https://github.com/star-picker/QQNT-Database-Export-Tool" target="_blank">QQNT-Database-Export-Tool</a>',
+    links: [
+      { icon: 'github', link: "https://github.com/star-picker" }
+    ]
+  },  
+
 ]
 </script>
 

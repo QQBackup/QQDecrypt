@@ -146,3 +146,16 @@ License: MIT License
 收录时间：2025-06-28
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/miniyu157/QQRootFastDecrypt)
+
+### QQNT-Database-Export-Tool
+
+项目地址：[https://github.com/star-picker/QQNT-Database-Export-Tool](https://github.com/star-picker/QQNT-Database-Export-Tool)
+
+项目描述：一个基于 Python 的工具，用于将已解密的 QQNT 数据库中的聊天记录导出
+
+License: AGPL-3.0 License
+
+收录时间：2025-08-10
+
+![GitHub last commit](https://img.shields.io/github/last-commit/star-picker/QQNT-Database-Export-Tool)
+
