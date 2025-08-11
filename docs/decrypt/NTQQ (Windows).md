@@ -4,6 +4,30 @@ order: 3
 ---
 
 # NTQQ (Windows)
+
+## 使用Python脚本
+
+下载脚本<a href="/files/windows_ntqq_key.py" download>windows_ntqq_key.py</a>，或在[网站](https://pan.aaqwq.top/QQDecrypt/windows_ntqq_key.exe)下载编译版本
+
+
+
+先退出QQ，运行脚本，然后运行登录QQ获取密钥
+
+>  [!WARNING]  注意
+> 此方法只适用于已被适配的版本，具体可在[QQ_Offset.json](/files/QQ_Offset.json)中查看
+
+> [!TIP] 社区共建
+> 
+> 我们期待社区成员共同分享各版本的基址信息，便于后续获取密钥。如果你有兴趣参与，请按照以下方式投稿：
+> 
+> 按照[IDA分析](NTQQ%20(Windows).md#找到数据库-passphrase)走到步骤2，向上翻找到偏移地址
+> 
+> 示例，QQ（9.9.20.37625）偏移地址为0x20A6E
+> 
+> ![>](/img/wrapper_node_offset.png)
+> 
+>找到后，请发送版本号和偏移地址（并配图）到 issues 或邮件至 docs@aaqwq.top 。
+
 ## IDA分析
 
 [QQ NT Windows 数据库解密+图片/文件清理](https://github.com/Mythologyli/qq-nt-db)：本仓库使用 IDA debugger 完成了逆向分析到解密的全过程，并实现了图片与文件清理。
@@ -24,7 +48,7 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 ### 找到数据库 `passphrase`
 
-1. 解压IDA压缩包，双击打开 `ida64.exe` ，选择 `new` , 在弹出的资源管理器界面中定位到 QQNT 安装目录下的 `./versions/{version}/resources/app`文件夹，其中 `{version}` 为 QQNT 的版本号。在右下角过滤器中选择全部文件，单击 `wrapper.node `文件，并点击右下角的 "Open" 按钮。
+1. 解压IDA压缩包，双击打开 `ida64.exe` ，选择 `new` , 在弹出的资源管理器界面中定位到 QQNT 安装目录下的 `./versions/{version}/resources/app`文件夹，其中 `{version}` 为 QQNT 的版本号。在右下角过滤器中选择全部文件，单击 `wrapper.node`文件，并点击右下角的 "Open" 按钮。
 ![](/img/mobyw_ida_0.png)
 >[!note] wrapper.node文件路径说明
 早期 Windows QQ_NT 版本 `wrapper.node` 文件位于 `./resources/app/versions/{version}` 文件夹中
@@ -42,7 +66,7 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 2. 在 IDA View-A 标签中，单击 `nt_sqlite3_key_v2` 的名称 `aNtSqlite3KeyV2`，按快捷键 <kbd>X</kbd> 打开交叉引用窗口。双击第一条结果，转到引用位置。
     ![](/img/mobyw_ida_4.png)
-或者右键此处点击`Jump to xref to operand..`
+    或者右键此处点击`Jump to xref to operand..`
     ![](/img/Myth2.png)    
     JumpOpXref 后发现在    
     ![](/img/Myth3.png)
@@ -50,11 +74,10 @@ QQ NT Windows 数据库解密+图片/文件清理
 3. 按下 <kbd>F5</kbd> 反编译此函数, 如果有弹出窗口点击 "Yes"。等待反编译完成。单击引用语句的左侧蓝色圆点添加断点。
     ![](/img/Myth4.png)
     
-
 4. 退出 QQ 并重新打开，但不要登录。在上端工具栏右侧选择**Local Windows debugger**
    ![](/img/debug_windows.png)
-在 IDA 中点击顶部导航栏 "Debugger" 中的 "Attach to process..." 菜单项, 从列表最后开始找到第一个 `QQ.exe` 进程，双击打开。
-![](/img/Attach_to_process.png)
+   在 IDA 中点击顶部导航栏 "Debugger" 中的 "Attach to process..." 菜单项, 从列表最后开始找到第一个 `QQ.exe` 进程，双击打开。
+   ![](/img/Attach_to_process.png)
 >如果等待附加进程时QQ已经无响应了（卡在登录界面无法点击），等待加载完成后按快捷键 <kbd>F9</kbd> 继续运行。
 
 点击登录 QQ，此时成功在断点处停下，打开一个 Locals 视图(Debugger->Debugger windows->Locals)查看参数的值

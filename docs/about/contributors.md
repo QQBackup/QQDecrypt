@@ -169,6 +169,16 @@ const contributors = [
     ]
   },  
 
+  {
+    avatar: "https://ooo.0x0.ooo/2025/08/11/OfPP4p.png",
+    name: "r4inb00w",
+    title: "贡献者",
+    desc: '为 NTQQ (Windows) 解密方法提供了参考',
+    links: [
+      { icon: 'github', link: "https://github.com/r4inb00w" }
+    ]
+  },  
+
 ]
 </script>
 
