@@ -139,7 +139,6 @@ python android_get_key.py 8.9.58
 - QQ 版本是否一致
 
 接下来，可以确认命令行是否给出数据库密钥（以`pKey`显示）。
-![1](https://ooo.0x0.ooo/2024/10/05/O488h1.png)
 
 ### 打开数据库
 

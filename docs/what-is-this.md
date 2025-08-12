@@ -3,7 +3,7 @@ layout: doc
 title: 网站说明
 next:
   text: '社区项目'
-  link: '/about/Projects'
+  link: '/about/projects'
 hidesidebar: true
 ---
 
