@@ -74,6 +74,11 @@
         "contributor": "r4inb00w",
         "timestamp": "2025/08/11"
     },
+    "9.9.19-34362": {
+        "offsets": ["0x27AAD90", ""],
+        "contributor": "YisRime",
+        "timestamp": "2025/08/17"
+    },    
     "9.9.19.34740": {
         "offsets": ["0x27AD3F0", "0x5B52891"],
         "contributor": "r4inb00w",
@@ -103,5 +108,10 @@
         "offsets": ["0x20A6E10", ""],
         "contributor": "shenapex",
         "timestamp": "2025/08/11"
+    },
+    "9.9.21.38503": {
+        "offsets": ["0x20C5BF0", ""],
+        "contributor": "shenapex",
+        "timestamp": "2025/08/17"
     }
 }
