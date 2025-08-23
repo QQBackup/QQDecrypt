@@ -15,9 +15,18 @@ order: 6
 
 在 iOS 设备上操作
 
-1. Cydia / Sileo / Zebra 添加 Frida 官方软件源 `https://build.frida.re`
+~1. Cydia / Sileo / Zebra 添加 Frida 官方软件源 `https://build.frida.re`~
 
-2. 安装 `Frida` 包
+> [!Important] 重要提醒
+> 自 Frida 17.0.0 开始，`Module.findBaseAddress()` 被移除， \
+> 因此安装的是老版本，否则执行脚本将报错 `TypeError: not a function` \
+> 更新日志：https://frida.re/news/2025/05/17/frida-17-0-0-released/
+
+
+1. 前往 [Frida Release 16.7.19](https://github.com/frida/frida/releases/tag/16.7.19) 下载 Frida
+    - 下载 `frida_17.2.17_iphoneos-arm64.deb`（有根越狱则 `frida_17.2.17_iphoneos-arm.deb`）
+
+2. 用 Cydia / Sileo / Zebra 安装上一步下载好的安装包
 
 3. 启动 Frida 服务器
 
@@ -48,9 +57,14 @@ frida-server --listen='0.0.0.0:27043' -v
 
 1. App 脱壳，可参考[下一章节](#app-脱壳)（需要得到完整的 IPA 安装包）
 
+> [!Important] 重要提醒
+> 由于自 Frida 17.0.0 开始，`Module.findBaseAddress()` 被移除， \
+> 因此安装的是老版本，否则执行脚本将报错 `TypeError: not a function` \
+> 更新日志：https://frida.re/news/2025/05/17/frida-17-0-0-released/
+
 2. 下载 Frida Gadget 动态链接库 **`frida-gadget-x.x.x-ios-universal.dylib.gz`** \
 并解压得到 `frida-gadget-ios-universal.dylib`
-   - <https://github.com/frida/frida/releases>
+   - [Frida Release 16.7.19](https://github.com/frida/frida/releases/tag/16.7.19)
 
 3. 注入 Frida Gadget 动态链接库，有两种方法，Sideloadly 更方便且支持 Windows，命令行方式 optool 需要在 macOS 环境下进行
 
@@ -143,7 +157,11 @@ Writing executable to Payload/QQ.app/QQ...
 
 1. 用例如 IDA 的反编译工具反编译脱壳得到的 Mach-O 二进制主程序
 
-2. 搜索二进制片段 `sqlite3_key_v2`，可以找到日志文本，从而定位到SQLCipher C API 的 `sqlite3_key_v2` 函数在程序中的位置。第三个参数即为数据库密钥，根据传入的其他实参，还能得到更多信息。
+2. 搜索二进制片段 `sqlite3_key_v2`，可以找到日志文本，从而定位到SQLCipher C API 的 `sqlite3_key_v2` 函数在程序中的位置。第三个参数即为数据库密钥，根据传入的其他实参，还能得到更多信息
+    - 右键 - 点击“List cross references to...” 即可查找引用
+
+> [!Note] 注意
+> 如果没有找到引用 `sqlite3_key_v2` 的代码，一般是因为 IDA 尚未解析完整个二进制程序，可以静默等待其处理一段时间后再尝试
 
 ```c
 int sqlite3_key_v2(sqlite3 *db, const char *zDb, const void *pKey, int nKey);
@@ -182,8 +200,10 @@ pipx install frida
 frida --version
 ```
 
-> iOS 上没有编译好的 frida 工具（只有 frida-server），因此需要电脑\
-> 有试过自己编译，但总是会因为 macOS/iOS 的平台判定什么的导致运行失败（
+> [!Important] 重要提醒
+> 同上，由于自 Frida 17.0.0 开始，`Module.findBaseAddress()` 被移除， \
+> 因此安装的是老版本 Frida，包括 PC 上作为客户端的 frida-tools \
+> 更新日志：https://frida.re/news/2025/05/17/frida-17-0-0-released/
 
 2. 下载 [ios_get_key.js](/files/ios_get_key.js)（如果上一步已经下载过了可以跳过）
 
