@@ -5,29 +5,6 @@ order: 3
 
 # NTQQ (Windows)
 
-## 使用Python脚本
-
-下载脚本<a href="/files/windows_ntqq_key.py" download>windows_ntqq_key.py</a>，或在[网站](https://pan.aaqwq.top/QQDecrypt/windows_ntqq_key.exe)下载编译版本
-
-
-
-先退出QQ，运行脚本，然后运行登录QQ获取密钥
-
->  [!WARNING]  注意
-> 此方法只适用于已被适配的版本，具体可在[QQ_Offset.json](/files/QQ_Offset.json)中查看
-
-> [!TIP] 社区共建
-> 
-> 我们期待社区成员共同分享各版本的基址信息，便于后续获取密钥。如果你有兴趣参与，请按照以下方式投稿：
-> 
-> 按照[IDA分析](NTQQ%20(Windows).md#找到数据库-passphrase)走到步骤2，向上翻找到偏移地址
-> 
-> 示例，QQ（9.9.20.37625）偏移地址为0x20A6E
-> 
-> ![>](/img/wrapper_node_offset.png)
-> 
->找到后，请发送版本号和偏移地址（并配图）到 issues 或邮件至 docs@aaqwq.top 。
-
 ## IDA分析
 
 [QQ NT Windows 数据库解密+图片/文件清理](https://github.com/Mythologyli/qq-nt-db)：本仓库使用 IDA debugger 完成了逆向分析到解密的全过程，并实现了图片与文件清理。
@@ -139,6 +116,31 @@ QQ NT Windows 数据库解密+图片/文件清理
    （如果你对如何修改有疑问，可以使用 [msojocs/nt-hook](https://github.com/msojocs/nt-hook/tree/4414f372ee4847be9d91d7436abb7653f8908f91) 中给出的完整脚本。注意，编译此脚本需要你的系统安装有 Node.js 环境，但编译得到的`.js`文件可以直接运行。注意，本仓库最新版本可能不能在 Windows 平台下直接使用，请自行根据 commit 信息找到可用版本（比如超链接给出的版本），或自行更改相关代码。）
 
    PS：有概率你会得到的一个长度为 20 的 key，但那不是我们想要的，可以挂上一个动态调试器来观察 key 对应的具体数据库
+   
+## 使用Python脚本（暂时废弃）   
+::: details (需要帮助)
+
+下载脚本<a href="/files/windows_ntqq_key.py" download>windows_ntqq_key.py</a>，或在[网站](https://pan.aaqwq.top/QQDecrypt/windows_ntqq_key.exe)下载编译版本
+
+先退出QQ，运行脚本，然后运行登录QQ获取密钥
+
+>  [!WARNING]  注意
+> 此方法只适用于已被适配的版本，具体可在[QQ_Offset.json](/files/QQ_Offset.json)中查看
+>
+> **9.9.21.38503**之后的版本**已失效**, 笔者尝试在内存中搜索已知密钥也一无所获，怀疑QQ已修改了机制
+
+> [!TIP] 社区共建
+> 
+> 我们期待社区成员共同分享各版本的基址信息，便于后续获取密钥。如果你有兴趣参与，请按照以下方式投稿：
+> 
+> 按照[IDA分析](NTQQ%20(Windows).md#找到数据库-passphrase)走到步骤2，向上翻找到偏移地址
+> 
+> 示例，QQ（9.9.20.37625）偏移地址为0x20A6E
+> 
+> ![>](/img/wrapper_node_offset.png)
+> 
+>找到后，请发送版本号和偏移地址（并配图）到 issues 。
+:::   
 
 ### 3. 打开数据库
 
