@@ -120,7 +120,7 @@ QQ NT Windows 数据库解密+图片/文件清理
 ## 使用Python脚本（暂时废弃）   
 ::: details (需要帮助)
 
-下载脚本<a href="/files/windows_ntqq_key.py" download>windows_ntqq_key.py</a>，或在[网站](https://pan.aaqwq.top/QQDecrypt/windows_ntqq_key.exe)下载编译版本
+下载脚本<a href="/files/windows_ntqq_key.py" download>windows_ntqq_key.py</a>
 
 先退出QQ，运行脚本，然后运行登录QQ获取密钥
 

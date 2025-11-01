@@ -12,7 +12,7 @@ export default defineConfig({
     plugins: [],
   },
   sitemap: {
-    hostname: 'https://qq.sbcnm.top',
+    hostname: 'https://docs.aaqwq.top',
   },
   markdown: {
     lineNumbers: true,
@@ -46,7 +46,7 @@ export default defineConfig({
           { text: '社区项目', link: '/about/projects' }
         ]
       },
-      { text: '文件', link: 'https://pan.aaqwq.top/' },
+      { text: '文件', link: 'https://github.com/QQBackup/QQDecrypt/tree/main/docs/public/files' },
     ],
     footer: {
       message: ' CC BY-NC-SA 4.0 <a href="/about/LICENSE"> License</a>',
