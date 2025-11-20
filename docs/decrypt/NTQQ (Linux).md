@@ -1,6 +1,6 @@
 ---
 title: NTQQ (Linux)
-order: 5
+order: 6
 ---
 
 # NTQQ (Linux)

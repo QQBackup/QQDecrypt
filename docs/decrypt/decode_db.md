@@ -1,7 +1,7 @@
 ---
 title: NTQQ 解密数据库
 next: false
-order: 10
+order: 11
 ---
 
 # NTQQ 解密数据库
