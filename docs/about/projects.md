@@ -135,7 +135,7 @@ License： unknown
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/EndsOculus/QQ-Chat-Intimacy-Analyzer)
 
-### QQRootFastDecrypt
+### QQRootFastDecrypt（停止更新）
 
 项目地址： [https://github.com/miniyu157/QQRootFastDecrypt](https://github.com/miniyu157/QQRootFastDecrypt)
 
@@ -145,7 +145,7 @@ License: MIT License
 
 收录时间：2025-06-28
 
-![GitHub last commit](https://img.shields.io/github/last-commit/miniyu157/QQRootFastDecrypt)
+![GitHub last commit](https://img.shields.io/badge/repository_was_archived-red)
 
 ### QQNT-Database-Export-Tool
 
@@ -159,3 +159,14 @@ License: AGPL-3.0 License
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/star-picker/QQNT-Database-Export-Tool)
 
+### QQ-DUMP
+
+项目地址: https://github.com/miniyu157/qq-dump
+
+项目描述: 极速的 Android 端 NTQQ 数据库密钥提取、解密及聊天记录导出工具。遵循 KISS 原则与 Unix 哲学, 针对移动端闪存优化 I/O 策略, 最小化读写磨损。支持后台自动更新以保证代码为最新。
+
+License: GPL-3.0
+
+收录时间：2025-12-13
+
+![GitHub last commit](https://img.shields.io/github/last-commit/miniyu157/qq-dump)
