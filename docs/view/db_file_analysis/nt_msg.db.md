@@ -8,6 +8,11 @@ order: 1
 感谢项目[学习笔记 | QQNT 聊天记录导出](https://blog.reincarnatey.net/2024/0707-qqnt-history-export/)
 与[GroupChatAnnualReport](https://github.com/mobyw/GroupChatAnnualReport)
 
+
+> [!TIP] 其他贡献资料
+> GitHub用户[Yumeka](https://github.com/miniyu157)整理出了 c2c_msg_table 中 40800 列的将近 260 个 protobuf 字段。除了一些随机长度的长短字段, 那通常是无意义的
+点击跳转[GitHub仓库](https://github.com/miniyu157/qq-dump/blob/main/chat_export/proto_maps.py)查看更多信息
+
 ## nt_msg.db
 ### `group_msg_table`
 群聊数据 `group_msg_table` 表中的部分列含义如下：
@@ -366,8 +371,8 @@ amr语音文件消息：6，0
 | 16   | -                     | XML消息              |
 | 17   | inlineKeyboardElement | markdown按钮消息     |
 | 21   | avRecordElement       | 通话消息             |
+| 26   | GrayTip_QQZone        | 空间动态提示        |
 | 27   | faceBubbleElement     | 弹射表情包           |
 | 28   | shareLocationElement  | 位置共享             |
-
-
+| 44   | QQBotChat             | 机器人对话           |
 
