@@ -142,6 +142,26 @@ QQ NT Windows 数据库解密+图片/文件清理
 >找到后，请发送版本号和偏移地址（并配图）到 issues 。
 :::   
 
+## 使用 PowerShell 脚本
+
+仅支持 x86-64 架构。
+
+右键开始菜单，选择“终端”或者“Windows PowerShell”。在弹出的窗口输入：
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+irm https://docs.aaqwq.top/files/windows_ntqq_get_key.ps1 | iex
+```
+
+你也可以单独下载<a href="/files/windows_ntqq_get_key.ps1" download>windows_ntqq_get_key.ps1</a>脚本，然后右键点击运行，或者在 PowerShell 中执行：
+
+```powershell
+# 支持的参数
+# -Verbose : 输出详细信息
+# -NoDebugForKey: 只执行静态分析得到关键函数地址，不进行动态调试。
+.\windows_ntqq_get_key.ps1
+```
+
 ### 3. 打开数据库
 
 请参考 [NTQQ 解密数据库](decode_db.md)。
