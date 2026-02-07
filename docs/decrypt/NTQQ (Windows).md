@@ -120,7 +120,7 @@ QQ NT Windows 数据库解密+图片/文件清理
 ## 使用Python脚本（暂时废弃）   
 ::: details (需要帮助)
 
-下载脚本<a href="/files/windows_ntqq_key.py" download>windows_ntqq_key.py</a>
+下载脚本<a href="https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_key.py" download>windows_ntqq_key.py</a>
 
 先退出QQ，运行脚本，然后运行登录QQ获取密钥
 
@@ -153,7 +153,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1 | iex
 ```
 
-你也可以单独下载<a href="/files/windows_ntqq_get_key.ps1" download>windows_ntqq_get_key.ps1</a>脚本，然后右键点击运行，或者在 PowerShell 中执行：
+你也可以单独下载<a href="https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1" download>windows_ntqq_get_key.ps1</a>脚本，然后右键点击运行，或者在 PowerShell 中执行：
 
 ```powershell
 # 支持的参数

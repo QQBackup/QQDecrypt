@@ -59,7 +59,7 @@ order: 6
 
 **由于Python脚本帮我们简化了太多操作，使用非常简单**
 
-下载并找到<a href="/files/linux_qq_get_key.py" download>linux_qq_get_key.py</a>
+下载并找到<a href="https://qqbackup.github.io/QQDecrypt/files/linux_qq_get_key.py" download>linux_qq_get_key.py</a>
 
 打开终端并输入
 

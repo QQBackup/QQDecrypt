@@ -3,7 +3,7 @@
     <img class="not-found-image" src="/icons/404.png" alt="404" />
     <h1 class="title">界面被猫猫吃掉啦</h1>
     <p class="description">这可能是由于内容被移到了别处</p>
-    <a class="home-link" href="/">点我返回主页</a>
+    <a class="home-link" href="https://qqbackup.github.io/QQDecrypt">点我返回主页</a>
   </div>
 </template>
 

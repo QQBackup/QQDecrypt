@@ -10,7 +10,7 @@ hidesidebar: true
 
 <div class="file-list">
   <!-- 文件项开始 -->
-  <a href="/files/android_dump.js" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/android_dump.js" download class="file-item">
     <div class="file-icon">
       <img src="/icons/javascript.svg" alt="JavaScript" />
     </div>
@@ -18,7 +18,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="/files/android_get_backup_key.js" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/android_get_backup_key.js" download class="file-item">
     <div class="file-icon">
       <img src="/icons/javascript.svg" alt="JavaScript" />
     </div>
@@ -26,7 +26,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="/files/android_get_backup_key.py" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/android_get_backup_key.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -34,7 +34,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="/files/android_get_key.py" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/android_get_key.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -42,7 +42,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="/files/android_hook_md5.py" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/android_hook_md5.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -50,7 +50,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="/files/ios_get_key.js" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/ios_get_key.js" download class="file-item">
     <div class="file-icon">
       <img src="/icons/javascript.svg" alt="JavaScript" />
     </div>
@@ -58,7 +58,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="/files/pcqq_DANGER_rekey.py" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/pcqq_DANGER_rekey.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -66,7 +66,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="/files/pcqq_dump.py" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/pcqq_dump.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -74,7 +74,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="/files/pcqq_get_key.py" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/pcqq_get_key.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -82,7 +82,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="/files/pcqq_rekey_to_none.cpp" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/pcqq_rekey_to_none.cpp" download class="file-item">
     <div class="file-icon">
       <img src="/icons/cplusplus.svg" alt="C++" />
     </div>
@@ -90,7 +90,7 @@ hidesidebar: true
     <div class="file-date">2025/04/05 1:01</div>
   </a>
 
-  <a href="/files/linux_qq_get_key.py" download class="file-item">
+  <a href="https://qqbackup.github.io/QQDecrypt/files/linux_qq_get_key.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -116,9 +116,9 @@ hidesidebar: true
   display: flex;
   align-items: center;
   justify-content: space-between;
-  text-decoration: none !important; 
-  color: var(--file-text-color) !important; 
-  font-weight: normal !important; 
+  text-decoration: none !important;
+  color: var(--file-text-color) !important;
+  font-weight: normal !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }

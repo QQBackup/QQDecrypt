@@ -50,8 +50,8 @@ export default defineConfig({
       { text: '文件', link: 'https://github.com/QQBackup/QQDecrypt/tree/main/docs/public/files' },
     ],
     footer: {
-      message: ' CC BY-NC-SA 4.0 <a href="/about/LICENSE"> License</a>',
-      copyright: '<a href="/about/碎碎念">Copyright © 2026 </a>',
+      message: ' CC BY-NC-SA 4.0 <a href="https://qqbackup.github.io/QQDecrypt/about/LICENSE"> License</a>',
+      copyright: '<a href="https://qqbackup.github.io/QQDecrypt/about/碎碎念">Copyright © 2026 </a>',
     },
     editLink: {
       pattern: 'https://github.com/QQBackup/QQDecrypt/edit/main/docs/:path',
