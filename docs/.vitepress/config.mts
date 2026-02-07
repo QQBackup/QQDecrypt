@@ -67,8 +67,7 @@ export default defineConfig({
     sidebarMenuLabel: '菜单',
     returnToTopLabel: '回到顶部',
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/QQBackup/QQDecrypt' }, 
-      { icon: 'telegram', link: 'https://t.me/+0mPSrIRky-hjNDAx' },   
+      { icon: 'github', link: 'https://github.com/QQBackup/QQDecrypt' },   
     ],
     outline: {
       level: [2, 3],

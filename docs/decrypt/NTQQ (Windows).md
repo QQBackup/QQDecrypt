@@ -115,8 +115,28 @@ QQ NT Windows 数据库解密+图片/文件清理
 
    （如果你对如何修改有疑问，可以使用 [msojocs/nt-hook](https://github.com/msojocs/nt-hook/tree/4414f372ee4847be9d91d7436abb7653f8908f91) 中给出的完整脚本。注意，编译此脚本需要你的系统安装有 Node.js 环境，但编译得到的`.js`文件可以直接运行。注意，本仓库最新版本可能不能在 Windows 平台下直接使用，请自行根据 commit 信息找到可用版本（比如超链接给出的版本），或自行更改相关代码。）
 
-   PS：有概率你会得到的一个长度为 20 的 key，但那不是我们想要的，可以挂上一个动态调试器来观察 key 对应的具体数据库
-   
+   PS：有概率你会得到的一个长度为 20 的 key，但那不是我们想要的，可以挂上一个动态调试器来观察 key 对应的具体数据库   
+
+## 使用 PowerShell 脚本
+
+仅支持 x86-64 架构。
+
+右键开始菜单，选择“终端”或者“Windows PowerShell”。在弹出的窗口输入：
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+irm https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1 | iex
+```
+
+你也可以单独下载<a href="https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1" download>windows_ntqq_get_key.ps1</a>脚本，然后右键点击运行，或者在 PowerShell 中执行：
+
+```powershell
+# 支持的参数
+# -Verbose : 输出详细信息
+# -NoDebugForKey: 只执行静态分析得到关键函数地址，不进行动态调试。
+.\windows_ntqq_get_key.ps1
+```
+
 ## 使用Python脚本（暂时废弃）   
 ::: details (需要帮助)
 
@@ -141,26 +161,6 @@ QQ NT Windows 数据库解密+图片/文件清理
 > 
 >找到后，请发送版本号和偏移地址（并配图）到 issues 。
 :::   
-
-## 使用 PowerShell 脚本
-
-仅支持 x86-64 架构。
-
-右键开始菜单，选择“终端”或者“Windows PowerShell”。在弹出的窗口输入：
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1 | iex
-```
-
-你也可以单独下载<a href="https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1" download>windows_ntqq_get_key.ps1</a>脚本，然后右键点击运行，或者在 PowerShell 中执行：
-
-```powershell
-# 支持的参数
-# -Verbose : 输出详细信息
-# -NoDebugForKey: 只执行静态分析得到关键函数地址，不进行动态调试。
-.\windows_ntqq_get_key.ps1
-```
 
 ### 3. 打开数据库
 
