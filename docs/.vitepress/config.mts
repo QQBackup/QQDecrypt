@@ -7,7 +7,7 @@ export default defineConfig({
   description: '解密QQ聊天数据库',
   lang: 'zh-CN',
   head: [
-    ['link', { rel: 'icon', href: '/icons/favicon.ico' }],
+    ['link', { rel: 'icon', href: 'https://qqbackup.github.io/QQDecrypt/icons/favicon.ico' }],
   ],
   vite: {
     plugins: [],
