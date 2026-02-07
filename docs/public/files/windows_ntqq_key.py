@@ -13,7 +13,7 @@ import winreg
 
 PROCESS_ALL_ACCESS = 0x1F0FFF
 PROCESS_NAME = "QQ.exe"
-OFFSET_URL = "https://docs.aaqwq.top/files/QQ_Offset.json"
+OFFSET_URL = "https://qqbackup.github.io/QQDecrypt/files/QQ_Offset.json"
 
 session = None
 offset_data = {}

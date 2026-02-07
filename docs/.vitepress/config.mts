@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress';
 import { generateSidebar } from 'vitepress-sidebar';
 
 export default defineConfig({
+  base: '/QQDecrypt/',
   title: 'QQDecrypt',
   description: '解密QQ聊天数据库',
   lang: 'zh-CN',
@@ -12,7 +13,7 @@ export default defineConfig({
     plugins: [],
   },
   sitemap: {
-    hostname: 'https://docs.aaqwq.top',
+    hostname: 'https://qqbackup.github.io/QQDecrypt',
   },
   markdown: {
     lineNumbers: true,
@@ -50,7 +51,7 @@ export default defineConfig({
     ],
     footer: {
       message: ' CC BY-NC-SA 4.0 <a href="/about/LICENSE"> License</a>',
-      copyright: '<a href="/about/碎碎念">Copyright © 2025 </a>',
+      copyright: '<a href="/about/碎碎念">Copyright © 2026 </a>',
     },
     editLink: {
       pattern: 'https://github.com/QQBackup/QQDecrypt/edit/main/docs/:path',
