@@ -10,5 +10,5 @@ lastUpdated: false
 import { useRouter } from 'vitepress'
 
 const router = useRouter()
-router.go('/about/Projects') 
+router.go('/QQDecrypt/about/Projects') 
 </script>
