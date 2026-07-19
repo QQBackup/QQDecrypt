@@ -44,7 +44,7 @@ order: 1
 |40801 | <span style="color:blue;">protobuf</span> | 无法理解的protobuf | |
 |40030 | int | 群号 | QQNT 保存的群号|
 |40033 | int | 发送者 QQ 号 | QQNT 保存的发送者 QQ 号|
-|40062 | <span style="color:blue;">protobuf</span> | 存贮详细表态信息（包括表态表情和表态数量） | 其数字与[QQBOT](https://bot.q.qq.com/wiki/develop/api-v2/openapi/emoji/model.html)中表情编号对应（超级表情不在此列表中）|
+|40062 | <span style="color:blue;">protobuf</span> | 存贮详细表态信息（包括表态表情和表态数量） | 其数字与[QQBOT](https://bot.q.qq.com/wiki/develop/api-v2/openapi/emoji/model.html)中表情编号对应（超级表情不在此列表中），protobuf 结构详见[下表](#_40062值解读-贴表情)|
 |40083 | int | 表态表情数量总和 | |
 |40084 | int | 表态表情数量总和 | |
 
@@ -292,6 +292,20 @@ amr语音文件消息：6，0
 为6代表有人回复自己，为2代表他人回复他人
 
 当40600（16进制）值为`c2e91304a8d114****`时（不唯一），为撤回消息
+
+#### 40062值解读（贴表情）
+
+仅群聊 `group_msg_table` 存在此列，记录该条消息被群成员「贴」的表情（表态）信息。整列为一段 protobuf，外层为可重复字段 `40062`，每个成员贴的每一种表情对应一个子结构，字段如下：
+
+| Field Number | 类型   | 含义         | 说明                                                         |
+| ------------ | ------ | ------------ | ------------------------------------------------------------ |
+| 48301        | string | 表情ID       | 与[QQBOT 表情编号](https://bot.q.qq.com/wiki/develop/api-v2/openapi/emoji/model.html)对应；小黄脸系表情为数字编号，emoji 系表情为对应 Unicode 码点（超级表情不在此列表中） |
+| 48302        | int    | 表态标志     | 疑似标记该表情是否处于已表态状态                             |
+| 48303        | int    | 表态数量     | 贴该表情的人数总和                                           |
+| 48304        | bool   | 是否本人所贴 | `true` 表示本账号也贴了该表情                               |
+
+> [!TIP]
+> 表格中的列 `40083`、`40084`（表态表情数量总和）与本列的 `48303` 数量相呼应，为便于统计而冗余存贮的整型值。
 
 ## Protobuf 消息格式
 
