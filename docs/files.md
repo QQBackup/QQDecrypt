@@ -10,7 +10,7 @@ hidesidebar: true
 
 <div class="file-list">
   <!-- 文件项开始 -->
-  <a href="https://qqbackup.github.io/QQDecrypt/files/android_dump.js" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/android/android_dump.js" download class="file-item">
     <div class="file-icon">
       <img src="/icons/javascript.svg" alt="JavaScript" />
     </div>
@@ -18,7 +18,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/android_get_backup_key.js" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/android/android_get_backup_key.js" download class="file-item">
     <div class="file-icon">
       <img src="/icons/javascript.svg" alt="JavaScript" />
     </div>
@@ -26,7 +26,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/android_get_backup_key.py" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/android/android_get_backup_key.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -34,7 +34,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/android_get_key.py" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/android/android_get_key.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -42,7 +42,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/android_hook_md5.py" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/android/android_hook_md5.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -50,7 +50,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/ios_get_key.js" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/ios/ios_get_key.js" download class="file-item">
     <div class="file-icon">
       <img src="/icons/javascript.svg" alt="JavaScript" />
     </div>
@@ -58,7 +58,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/pcqq_DANGER_rekey.py" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/windows/pcqq/pcqq_DANGER_rekey.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -66,7 +66,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/pcqq_dump.py" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/windows/pcqq/pcqq_dump.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -74,7 +74,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/pcqq_get_key.py" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/windows/pcqq/pcqq_get_key.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -82,7 +82,7 @@ hidesidebar: true
     <div class="file-date">2024/08/18 12:40</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/pcqq_rekey_to_none.cpp" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/windows/pcqq/pcqq_rekey_to_none.cpp" download class="file-item">
     <div class="file-icon">
       <img src="/icons/cplusplus.svg" alt="C++" />
     </div>
@@ -90,7 +90,7 @@ hidesidebar: true
     <div class="file-date">2025/04/05 1:01</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/linux_qq_get_key.py" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/linux/linux_qq_get_key.py" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="Python" />
     </div>
@@ -98,7 +98,7 @@ hidesidebar: true
     <div class="file-date">2024/11/9 19:48</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/qqnt-dbkey-hook.js" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/linux/qqnt-dbkey-hook.js" download class="file-item">
     <div class="file-icon">
       <img src="/icons/javascript.svg" alt="JavaScript" />
     </div>
@@ -106,7 +106,7 @@ hidesidebar: true
     <div class="file-date">研究配套脚本</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1" download class="file-item">
+  <a href="https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/windows/ntqq/windows_ntqq_get_key.ps1" download class="file-item">
     <div class="file-icon">
       <img src="/icons/python.svg" alt="PowerShell" />
     </div>
@@ -114,21 +114,6 @@ hidesidebar: true
     <div class="file-date">Windows NTQQ</div>
   </a>
 
-  <a href="https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_key.py" download class="file-item">
-    <div class="file-icon">
-      <img src="/icons/python.svg" alt="Python" />
-    </div>
-    <div class="file-name">windows_ntqq_key.py</div>
-    <div class="file-date">Windows NTQQ</div>
-  </a>
-
-  <a href="https://qqbackup.github.io/QQDecrypt/files/QQ_Offset.json" download class="file-item">
-    <div class="file-icon">
-      <img src="/icons/python.svg" alt="JSON" />
-    </div>
-    <div class="file-name">QQ_Offset.json</div>
-    <div class="file-date">Windows NTQQ 偏移量</div>
-  </a>
   <!-- 文件项结束 -->
 </div>
 

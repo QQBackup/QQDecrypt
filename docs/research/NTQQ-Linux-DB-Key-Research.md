@@ -17,7 +17,7 @@ order: 1
 >
 > **目标**：理解 SQLCipher 明文密码从何而来，评估纯离线解密可行性。  
 >
-> **配套工具**：[qqnt-dbkey-hook.js](/files/qqnt-dbkey-hook.js)（Frida 取证脚本，**不含任何真实密钥**）
+> **配套工具**：[qqnt-dbkey-hook.js](https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/linux/qqnt-dbkey-hook.js)（Frida 取证脚本，**不含任何真实密钥**）
 
 ---
 
@@ -242,7 +242,7 @@ __int64 HexDecode(__int64 out_smallstr, const char *hex_ptr, size_t hex_ascii_le
 
 ## 8. Frida 取证脚本
 
-脚本路径：**[qqnt-dbkey-hook.js](/files/qqnt-dbkey-hook.js)**
+脚本路径：**[qqnt-dbkey-hook.js](https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/linux/qqnt-dbkey-hook.js)**
 
 设计原则：
 

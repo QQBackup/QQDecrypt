@@ -140,9 +140,9 @@ Writing executable to Payload/QQ.app/QQ...
 
 ## II 反编译
 
-如果你的 QQ 版本和脚本 [ios_get_key.js](/files/ios_get_key.js) 内注释的版本一致，可直接跳过进入下一步
+如果你的 QQ 版本和脚本 [ios_get_key.js](https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/ios/ios_get_key.js) 内注释的版本一致，可直接跳过进入下一步
 
-如果 QQ 版本不一致，但下一步的脚本 [ios_get_key.js](/files/ios_get_key.js) 可以正常使用，也可以忽略本节
+如果 QQ 版本不一致，但下一步的脚本 [ios_get_key.js](https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/ios/ios_get_key.js) 可以正常使用，也可以忽略本节
 
 ### App 脱壳
 
@@ -180,7 +180,7 @@ int sqlite3_key_v2(sqlite3 *db, const char *zDb, const void *pKey, int nKey);
 > <https://github.com/sqlcipher/sqlcipher/blob/2c672e7dd1f3dee4aa1af0b5bf29092db4b10f78/src/crypto.c#L919-L928>
 
 得到目标函数的位置为 `000000010DA1BFB4`。由于IDA基址设为了 `0000000100000000`，两者相减，\
-**得到偏移量为 `0xDA1BFB4`，将其设置为脚本文件 [ios_get_key.js](/files/ios_get_key.js)  中的 `SQLLiteKeyV2Offset` 的值**。
+**得到偏移量为 `0xDA1BFB4`，将其设置为脚本文件 [ios_get_key.js](https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/ios/ios_get_key.js)  中的 `SQLLiteKeyV2Offset` 的值**。
 
 ```javascript
 // ios_get_key.js
@@ -215,7 +215,7 @@ frida --version
 > 因此安装的是老版本 Frida，包括 PC 上作为客户端的 frida-tools \
 > 更新日志：https://frida.re/news/2025/05/17/frida-17-0-0-released/
 
-2. 下载 [ios_get_key.js](/files/ios_get_key.js)（如果上一步已经下载过了可以跳过）
+2. 下载 [ios_get_key.js](https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/ios/ios_get_key.js)（如果上一步已经下载过了可以跳过）
 
 3. iOS 设备打开 QQ App
 
