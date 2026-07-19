@@ -3,7 +3,7 @@ import { generateSidebar } from 'vitepress-sidebar';
 
 const buildDate = new Date(process.env.DOCS_LAST_UPDATED ?? Date.now());
 const lastUpdated = Number.isNaN(buildDate.getTime())
-  ? '未知'
+  ? new Date().toISOString()
   : buildDate.toISOString();
 
 const generatedSidebar = generateSidebar({
