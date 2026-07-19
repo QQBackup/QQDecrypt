@@ -4,36 +4,38 @@ prev: false
 order: 1
 ---
 
+## 这份教程是什么
 
-> [!WARNING] 警告
-> 教程中可能对数据库进行不可逆操作，请注意备份数据库文件
+本站是一份面向跨平台 QQ 聊天数据库解密的参考资料，内容基于开源项目 [qq-win-db-key](https://github.com/QQBackup/qq-win-db-key) 构建。教程并非面向完全没有基础的使用者，而是假设读者具备一定的逆向分析、动态调试和脚本修改能力。
+
+教程中可能会提供完整脚本和较详细的操作步骤，但不同 QQ 版本、操作系统和本地环境之间可能存在差异。使用过程中仍需要具备自行修改和排查问题的能力。如果对 Python 或相关工具不熟悉，建议先通过 B 站、博客等资料学习 Python 基础。
+
+特别感谢原作者 [Young-Lord](https://github.com/Young-Lord) 以及其他开发者在相关项目中的开拓和维护；本站未来也会逐步扩展数据库解析方案。
+
+## 使用前请阅读：风险与准备
+
+> [!WARNING] 请务必注意
 >
->尽管已经经过实验验证可用，本仓库中给出的指引**可能**有**破坏聊天记录**或**导致封号**的风险，强烈建议在自行审查代码、评估>风险后使用。
->如果您确实要使用，**建议**进行以下操作，以减小风险：
->- 先将聊天记录使用其他更保险的方式**导出**，比如 PCQQ (Windows) 自带的“导出消息记录（`mht`格式）
->- 做好**备份**，比如 安卓端使用系统的备份功能、电脑端全盘备份
->- 将聊天记录使用官方的“**迁移聊天记录**”功能，转移到不常用设备或虚拟机后操作
->- 尽可能选择**不注入 QQ 进程**、**不对 QQ 安装包进行修改**的方式（如：不使用 QAuxiliary；不使用 Frida；不使用 gdb；使用安卓系统自带的备份功能，导出数据库后提取）
+> 教程中的部分操作可能会修改或破坏聊天数据库，甚至导致聊天记录无法恢复。无论教程是否标注“已验证”，都请先备份数据库文件，并在使用前自行审查代码、评估风险。
 >
-## 说明
-本仓库**并非面向纯小白的教程**，而是在**假设您已经有一定逆向、动态调试等知识**的前提下提供的参考资料。尽管开发者可能会为了便捷提供详细教程或完整脚本，您也应当**有一定自行修改、调试的能力**。另外，请在提问前先**完整阅读** [qq-win-db-key](https://github.com/QQBackup/qq-win-db-key/issues) 与 [QQ-History-Backup](https://github.com/QQBackup/QQ-History-Backup/issues) 的**所有历史issue**尝试找到答案。如果您无论怎么改都跑不起来，请自由开 [discussion](https://github.com/orgs/QQBackup/discussions)。（当然如果您感觉教程太烂了或者愿意补充，也可以直接开 PR，记得`@QQBackup`以通知维护者 merge）
+> 建议在执行操作前：
+>
+> - 先用更保险的方式导出聊天记录，例如使用 PCQQ（Windows）自带的“导出消息记录（`mht` 格式）”功能。
+> - 备份原始数据：Android 设备可以使用系统备份功能，电脑端则建议备份相关文件或整个磁盘。
+> - 使用 QQ 官方的“迁移聊天记录”功能，将数据转移到不常用的设备或虚拟机后再进行实验。
+> - 优先选择不注入 QQ 进程、不修改 QQ 安装包的方案，例如使用 Android 系统备份功能导出数据库后再提取；尽量避免使用 QAuxiliary、Frida 或 GDB 等可能改变运行环境的方式。
 
-**如果你不太懂怎么用**：建议自行在B站、各个博客内寻找python入门教程。
+本项目中的操作也可能带来封号风险。请在充分了解脚本行为和后果后再使用，并为不可逆操作预留可恢复的备份。
 
-本项目仅供学习交流使用，严禁用于任何违反中国大陆法律法规、您所在地区法律法规、[QQ软件许可及服务协议](https://rule.tencent.com/rule/preview/46a15f24-e42c-4cb6-a308-2347139b1201)的行为，开发者不承担任何相关行为导致的直接或间接责任。
+## 教程流程
 
-本项目不对生成内容的完整性、准确性作任何担保，生成的一切内容**不可用于法律取证**，您不应当将其用于学习与交流外的任何用途。
+整个流程分为三个阶段：
 
-本项目基本遵循`LICENSE`里的开源协议，基本接近**标识项目地址**且**禁止商用**；部分文件同时以不同的协议发布，具体参见文件内对应的声明。
+1. [分平台提取](./extract/)：在 QQ 所在的平台上，仅提取**原始数据库文件**和对应的 **key**，不在源设备上改写数据库。
+2. [统一解密](./decode_db)：将原始数据库和 key 复制到 Windows，使用指定脚本导出未加密的 SQLite 数据库。
+3. [读取数据库](../view/read_db)：解密完成后得到未加密的 SQLite 数据库。由于数据库表名和字段经过混淆，可以参考该章节提取感兴趣的信息。
 
-本教程中所需要的文件可在网站右上角“文件”栏目中找到，其中来自 [qq-win-db-key](https://github.com/QQBackup/qq-win-db-key) 的脚本会直接回源到其 `master` 分支；本站保留的 Windows NTQQ 辅助文件仍由本仓库提供。
-
-## 解密流程
-
-1. [分平台提取](./extract/)：在 QQ 所在的平台上，只获取**原始数据库文件**和对应的 **key**，不在源设备上改写数据库。
-2. [统一解密](./decode_db)：将原始数据库和 key 复制到 Windows，使用唯一指定的脚本导出未加密的原始 SQLite 数据库。
-
-3. 解密完成后，就会得到一个未加密的sqlite数据库文件。由于数据库表头和字段是经过混淆的，请参阅[读取数据库](../view/read_db)提取数据库中感兴趣的信息。
+教程所需的源脚本链接会直接回源到 [qq-win-db-key](https://github.com/QQBackup/qq-win-db-key) 的 `master` 分支；本站不再维护这些脚本的副本。
 
 ## 当前验证状态
 
@@ -42,20 +44,28 @@ order: 1
 | NTQQ (Windows) | 已确认可用 | `9.9.32-51246` | `2026-07-19` |
 | Android、iOS、Linux、macOS、PCQQ (Windows) | 尚未确认 | — | — |
 
-如果你确认某个平台的教程依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、系统版本、架构，以及是否成功提取原始数据库和 key。
+如果你验证了某个平台的教程，请通过 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 告知维护者，并注明 QQ 版本、操作系统版本、设备架构，以及是否成功提取原始数据库和 key。
 
-## 网站介绍
+## 项目规则与免责声明
 
-本站内容基于开源项目 [qq-win-db-key](https://github.com/QQBackup/qq-win-db-key) 构建，旨在提供跨平台 QQ 聊天数据库解密指南。特别感谢[原作者 Young-Lord](https://github.com/Young-Lord)等开发者的开拓性工作，未来计划逐步扩展数据库解析方案。
+本项目仅供学习交流使用。严禁将项目用于违反中国大陆法律法规、所在地法律法规或 [QQ 软件许可及服务协议](https://rule.tencent.com/rule/preview/46a15f24-e42c-4cb6-a308-2347139b1201) 的行为；开发者不承担相关行为导致的直接或间接责任。
 
-有任何问题和建议，欢迎提交 [issue](https://github.com/QQBackup/QQDecrypt/issues/new/choose)。
+本项目不对生成内容的完整性、准确性或可用性作任何担保。生成内容**不可用于法律取证**，也不应当用于学习交流以外的用途。
 
-## 寻求合作者
+本项目基本遵循 `LICENSE` 中的开源协议，并要求标识项目地址、禁止商用；部分文件可能适用不同的授权协议，具体以文件内的声明为准。
 
-欢迎一切能够实现相关数据解析算法、乐意适配其他平台的开发者参与本项目以及 [QQ-History-Backup](https://github.com/QQBackup/QQ-History-Backup/tree/dev) 的开发，直接提交 PR 或 issue 即可。文档的写作风格可以随意（但建议认真填写图片的替代文本和文件名），也可以只加入一个指向你的仓库或博客等内容的链接。
+## 反馈与参与贡献
 
-## 隐私政策
+脚本代码的使用问题、版本兼容性反馈和代码改进建议，请先阅读 [qq-win-db-key 的历史 issue](https://github.com/QQBackup/qq-win-db-key/issues)，并在该代码仓库的 [issue 区](https://github.com/QQBackup/qq-win-db-key/issues) 中讨论。
 
-- 不收集或存储用户身份信息
-- 禁用 Cookie 不影响网站功能
-- 网站使用 github pages 静态部署托管
+有关 QQNT 数据库解密、跨仓库协作以及其他较为宽泛的技术话题，请前往 [QQBackup Discussions](https://github.com/orgs/QQBackup/discussions) 讨论。
+
+如果发现本教程错误、内容过时或需要改进，欢迎直接提交 [QQDecrypt PR](https://github.com/QQBackup/QQDecrypt/pulls)，并在需要时 `@QQBackup` 通知维护者。
+
+欢迎能够实现数据库解析算法、适配其他平台或改进脚本的开发者参与本项目的开发。文档内容和写作风格不设严格限制，但建议为图片填写清晰的替代文本和文件名，也可以补充指向相关仓库或博客的链接。
+
+## 隐私与部署
+
+- 本站不收集或存储用户身份信息。
+- 禁用 Cookie 不影响网站功能。
+- 网站使用 GitHub Pages 进行静态部署。
