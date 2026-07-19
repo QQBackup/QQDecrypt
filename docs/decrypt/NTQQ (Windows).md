@@ -5,7 +5,33 @@ order: 3
 
 # NTQQ (Windows)
 
-## IDA分析
+## 使用 PowerShell 脚本
+
+仅支持 x86-64 架构。
+
+这是最简单的获取密钥方式。右键开始菜单，选择“终端”或者“Windows PowerShell”。在弹出的窗口输入：
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+irm https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1 | iex
+```
+
+你也可以单独下载<a href="https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1" download>windows_ntqq_get_key.ps1</a>脚本，然后右键点击运行，或者在 PowerShell 中执行：
+
+```powershell
+# 支持的参数
+# -Verbose : 输出详细信息
+# -NoDebugForKey: 只执行静态分析得到关键函数地址，不进行动态调试。
+.\windows_ntqq_get_key.ps1
+```
+
+### 打开数据库
+
+请参考 [NTQQ 解密数据库](decode_db.md)。
+
+## 拓展阅读与原理分析
+
+### IDA 分析
 
 [QQ NT Windows 数据库解密+图片/文件清理](https://github.com/Mythologyli/qq-nt-db)：本仓库使用 IDA debugger 完成了逆向分析到解密的全过程，并实现了图片与文件清理。
 
@@ -23,7 +49,7 @@ QQ NT Windows 数据库解密+图片/文件清理
 
 经验证的 QQ 版本：9.9.3-17749 9.9.12-26339
 
-### 找到数据库 `passphrase`
+#### 找到数据库 `passphrase`
 
 1. 解压IDA压缩包，双击打开 `ida64.exe` ，选择 `new` , 在弹出的资源管理器界面中定位到 QQNT 安装目录下的 `./versions/{version}/resources/app`文件夹，其中 `{version}` 为 QQNT 的版本号。在右下角过滤器中选择全部文件，单击 `wrapper.node`文件，并点击右下角的 "Open" 按钮。
 ![](/img/mobyw_ida_0.png)
@@ -64,12 +90,8 @@ QQ NT Windows 数据库解密+图片/文件清理
     ![](/img/mobyw_ida_b.png)
     ![](/img/Myth6.png)
 
-### 打开数据库
-
-请参考 [NTQQ 解密数据库](decode_db.md)。
-
-## 使用 frida hook
-### 1. 定位 `nt_sqlite3_key_v2:`
+### 使用 frida hook
+#### 1. 定位 `nt_sqlite3_key_v2:`
 
    此处采用 [IDA](https://down.52pojie.cn/Tools/Disassemblers/IDA_Pro_v8.3_Portable.zip) 演示，您可以替换成您喜欢的任何反编译器
 
@@ -93,7 +115,7 @@ QQ NT Windows 数据库解密+图片/文件清理
    48 8B EA 48 8B D9 48 8D  15 33 05 A0 00 B9 08 00
    ```
 
-### 2. Hook 并找到 Key
+#### 2. Hook 并找到 Key
 
    根据 <https://www.zetetic.net/sqlcipher/sqlcipher-api/#sqlite3_key> 指出
 
@@ -115,53 +137,4 @@ QQ NT Windows 数据库解密+图片/文件清理
 
    （如果你对如何修改有疑问，可以使用 [msojocs/nt-hook](https://github.com/msojocs/nt-hook/tree/4414f372ee4847be9d91d7436abb7653f8908f91) 中给出的完整脚本。注意，编译此脚本需要你的系统安装有 Node.js 环境，但编译得到的`.js`文件可以直接运行。注意，本仓库最新版本可能不能在 Windows 平台下直接使用，请自行根据 commit 信息找到可用版本（比如超链接给出的版本），或自行更改相关代码。）
 
-   PS：有概率你会得到的一个长度为 20 的 key，但那不是我们想要的，可以挂上一个动态调试器来观察 key 对应的具体数据库   
-
-## 使用 PowerShell 脚本
-
-仅支持 x86-64 架构。
-
-右键开始菜单，选择“终端”或者“Windows PowerShell”。在弹出的窗口输入：
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1 | iex
-```
-
-你也可以单独下载<a href="https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1" download>windows_ntqq_get_key.ps1</a>脚本，然后右键点击运行，或者在 PowerShell 中执行：
-
-```powershell
-# 支持的参数
-# -Verbose : 输出详细信息
-# -NoDebugForKey: 只执行静态分析得到关键函数地址，不进行动态调试。
-.\windows_ntqq_get_key.ps1
-```
-
-## 使用Python脚本（暂时废弃）   
-::: details (需要帮助)
-
-下载脚本<a href="https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_key.py" download>windows_ntqq_key.py</a>
-
-先退出QQ，运行脚本，然后运行登录QQ获取密钥
-
->  [!WARNING]  注意
-> 此方法只适用于已被适配的版本，具体可在[QQ_Offset.json](/files/QQ_Offset.json)中查看
->
-> **9.9.21.38503**之后的版本**已失效**, 笔者尝试在内存中搜索已知密钥也一无所获，怀疑QQ在登陆成功后从内存销毁了密钥
-
-> [!TIP] 社区共建
-> 
-> 我们期待社区成员共同分享各版本的基址信息，便于后续获取密钥。如果你有兴趣参与，请按照以下方式投稿：
-> 
-> 按照[IDA分析](NTQQ%20(Windows).md#找到数据库-passphrase)走到步骤2，向上翻找到偏移地址
-> 
-> 示例，QQ（9.9.20.37625）偏移地址为0x20A6E
-> 
-> ![>](/img/wrapper_node_offset.png)
-> 
->找到后，请发送版本号和偏移地址（并配图）到 issues 。
-:::   
-
-### 3. 打开数据库
-
-请参考 [NTQQ 解密数据库](decode_db.md)。
+   PS：有概率你会得到的一个长度为 20 的 key，但那不是我们想要的，可以挂上一个动态调试器来观察 key 对应的具体数据库
