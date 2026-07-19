@@ -5,6 +5,18 @@ order: 3
 
 # NTQQ (Windows)
 
+> [!TIP] 教程验证状态
+> 
+> **当前状态：** 已确认可用
+> 
+> **已确认 QQ 版本：** `9.9.32-51246`
+> 
+> **确认时间：** `2026-07-19`
+> 
+> 本确认覆盖 Windows NTQQ 的原始数据库与 key 提取步骤；后续解密请按[统一解密](../decode_db)完成。
+>
+> 如果你确认本教程在其他 Windows QQ 版本上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、Windows 版本，以及是否成功提取原始数据库和 key。
+
 ## 使用 PowerShell 脚本
 
 仅支持 x86-64 架构。
@@ -25,9 +37,9 @@ irm https://qqbackup.github.io/QQDecrypt/files/windows_ntqq_get_key.ps1 | iex
 .\windows_ntqq_get_key.ps1
 ```
 
-### 打开数据库
+### 后续处理（Windows）
 
-请参考 [NTQQ 解密数据库](decode_db.md)。
+请将脚本输出的 key 与原始数据库文件保存在一起，再按[统一解密](../decode_db)处理。
 
 ## 拓展阅读与原理分析
 

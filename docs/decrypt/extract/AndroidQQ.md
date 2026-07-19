@@ -4,6 +4,16 @@ order: 9
 ---
 
 # 安卓版QQ及TIM
+
+> [!WARNING] 教程验证状态
+> 
+> **当前状态：** 尚未确认本教程在近期版本上仍可用
+> 
+> **已确认 QQ 版本：** 暂无
+> 
+> **最后确认时间：** 暂无
+>
+> 如果你确认本教程在 Android / TIM 平台上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ/TIM 版本、系统版本，以及是否成功提取原始数据库和 key。
 ## 获取聊天记录文件
 
 >[!TIP] 新版TIM说明
@@ -37,7 +47,9 @@ order: 9
 
 其他可能需要提取的数据文件可以参照[此处](https://github.com/lqzhgood/Shmily-Get-MobileQQ-Andriod?tab=readme-ov-file)。
 
-## 解密、转换
+## 后续处理（Windows）
+
+本页只负责把原始文件从 Android 设备提取出来。请将数据库和 key 复制到 Windows，再按[统一解密](../decode_db)处理。
 
 建议使用以下项目（本列表可能随时间更新）：
 

@@ -5,7 +5,17 @@ order: 6.5
 
 # NTQQ (Linux)（GDB）
 
-本文为 NTQQ (Linux) 版获取数据库密钥的一种方式。阅读本文前，您应当先阅读 [NTQQ (Linux)](/decrypt/NTQQ%20(Linux))。
+> [!WARNING] 教程验证状态
+> 
+> **当前状态：** 尚未确认本教程在近期版本上仍可用
+> 
+> **已确认 QQ 版本：** 暂无
+> 
+> **最后确认时间：** 暂无
+>
+> 如果你确认本教程在 Linux 平台上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、Linux 发行版、架构，以及是否成功提取原始数据库和 key。
+
+本文为 NTQQ (Linux) 版获取数据库密钥的一种方式。阅读本文前，您应当先阅读 [NTQQ (Linux)](/decrypt/extract/NTQQ%20(Linux))。
 
 ## 需要的软件软件以及可能的下载方式  
 

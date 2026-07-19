@@ -4,6 +4,16 @@ order: 5
 ---
 
 # NTQQ (macOS x86)
+
+> [!WARNING] 教程验证状态
+> 
+> **当前状态：** 尚未确认本教程在近期版本上仍可用
+> 
+> **已确认 QQ 版本：** 暂无
+> 
+> **最后确认时间：** 暂无
+>
+> 如果你确认本教程在 macOS x86 平台上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、macOS 版本、架构，以及是否成功提取原始数据库和 key。
 ## 0. 背景信息
 
 *   **测试系统**：`macOS Sequoia 15.5`
@@ -126,44 +136,6 @@ lldb --attach-pid 2349
 (lldb) exit
 ```
 
-## 3. 解密数据库
+## 3. 转移到 Windows
 
-拿到密钥后，我们就可以使用 `sqlcipher` 工具来解密数据库文件了。
-
-```bash
-# 数据库文件通常位于以下路径，其中 {MD5} 是与你 QQ 号相关的哈希值
-# ~/Library/Containers/com.tencent.qq/Data/Library/Application Support/QQ/nt_qq_{MD5}/nt_db
-# 示例路径：~/Library/Containers/com.tencent.qq/Data/Library/Application Support/QQ/nt_qq_cc067b8bcbf8980fabd93574e09d9efa/nt_db
-
-# 我们可以先复制一份 profile_info.db 用于解密测试
-cp '~/Library/Containers/com.tencent.qq/Data/Library/Application Support/QQ/nt_qq_{MD5}/nt_db/profile_info.db' .
-
-# SQLCipher v4 的数据库文件包含一个 1024 字节的头部，需要先剥离才能被正确识别
-cat ./profile_info.db | tail -c +1025 > profile_info_clean.db
-
-# 使用 sqlcipher 打开处理后的数据库文件
-sqlcipher ./profile_info_clean.db
-```
-
-进入 `sqlcipher` 命令行后，依次执行以下 PRAGMA 指令来配置解密参数：
-
-```sql
--- 将 "your_key" 替换为上一步中获取到的实际密钥
-PRAGMA key = "your_key";
-
--- 设置 NTQQ 使用的加密参数
-PRAGMA kdf_iter = 4000;
-PRAGMA cipher_page_size = 4096;
-PRAGMA cipher_hmac_algorithm = HMAC_SHA1;
-PRAGMA cipher_default_kdf_algorithm = PBKDF2_HMAC_SHA512;
-
--- 验证是否解密成功，如果能列出表名，则代表成功
-.tables
-```
-
-输出示例：
-```
-buddy_list       profile_info_v6
-```
-
-至此，数据库解密成功。
+本页到这里完成 macOS 端的 key 提取。请复制原始数据库文件和 key 到 Windows，不要在 macOS 上直接改写数据库；后续按[统一解密](../decode_db)处理。

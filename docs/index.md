@@ -21,7 +21,7 @@ features:
   - icon: 🗝
     title: 解密
     details: 获取数据库密钥
-    link: /decrypt/description
+    link: /decrypt/
   - icon: 👁‍
     title: 查看
     details: 打开数据库/读取信息

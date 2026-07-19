@@ -5,9 +5,19 @@ order: 5.5
 
 # NTQQ (macOS ARM，无需关闭 SIP)
 
+> [!WARNING] 教程验证状态
+> 
+> **当前状态：** 尚未确认本教程在近期版本上仍可用
+> 
+> **已确认 QQ 版本：** 暂无
+> 
+> **最后确认时间：** 暂无
+>
+> 如果你确认本教程在 macOS ARM 平台上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、macOS 版本、架构，以及是否成功提取原始数据库和 key。
+
 > **测试环境**：QQ NT 6.9.96，macOS 26 Sequoia / macOS 27 Tahoe（Apple Silicon，arm64）
 >
-> **与[原 ARM 教程](/decrypt/NTQQ%20(macOS%20ARM))的区别**：原教程要求关闭 SIP，在 macOS 14+ 上关闭 SIP 操作繁琐，macOS 27 早期开发者测试版更存在 `csrutil disable` 无效的已知 bug。本教程**无需关闭 SIP**，也无需 Hopper 等付费反汇编工具，全程使用系统自带工具和 Python 标准库。
+> **与[原 ARM 教程](/decrypt/extract/NTQQ%20(macOS%20ARM))的区别**：原教程要求关闭 SIP，在 macOS 14+ 上关闭 SIP 操作繁琐，macOS 27 早期开发者测试版更存在 `csrutil disable` 无效的已知 bug。本教程**无需关闭 SIP**，也无需 Hopper 等付费反汇编工具，全程使用系统自带工具和 Python 标准库。
 
 ---
 
@@ -25,7 +35,7 @@ lldb 默认无法 attach 到带有 hardened runtime + library validation 的 QQ 
 
 - **lldb**（Xcode Command Line Tools 自带）
 - **Python 3**（macOS 自带）
-- 安装 sqlcipher：`brew install sqlcipher`
+- 本页只需用于提取 key；SQLCipher 解密和数据库转换统一在 Windows 上完成
 
 ---
 
@@ -47,7 +57,7 @@ sudo codesign --force --deep --sign - /Applications/QQ.app
 
 | 文件 | 用途 |
 |---|---|
-| `qq_web.py` | **一键 GUI 工具**（最推荐）：自动检测签名、备份数据库、提取密钥、导出聊天记录，全程点击操作 |
+| `qq_web.py` | **一键 GUI 工具**（最推荐）：自动检测签名、备份数据库、提取密钥；得到原始数据库和 key 后转移到 Windows |
 | `find_key_func.py` | 独立 VA 分析工具（命令行打印地址） |
 | `qq_key_extractor.py` | lldb 自动化模块（全自动：自动设断点、自动打印密钥）；**已内嵌在 `qq_web.py` 中**，单独使用时才需要下载 |
 
@@ -209,41 +219,9 @@ cp ~/Library/Application\ Support/QQ/nt_qq_*/nt_db/nt_msg.db ~/qq-extract/
 
 ---
 
-## 6. 解密数据库
+## 6. 转移到 Windows
 
-参考 [NTQQ 解密数据库](/decrypt/decode_db)，使用以下参数：
-
-```bash
-# 去掉 1024 字节文件头
-tail -c +1025 ~/qq-extract/nt_msg.db > /tmp/nt_msg.clean.db
-
-# 用 sqlcipher 解密（brew install sqlcipher）
-sqlcipher /tmp/nt_msg.clean.db << 'EOF'
-PRAGMA key = '<上一步拿到的密钥>';
-PRAGMA cipher_page_size = 4096;
-PRAGMA kdf_iter = 4000;
-PRAGMA cipher_hmac_algorithm = HMAC_SHA1;
-PRAGMA cipher_default_kdf_algorithm = PBKDF2_HMAC_SHA512;
-.tables
-EOF
-```
-
-`.tables` 显示表名即解密成功，可看到 `c2c_msg_table`、`group_msg_table` 等。
-
-导出为明文 SQLite：
-
-```bash
-sqlcipher /tmp/nt_msg.clean.db << 'EOF'
-PRAGMA key = '<密钥>';
-PRAGMA cipher_page_size = 4096;
-PRAGMA kdf_iter = 4000;
-PRAGMA cipher_hmac_algorithm = HMAC_SHA1;
-PRAGMA cipher_default_kdf_algorithm = PBKDF2_HMAC_SHA512;
-ATTACH DATABASE '/tmp/nt_msg_plain.db' AS plaintext KEY '';
-SELECT sqlcipher_export('plaintext');
-DETACH DATABASE plaintext;
-EOF
-```
+本页到这里完成 macOS 端的原始数据库与 key 提取。请将 `~/qq-extract/nt_msg.db` 和上一步得到的 key 一起复制到 Windows，不要在 macOS 上直接解密或覆盖原文件；后续按[统一解密](../decode_db)处理。
 
 ---
 
@@ -256,14 +234,14 @@ EOF
 | 断点没有命中 | QQ 已自动登录且密钥已传递 | 在 QQ 内点头像 → 「退出账号」后重新登录（不要关闭 QQ） |
 | 菜单栏「切换账号」导致断点失效 | 该选项会重启 QQ 进程，原断点消失 | 改用 QQ 应用内的「退出账号」，保持进程不变 |
 | `image list` 找不到 wrapper.node | 进程太早被暂停，模块未加载 | `process continue` 等几秒再 Ctrl-C |
-| `PRAGMA cipher` 报错 | sqlcipher 4.x 已移除该 PRAGMA | 去掉该行，其他参数不变 |
+| 解密参数报错 | 应在 Windows 统一解密页中按脚本 1 处理 | 参阅[统一解密](../decode_db) |
 | 密钥长度不是 16 | 版本差异，以 x3 寄存器值为准 | `--count <x3值>` |
 
 ---
 
 ## 致谢
 
-本教程基于 [lengyue 的原始 ARM 教程](/decrypt/NTQQ%20(macOS%20ARM)) 改进，主要贡献：
+本教程基于 [lengyue 的原始 ARM 教程](/decrypt/extract/NTQQ%20(macOS%20ARM)) 改进，主要贡献：
 
 - **无需关闭 SIP**：用 ad-hoc 重新签名代替禁用 SIP，兼容 macOS 27 Tahoe
 - **无需 Hopper**：Python 脚本自动定位函数 VA

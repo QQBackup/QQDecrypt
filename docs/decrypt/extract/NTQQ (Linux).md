@@ -4,6 +4,16 @@ order: 6
 ---
 
 # NTQQ (Linux)
+
+> [!WARNING] 教程验证状态
+> 
+> **当前状态：** 尚未确认本教程在近期版本上仍可用
+> 
+> **已确认 QQ 版本：** 暂无
+> 
+> **最后确认时间：** 暂无
+>
+> 如果你确认本教程在 Linux 平台上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、Linux 发行版、架构，以及是否成功提取原始数据库和 key。
 三种方法，其中搜索内存的方法可能更简单，但效率低并且不一定稳定。Frida hook 需要每次去找相关函数地址、参数列表，并适当修改。
 
 ## Frida hook
@@ -80,6 +90,6 @@ gdb -x <PATH_TO_LINUX_QQ_GET_KEY_PY> qq
 ![Linux QQ gdb法 效果预览](/img/gif-linux-gdb.gif)
 
 
-# 打开数据库
+# 转移到 Windows
 
-请参考 [NTQQ 解密数据库](decode_db.md)。
+拿到 key 后，请将原始数据库文件和 key 复制到 Windows，再按[统一解密](../decode_db)处理。

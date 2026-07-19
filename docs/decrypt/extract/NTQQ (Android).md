@@ -5,6 +5,16 @@ order: 2
 
 # NTQQ(Android)
 
+> [!WARNING] 教程验证状态
+> 
+> **当前状态：** 尚未确认本教程在近期版本上仍可用
+> 
+> **已确认 QQ 版本：** 暂无
+> 
+> **最后确认时间：** 暂无
+>
+> 如果你确认本教程在 Android 平台上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、Android 版本、设备架构，以及是否成功提取原始数据库和 key。
+
 > [!TIP] 注意
 如果运行脚本时出现问题，请尝试将所有文件中的所有`libkernel`替换为`libbasic_share`。
 
@@ -65,9 +75,9 @@ order: 2
 
 另外，文件头部还可能含有`cipher_hmac_algorithm`的值（如`HMAC_SHA1`）等与解密相关的信息，可被解析为Protobuf数据，详见[#29 (comment)](https://github.com/QQBackup/qq-win-db-key/issues/29#issuecomment-2227660390)，此处不展开说明。
 
-#### 打开数据库
+#### 转移到 Windows
 
-请参考 [NTQQ 解密数据库](decode_db.md)。
+取得数据库密钥后，请复制原始数据库文件和 key 到 Windows，再按[统一解密](../decode_db)处理。
 
 如果文件头中出现`HMAC_SHA1`字样（[示例](https://github.com/QQBackup/qq-win-db-key/issues/29#issuecomment-2227660390)），则将其作为`cipher_hmac_algorithm`的值。否则，可尝试`HMAC_SHA512`（默认值）或`HMAC_SHA256`。
 
@@ -140,26 +150,10 @@ python android_get_key.py 8.9.58
 
 接下来，可以确认命令行是否给出数据库密钥（以`pKey`显示）。
 
-### 打开数据库
+### 转移到 Windows
 
-请参考 [NTQQ 解密数据库](decode_db.md)。
+确认命令行输出 `pKey` 后，请复制原始数据库文件和 key 到 Windows，再按[统一解密](../decode_db)处理。
 
-## 方法3
+## 说明
 
-此方法同样要求您拥有手机的 root 权限，环境配置与[方法2](#方法2)相同。不同之处在于，本方法可以直接导出解密后的数据库文件，而无需额外修复与解密。
-
-> 该部分内容来源于[Android QQ NT 版数据库解密](https://blog.yllhwa.com/2023/09/29/Android%20QQ%20NT%20%E7%89%88%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E5%AF%86/)，由[@yllhwa](https://github.com/yllhwa)贡献。
-
-关闭`Magisk Hide`与`Shamiko`，并且重启手机
-
-可能需要关闭`SELinux`（也就是设为`Permissive`）
-
-需要授予手机QQ读写存储权限
-
-<a href="https://qqbackup.github.io/QQDecrypt/files/android_dump.js" download>下载 android_dump.js</a>
-
-如果先前已经运行过，则先删除上一次运行生成的`/sdcard/Download/plaintext.db`
-
-终端中运行`frida -U -f com.tencent.mobileqq -l android_dump.js`（如果用的有线连接adb就直接写`-U`，如果是Termux或无线连接就把`-U`改成`-R`）
-
-如果一切顺利，已解密的`plaintext.db`将会在至少5秒后导出至`/sdcard/Download/plaintext.db`。
+旧版文档曾提供在 Android 端直接导出明文数据库的方法。为保持流程一致并降低源设备上的改写风险，该方法不再作为当前教程步骤；请使用前面的方式提取原始数据库和 key，再在 Windows 上完成解密与转换。

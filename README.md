@@ -19,7 +19,8 @@ pnpm run docs:build
 
 ## 目录约定
 
-- `docs/decrypt/`：按平台编排的密钥获取与数据库解密教程。
+- `docs/decrypt/`：解密入口和 Windows 统一解密流程。
+- `docs/decrypt/extract/`：按平台获取原始数据库与 key 的教程。
 - `docs/view/`：已解密数据库的读取、表结构和消息导出说明。
 - `docs/research/`：研究笔记和机制分析，不作为稳定操作指南。
 - `docs/about/`：项目说明、协议、贡献者和社区项目。

@@ -4,13 +4,23 @@ order: 4
 ---
 
 # NTQQ (macOS ARM)
+
+> [!WARNING] 教程验证状态
+> 
+> **当前状态：** 尚未确认本教程在近期版本上仍可用
+> 
+> **已确认 QQ 版本：** 暂无
+> 
+> **最后确认时间：** 暂无
+>
+> 如果你确认本教程在 macOS ARM 平台上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、macOS 版本、架构，以及是否成功提取原始数据库和 key。
 本文发表于 [冷月的博客](https://lengyue.me/2023/09/19/ntqq-db/)， 基于 CC BY-NC-SA 4.0 共享。
 
 ## 0. 引言
 
 为了让每个人都可以把自己练入 LLM， 制作自己的数字分身。 解析 QQ 数据库无疑是快速获得语料库的最佳途径。 然而， 众所周知， QQ 的数据库是加密的 SQLite 数据库， 且不幸的是， 在最新的 NTQQ 中数据库的加密方式已经发生了变化。 本文将介绍如何解析 Mac 的 NTQQ 数据库。
 
-参考资料 (win): [NTQQ (Windows) 解密教程](/decrypt/NTQQ%20(Windows))
+参考资料 (win): [NTQQ (Windows) 提取教程](/decrypt/extract/NTQQ%20(Windows))
 
 该方案于 2023 年 9 月 19 日在 NTQQ 6.9.17 上测试通过。 严禁用于非法用途。
 
@@ -106,21 +116,9 @@ int sqlite3_key_v2(
 
 至此， 我们已经成功解析出了 NTQQ 的数据库密钥。
 
-## 4. 解密
+## 4. 转移到 Windows
 
-数据库位于 (注意 MD5 可能会随着 QQ 的版本更新而改变):
-
-```plaintext
-/Users/user/Library/Containers/com.tencent.qq/Data/Library/Application Support/QQ/nt_qq_{MD5}/nt_db
-```
-
-复制你需要的文件， 如 `profile_info.db`:
-
-```bash
-cp "/Users/user/Library/Containers/com.tencent.qq/Data/Library/Application Support/QQ/nt_qq_cc067b8bcbf8980fabd93574e09d9efa/nt_db/profile_info.db" test.db
-```
-
-对于解密数据库， 请参考 [NTQQ 解密数据库](decode_db.md)。
+本页到这里完成 macOS 端的 key 提取。请复制原始数据库文件和 key 到 Windows，不要在 macOS 上直接改写数据库；后续按[统一解密](../decode_db)处理。
 
 出于隐私考虑， 不展示解密后的数据库内容。
 
