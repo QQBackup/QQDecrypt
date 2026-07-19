@@ -107,7 +107,7 @@ su -c setenforce 0
 下载 hook 脚本：
 
 ```shell
-wget https://github.com/QQBackup/qq-win-db-key/raw/master/android_get_key.py
+wget https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/android/android_get_key.py
 ```
 
 #### PC

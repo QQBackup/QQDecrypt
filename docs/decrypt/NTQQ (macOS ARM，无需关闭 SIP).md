@@ -43,7 +43,7 @@ sudo codesign --force --deep --sign - /Applications/QQ.app
 
 ## 3. 下载脚本
 
-本教程配套三个脚本，位于仓库 `scripts/macos-arm-nosip/` 目录：
+本教程配套三个脚本，位于仓库 `scripts/macos/arm-nosip/` 目录：
 
 | 文件 | 用途 |
 |---|---|
@@ -53,11 +53,11 @@ sudo codesign --force --deep --sign - /Applications/QQ.app
 
 ```bash
 # 只需下载 qq_web.py 即可（推荐）
-curl -sO https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/macos-arm-nosip/qq_web.py
+curl -sO https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/macos/arm-nosip/qq_web.py
 
 # 若需要命令行脚本，额外下载：
-curl -sO https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/macos-arm-nosip/find_key_func.py
-curl -sO https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/macos-arm-nosip/qq_key_extractor.py
+curl -sO https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/macos/arm-nosip/find_key_func.py
+curl -sO https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/macos/arm-nosip/qq_key_extractor.py
 ```
 
 ---
