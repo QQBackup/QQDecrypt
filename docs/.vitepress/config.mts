@@ -72,7 +72,6 @@ export default defineConfig({
             link: '/decrypt/extract/',
             items: [
               ...(extractionSidebar.items ?? []),
-              { text: '脚本下载', link: '/files' },
             ],
           }]
         : []),
@@ -108,7 +107,6 @@ export default defineConfig({
           { text: '社区项目', link: '/about/projects' }
         ]
       },
-      { text: '文件下载', link: '/files' },
     ],
     footer: {
       message: `最后更新时间：${lastUpdated}<br>CC BY-NC-SA 4.0 <a href="https://qqbackup.github.io/QQDecrypt/about/LICENSE"> License</a>`,
