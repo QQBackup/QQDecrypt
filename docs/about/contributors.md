@@ -94,6 +94,15 @@ const members = [
     links: [
       { icon: 'github', link: "https://github.com/siten" }
     ]
+  },
+  {
+    avatar: "https://qqbackup.github.io/QQDecrypt/head/kingsznhone.png",
+    name: "KingsZNHONE",
+    title: "开发者",
+    desc: "暂无个人简介",
+    links: [
+      { icon: 'github', link: "https://github.com/kingsznhone" }
+    ]
   }
 ]
 

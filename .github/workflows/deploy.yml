@@ -32,6 +32,8 @@ jobs:
         run: npm install
 
       - name: Build docs
+        env:
+          DOCS_LAST_UPDATED: ${{ github.run_started_at }}
         run: npm run docs:build
 
       - name: Upload artifact

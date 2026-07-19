@@ -76,8 +76,6 @@ PRAGMA cipher_hmac_algorithm = HMAC_SHA1;
 PRAGMA cipher_kdf_algorithm = PBKDF2_HMAC_SHA512;
 ```
 
-不要自行改用 DB Browser 的图形化解密流程，也不要把脚本 2、脚本 3 当作本教程的解密步骤；本页只以脚本 1 的输出为准。
-
 ## 执行
 
 ```powershell

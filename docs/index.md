@@ -11,8 +11,8 @@ hero:
     alt: logo  
   actions:
     - theme: brand
-      text: 这是什么
-      link: /what-is-this
+      text: 开始
+      link: /decrypt/description.html
     - theme: alt
       text: GitHub
       link: https://github.com/QQBackup/QQDecrypt

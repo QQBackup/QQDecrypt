@@ -5,15 +5,11 @@ order: 8
 
 # PCQQ (非 NT 架构)
 
-> [!WARNING] 教程验证状态
+> [!CAUTION] 教程验证状态
 > 
-> **当前状态：** 尚未确认本教程在近期版本上仍可用。本页的确认范围仅限 PCQQ（非 NT 架构），不继承 NTQQ (Windows) 的确认记录。
-> 
-> **已确认 QQ 版本：** 暂无
-> 
-> **最后确认时间：** 暂无
+> **当前状态：** 本教程不再考虑维护。
 >
-> 如果你确认本教程在 Windows 平台上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、Windows 版本，以及是否成功提取原始数据库和 key。
+> 建议将老版本 QQ 数据库导入 QQNT，再使用 [QQNT (Windows) 教程](./NTQQ%20(Windows)) 进行解密。
 
 本教程针对 QQ Windows 版（非 NT 架构），即 QQ9 以前的版本，可以在[官网](https://im.qq.com/pcqq/index.shtml)选择“往期怀旧版下载”下载。
 

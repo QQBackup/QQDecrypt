@@ -5,15 +5,11 @@ order: 9
 
 # 安卓版QQ及TIM
 
-> [!WARNING] 教程验证状态
+> [!CAUTION] 教程验证状态
 > 
-> **当前状态：** 尚未确认本教程在近期版本上仍可用
-> 
-> **已确认 QQ 版本：** 暂无
-> 
-> **最后确认时间：** 暂无
+> **当前状态：** 传统安卓 QQ 教程不再维护，相关方法很可能已经失效。
 >
-> 如果你确认本教程在 Android / TIM 平台上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ/TIM 版本、系统版本，以及是否成功提取原始数据库和 key。
+> TIM 转 NT 的说明仍保留在下方，TIM 用户可据此参考对应的 NTQQ (Android) 方法。
 ## 获取聊天记录文件
 
 >[!TIP] 新版TIM说明

@@ -27,3 +27,37 @@ order: 1
 本项目基本遵循`LICENSE`里的开源协议，基本接近**标识项目地址**且**禁止商用**；部分文件同时以不同的协议发布，具体参见文件内对应的声明。
 
 本教程中所需要的文件可在网站右上角“文件”栏目中找到，可能会滞后于原仓库[qq-win-db-key](https://github.com/QQBackup/qq-win-db-key)更新，若有需要可前往GitHub下载最新版本
+
+## 解密流程
+
+本栏目按处理阶段分为两个区：
+
+1. [分平台提取](./extract/)：在 QQ 所在的平台上，只获取**原始数据库文件**和对应的 **key**，不在源设备上改写数据库。
+2. [统一解密](./decode_db)：将原始数据库和 key 复制到 Windows，使用唯一指定的脚本导出未加密的原始 SQLite 数据库。
+
+解密完成后，请参阅[读取数据库](../view/read_db)。
+
+## 当前验证状态
+
+| 平台教程 | 状态 | 已确认版本 | 确认时间 |
+| --- | --- | --- | --- |
+| NTQQ (Windows) | 已确认可用 | `9.9.32-51246` | `2026-07-19` |
+| Android、iOS、Linux、macOS、PCQQ (Windows) | 尚未确认 | — | — |
+
+如果你确认某个平台的教程依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、系统版本、架构，以及是否成功提取原始数据库和 key。
+
+## 网站介绍
+
+本站内容基于开源项目 [qq-win-db-key](https://github.com/QQBackup/qq-win-db-key) 构建，旨在提供跨平台 QQ 聊天数据库解密指南。特别感谢[原作者 Young-Lord](https://github.com/Young-Lord)等开发者的开拓性工作，未来计划逐步扩展数据库解析方案。
+
+有任何问题和建议，欢迎提交 [issue](https://github.com/QQBackup/QQDecrypt/issues/new/choose)。
+
+## 寻求合作者
+
+欢迎一切能够实现相关数据解析算法、乐意适配其他平台的开发者参与本项目以及 [QQ-History-Backup](https://github.com/QQBackup/QQ-History-Backup/tree/dev) 的开发，直接提交 PR 或 issue 即可。文档的写作风格可以随意（但建议认真填写图片的替代文本和文件名），也可以只加入一个指向你的仓库或博客等内容的链接。
+
+## 隐私政策
+
+- 不收集或存储用户身份信息
+- 禁用 Cookie 不影响网站功能
+- 网站使用 Vercel 静态部署托管
