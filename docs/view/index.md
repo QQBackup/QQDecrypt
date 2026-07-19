@@ -6,9 +6,6 @@ editLink: false
 lastUpdated: false
 ---
 
-<script setup>
-import { useRouter } from 'vitepress'
+# 数据库解析
 
-const router = useRouter()
-router.go('/QQDecrypt/view/read_db') 
-</script>
+本栏目介绍已解密 QQ 数据库的读取、表结构分析和消息导出。建议从[NTQQ 读取数据库](./read_db)开始。

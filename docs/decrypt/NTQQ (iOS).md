@@ -132,7 +132,7 @@ Writing executable to Payload/QQ.app/QQ...
 
 如果你的 QQ 版本和脚本 [ios_get_key.js](/files/ios_get_key.js) 内注释的版本一致，可直接跳过进入下一步
 
-如果 QQ 版本不一致，但下一步的脚本 [ios_get_key.js](ios_get_key.js) 可以正常使用，也可以忽略本节
+如果 QQ 版本不一致，但下一步的脚本 [ios_get_key.js](/files/ios_get_key.js) 可以正常使用，也可以忽略本节
 
 ### App 脱壳
 

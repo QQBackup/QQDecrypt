@@ -30,5 +30,9 @@ features:
     title: 社区项目
     details: 有关 NTQQ 数据库的项目
     link: /about/projects
+  - icon: 🧪
+    title: 研究笔记
+    details: 数据库密钥机制与协议分析
+    link: /research/
 ---
 

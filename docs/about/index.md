@@ -6,9 +6,11 @@ editLink: false
 lastUpdated: false
 ---
 
-<script setup>
-import { useRouter } from 'vitepress'
+# 关于
 
-const router = useRouter()
-router.go('/QQDecrypt/about/Projects') 
-</script>
+这里介绍 QQDecrypt 的贡献者、致谢、授权协议和社区项目。
+
+- [贡献者名单](./contributors)
+- [项目致谢](./thanks)
+- [使用协议](./LICENSE)
+- [社区项目](./projects)
