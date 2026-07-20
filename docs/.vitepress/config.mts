@@ -86,7 +86,7 @@ export default defineConfig({
       ...(aboutSidebar
         ? [{
             ...aboutSidebar,
-            link: '/about/',
+            link: undefined,
             items: [
               { text: '贡献者名单', link: '/about/contributors' },
               { text: '项目致谢', link: '/about/thanks' },
