@@ -149,4 +149,4 @@ QQ NT Windows 数据库解密+图片/文件清理
 
    （如果你对如何修改有疑问，可以使用 [msojocs/nt-hook](https://github.com/msojocs/nt-hook/tree/4414f372ee4847be9d91d7436abb7653f8908f91) 中给出的完整脚本。注意，编译此脚本需要你的系统安装有 Node.js 环境，但编译得到的`.js`文件可以直接运行。注意，本仓库最新版本可能不能在 Windows 平台下直接使用，请自行根据 commit 信息找到可用版本（比如超链接给出的版本），或自行更改相关代码。）
 
-   PS：有概率你会得到的一个长度为 20 的 key，但那不是我们想要的，可以挂上一个动态调试器来观察 key 对应的具体数据库
+   PS：有概率你会 hook 到一个长度为 20 的 key，它不是 `nt_msg.db` 等库的密钥，而是 `login.db` 的密钥。`login.db` 的密钥是**硬编码在 QQ 客户端中的固定值**（对所有账号、所有设备都相同），因此 hook 到它属于正常现象——它对应的就是 `login.db`，无需挂动态调试器逐一排查。关于 `login.db` 的解密与解析，详见 [login.db 的解密与解析](/database/db_file_analysis/login/)。

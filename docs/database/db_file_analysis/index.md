@@ -18,6 +18,7 @@ title: db 文件分析
 | `collection.db` | 收藏 | [collection.db](./collection/) |
 | `files_in_chat.db` | 聊天媒体文件 | [files_in_chat.db](./files_in_chat/) |
 | `rich_media.db` | 富媒体文件下载 | [rich_media.db](./rich_media/) |
+| `login.db` | 已登录账号列表（密钥为固定值） | [login.db](./login/) |
 
 ---
 

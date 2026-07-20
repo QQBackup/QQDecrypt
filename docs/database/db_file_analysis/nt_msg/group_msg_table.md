@@ -35,9 +35,23 @@ order: 1
 | 40801 | protobuf | | 未解析 |
 | 40030 | int | 群号 | |
 | 40033 | int | 发送者 QQ 号 | |
-| 40062 | protobuf | 表态信息 | 存贮详细表态信息（表情和数量），数字与 [QQBOT 表情编号](https://bot.q.qq.com/wiki/develop/api-v2/openapi/emoji/model.html) 对应 |
+| 40062 | protobuf | 表态信息 | 存贮详细表态信息（表情和数量），数字与 [QQBOT 表情编号](https://bot.q.qq.com/wiki/develop/api-v2/openapi/emoji/model.html) 对应，protobuf 结构详见[下表](#_40062-值解读-贴表情) |
 | 40083 | int | 表态表情数量总和 | |
 | 40084 | int | 表态表情数量总和 | |
+
+## 40062 值解读（贴表情）
+
+仅群聊 `group_msg_table` 存在此列，记录该条消息被群成员「贴」的表情（表态）信息。整列为一段 protobuf，外层为可重复字段 `40062`，每个成员贴的每一种表情对应一个子结构，字段如下：
+
+| Field Number | 类型 | 含义 | 说明 |
+| --- | --- | --- | --- |
+| 48301 | string | 表情 ID | 与 [QQBOT 表情编号](https://bot.q.qq.com/wiki/develop/api-v2/openapi/emoji/model.html) 对应；小黄脸系表情为数字编号，emoji 系表情为对应 Unicode 码点（超级表情不在此列表中） |
+| 48302 | int | 表态标志 | 疑似标记该表情是否处于已表态状态 |
+| 48303 | int | 表态数量 | 贴该表情的人数总和 |
+| 48304 | bool | 是否本人所贴 | `true` 表示本账号也贴了该表情 |
+
+> [!TIP]
+> 表中的列 `40083`、`40084`（表态表情数量总和）与本列的 `48303` 数量相呼应，为便于统计而冗余存贮的整型值。
 
 ## 40011 消息类型
 
