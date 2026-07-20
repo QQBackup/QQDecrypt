@@ -15,7 +15,7 @@ import {
 // 定义成员信息
 const members = [
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/Young-Lord.jpg",
+    avatar: "/head/Young-Lord.jpg",
     name: "Young Lord",
     title: "开发者",
     desc: "THE END IS NEVER THE END",
@@ -24,7 +24,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/Ljzd-PRO.jpg",
+    avatar: "/head/Ljzd-PRO.jpg",
     name: "Ljzd PRO",
     title: "开发者",
     desc: "暂无个人简介",
@@ -33,7 +33,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/shenjackyuanjie.jpg",
+    avatar: "/head/shenjackyuanjie.jpg",
     name: "Shen Jack",
     title: "开发者",
     desc: "happy lazy | HWS with me",
@@ -42,7 +42,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/leng-yue.jpg",
+    avatar: "/head/leng-yue.jpg",
     name: "Leng Yue",
     title: "开发者",
     desc: "Push the boundary of artificial general intelligence.",
@@ -51,7 +51,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/fumiama.jpg",
+    avatar: "/head/fumiama.jpg",
     name: "Fumiama",
     title: "开发者",
     desc: "千载何方归梦，棹舟星河波开。",
@@ -60,7 +60,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/alphagocc.jpg",
+    avatar: "/head/alphagocc.jpg",
     name: "Alpha Gocc",
     title: "开发者",
     desc: "Alphagocc",
@@ -69,7 +69,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/Mythologyli.jpg",
+    avatar: "/head/Mythologyli.jpg",
     name: "Mythology Li",
     title: "开发者",
     desc: "Embedded Systems, Robotics, Graphing Calculators and Minecraft!",
@@ -78,7 +78,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/yllhwa.jpg",
+    avatar: "/head/yllhwa.jpg",
     name: "Yllhwa",
     title: "开发者",
     desc: "暂无个人简介",
@@ -87,7 +87,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/siten.jpg",
+    avatar: "/head/siten.jpg",
     name: "Siten",
     title: "开发者",
     desc: "暂无个人简介",
@@ -96,7 +96,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/kingsznhone.png",
+    avatar: "/head/kingsznhone.png",
     name: "KingsZNHONE",
     title: "开发者",
     desc: "暂无个人简介",
@@ -139,7 +139,7 @@ const contributors = [
   },  
 
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/Disa.png",
+    avatar: "/head/Disa.png",
     name: "Disa Tale",
     title: "贡献者",
     desc: '帮助修正 pcqq_rekey_to_none.cpp 中代码错误，并提供编译版本',

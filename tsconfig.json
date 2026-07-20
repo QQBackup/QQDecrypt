@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "types": ["node"],
+    "skipLibCheck": true
+  },
+  "include": ["docs/.vitepress/**/*.mts"]
+}

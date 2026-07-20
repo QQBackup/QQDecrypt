@@ -35,7 +35,7 @@ export default defineConfig({
   lang: 'zh-CN',
   appearance: true,
   head: [
-    ['link', { rel: 'icon', href: 'https://qqbackup.github.io/QQDecrypt/icons/favicon.ico' }],
+    ['link', { rel: 'icon', href: '/icons/favicon.ico' }],
   ],
   vite: {
     plugins: [],
@@ -110,8 +110,8 @@ export default defineConfig({
       },
     ],
     footer: {
-      message: `最后更新时间：${lastUpdated}<br>CC BY-NC-SA 4.0 <a href="https://qqbackup.github.io/QQDecrypt/about/LICENSE"> License</a>`,
-      copyright: '<a href="https://qqbackup.github.io/QQDecrypt/about/碎碎念">Copyright © 2026 </a>',
+      message: `最后更新时间：${lastUpdated}<br>CC BY-NC-SA 4.0 <a href="/about/LICENSE"> License</a>`,
+      copyright: '<a href="/about/LICENSE">Copyright © 2026 </a>',
     },
     editLink: {
       pattern: 'https://github.com/QQBackup/QQDecrypt/edit/main/docs/:path',

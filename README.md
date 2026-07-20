@@ -7,14 +7,14 @@ QQ 聊天数据库解密与解析文档站，在线阅读地址：[qqbackup.gith
 ## 本地预览
 
 ```shell
-pnpm install
-pnpm run docs:dev
+npm install
+npm run docs:dev
 ```
 
 构建检查：
 
 ```shell
-pnpm run docs:build
+npm run docs:build
 ```
 
 ## 目录约定
