@@ -10,24 +10,19 @@ order: 3
 
 本教程只负责得到**未加密的原始 SQLite 数据库**，不包含数据库精简、消息转换或其它导出步骤。
 
-## 输入与输出
+## 快速流程
 
-将以下文件放在同一个工作目录：
+1. 准备 `nt_msg.db`（原始加密数据库）和 key
+2. 克隆脚本仓库，放入 `nt_msg.db`
+3. 编辑 `1.decrypt.py`，填入 **数据库路径** 和 **key** 两项即可
+4. 运行脚本，生成两个产物文件
 
-```text
-work/
-├── nt_msg.db       # 从 QQ 数据目录原样复制的原始数据库
-└── key.txt         # 平台提取教程得到的 key；稍后粘贴到脚本配置中
-```
+## 准备材料
 
-脚本会生成：
+从平台提取教程得到两样东西：
 
-```text
-nt_msg_clear.db     # 去掉 NTQQ 1024 字节文件头后的 SQLCipher 中间文件
-nt_msg_plain.db     # 最终结果：未加密的原始 SQLite 数据库
-```
-
-`nt_msg_plain.db` 不再需要 key，可以直接使用 DB Browser for SQLite、SQLiteStudio、DBeaver 或其它普通 SQLite 工具打开。请保留 `nt_msg.db` 不变，并将所有操作放在副本或独立工作目录中。
+- `nt_msg.db` — 原始加密数据库
+- key — 一段 hex 字符串
 
 ## Windows 环境
 
@@ -45,46 +40,37 @@ irm https://astral.sh/uv/install.ps1 | iex
 
 ## 获取脚本
 
-在 PowerShell 中克隆上游仓库并进入目录：
-
 ```powershell
 git clone https://github.com/QQBackup/ntqq_msg_db_util.git
 Set-Location ntqq_msg_db_util
 uv sync
 ```
 
-将原始 `nt_msg.db` 复制到该目录，或修改脚本配置中的输入路径。脚本文件为 [`1.decrypt.py`](https://github.com/QQBackup/ntqq_msg_db_util/blob/master/1.decrypt.py)。
+将 `nt_msg.db` 复制到 `ntqq_msg_db_util` 目录下（或修改脚本中的路径指向它）。
 
-## 配置脚本
+## 配置并执行
 
-编辑 `1.decrypt.py` 顶部配置：
+编辑 `1.decrypt.py`，**只需改两项**：
 
 ```python
-INPUT_DB  = "nt_msg.db"        # 原始输入
-CLEAR_DB  = "nt_msg_clear.db"  # 去掉 1024 字节头部后的中间文件
-OUTPUT_DB = "nt_msg_plain.db"  # 未加密 SQLite 输出
-DB_KEY    = "在此粘贴 key"      # 粘贴 key.txt 内容，不要带换行或多余空格
+INPUT_DB  = "nt_msg.db"   # ← 原始加密数据库的路径
+DB_KEY    = "在此粘贴 key"  # ← 粘贴你的 key，不要带换行
 ```
 
-脚本 1 当前使用的 SQLCipher 参数顺序是固定的：
-
-```sql
-PRAGMA cipher_page_size = 4096;
-PRAGMA key = '你的 key';
-PRAGMA kdf_iter = 4000;
-PRAGMA cipher_hmac_algorithm = HMAC_SHA1;
-PRAGMA cipher_kdf_algorithm = PBKDF2_HMAC_SHA512;
-```
-
-## 执行
+其余配置保持默认即可。然后运行：
 
 ```powershell
 uv run python 1.decrypt.py
 ```
 
-执行完成后，确认目录中生成 `nt_msg_plain.db`。用普通 SQLite 工具打开它时不再需要输入密码；能够看到数据库表，即表示未加密数据库导出成功。
+成功后目录下生成两个文件：
 
-脚本支持断点续跑，并会对部分损坏页进行容错处理。如果执行中断，优先保留现有输出并重新执行，不要删除或覆盖原始 `nt_msg.db`。
+| 文件 | 说明 |
+| --- | --- |
+| `nt_msg_clear.db` | 去掉 1024 字节 NTQQ 文件头后的中间文件 |
+| `nt_msg_plain.db` | **最终产物**：未加密 SQLite 数据库 |
+
+用 DB Browser for SQLite、SQLiteStudio 或 DBeaver 直接打开 `nt_msg_plain.db`，无需密码。
 
 ## 下一步
 
