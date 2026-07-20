@@ -11,8 +11,8 @@ hero:
     alt: logo  
   actions:
     - theme: brand
-      text: 这是什么
-      link: /what-is-this
+      text: 开始
+      link: /decrypt/description.html
     - theme: alt
       text: GitHub
       link: https://github.com/QQBackup/QQDecrypt
@@ -25,7 +25,7 @@ features:
   - icon: 👁‍
     title: 查看
     details: 打开数据库/读取信息
-    link: /view/read_db
+    link: /database/read_db
   - icon: 🚀
     title: 社区项目
     details: 有关 NTQQ 数据库的项目
@@ -33,6 +33,6 @@ features:
   - icon: 🧪
     title: 研究笔记
     details: 数据库密钥机制与协议分析
-    link: /research/
+    link: /research
 ---
 

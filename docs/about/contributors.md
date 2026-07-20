@@ -12,10 +12,11 @@ import {
   VPTeamPageTitle,
   VPTeamMembers
 } from 'vitepress/theme'
+import { withBase } from 'vitepress'
 // 定义成员信息
 const members = [
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/Young-Lord.jpg",
+    avatar: withBase("/head/Young-Lord.jpg"),
     name: "Young Lord",
     title: "开发者",
     desc: "THE END IS NEVER THE END",
@@ -24,7 +25,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/Ljzd-PRO.jpg",
+    avatar: withBase("/head/Ljzd-PRO.jpg"),
     name: "Ljzd PRO",
     title: "开发者",
     desc: "暂无个人简介",
@@ -33,7 +34,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/shenjackyuanjie.jpg",
+    avatar: withBase("/head/shenjackyuanjie.jpg"),
     name: "Shen Jack",
     title: "开发者",
     desc: "happy lazy | HWS with me",
@@ -42,7 +43,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/leng-yue.jpg",
+    avatar: withBase("/head/leng-yue.jpg"),
     name: "Leng Yue",
     title: "开发者",
     desc: "Push the boundary of artificial general intelligence.",
@@ -51,7 +52,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/fumiama.jpg",
+    avatar: withBase("/head/fumiama.jpg"),
     name: "Fumiama",
     title: "开发者",
     desc: "千载何方归梦，棹舟星河波开。",
@@ -60,7 +61,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/alphagocc.jpg",
+    avatar: withBase("/head/alphagocc.jpg"),
     name: "Alpha Gocc",
     title: "开发者",
     desc: "Alphagocc",
@@ -69,7 +70,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/Mythologyli.jpg",
+    avatar: withBase("/head/Mythologyli.jpg"),
     name: "Mythology Li",
     title: "开发者",
     desc: "Embedded Systems, Robotics, Graphing Calculators and Minecraft!",
@@ -78,7 +79,7 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/yllhwa.jpg",
+    avatar: withBase("/head/yllhwa.jpg"),
     name: "Yllhwa",
     title: "开发者",
     desc: "暂无个人简介",
@@ -87,12 +88,21 @@ const members = [
     ]
   },
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/siten.jpg",
+    avatar: withBase("/head/siten.jpg"),
     name: "Siten",
     title: "开发者",
     desc: "暂无个人简介",
     links: [
       { icon: 'github', link: "https://github.com/siten" }
+    ]
+  },
+  {
+    avatar: withBase("/head/kingsznhone.png"),
+    name: "KingsZNHONE",
+    title: "开发者",
+    desc: "暂无个人简介",
+    links: [
+      { icon: 'github', link: "https://github.com/kingsznhone" }
     ]
   }
 ]
@@ -130,7 +140,7 @@ const contributors = [
   },  
 
   {
-    avatar: "https://qqbackup.github.io/QQDecrypt/head/Disa.png",
+    avatar: withBase("/head/Disa.png"),
     name: "Disa Tale",
     title: "贡献者",
     desc: '帮助修正 pcqq_rekey_to_none.cpp 中代码错误，并提供编译版本',

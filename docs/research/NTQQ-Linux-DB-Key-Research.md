@@ -11,10 +11,13 @@ order: 1
 实际调用协议请转： https://napneko.github.io / https://github.com/SnowLuma/SnowLuma
 基于此协议的简单易用工具请转： https://github.com/H3CoF6/WeQ
 
-> **状态**：研究进行中，结论基于动态调试与静态分析，偏移量随 QQ 版本变化。  
+> **状态**：研究进行中，结论基于动态调试与静态分析，偏移量随 QQ 版本变化。
+>
 > **平台**：Linux NTQQ（`wrapper.node`） 3.2.28-48517, Arch Linux, bwrap 容器。
+>
 > **目标**：理解 SQLCipher 明文密码从何而来，评估纯离线解密可行性。  
-> **配套工具**：[qqnt-dbkey-hook.js](/files/qqnt-dbkey-hook.js)（Frida 取证脚本，**不含任何真实密钥**）
+>
+> **配套工具**：[qqnt-dbkey-hook.js](https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/linux/qqnt-dbkey-hook.js)（Frida 取证脚本，**不含任何真实密钥**）
 
 ---
 
@@ -239,7 +242,7 @@ __int64 HexDecode(__int64 out_smallstr, const char *hex_ptr, size_t hex_ascii_le
 
 ## 8. Frida 取证脚本
 
-脚本路径：**[qqnt-dbkey-hook.js](/files/qqnt-dbkey-hook.js)**
+脚本路径：**[qqnt-dbkey-hook.js](https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/linux/qqnt-dbkey-hook.js)**
 
 设计原则：
 
@@ -322,7 +325,7 @@ timeout 60 frida -p "$PID" -l ./qqnt-dbkey-hook.js
 
 ## 11. 与现有教程的关系
 
-[NTQQ (Linux)](/decrypt/NTQQ%20(Linux)) 介绍了内存搜索、GDB、第三方 nt-hook 等拿 key 的方法。本文档补充的是**密钥在协议层的来源**，解释为何「只有 DB 文件」往往不够，并为不愿 hook SQLite 的研究者提供另一条取证路径。
+[NTQQ (Linux)](/decrypt/extract/NTQQ%20(Linux)) 介绍了内存搜索、GDB、第三方 nt-hook 等拿 key 的方法。本文档补充的是**密钥在协议层的来源**，解释为何「只有 DB 文件」往往不够，并为不愿 hook SQLite 的研究者提供另一条取证路径。
 
 若目标仅是**打开自己的库**，运行时 hook 回调拿 16 字节 key 仍是最短路径；若目标是**归档/离线解密**，需面对 MSF/OIDB 依赖或转攻 `Login.db` 本地路径。在已登录会话中，亦可仅凭 DB 头中的 `key_meta` 主动发 `0xcde_2` 换取 key（见 §12 SnowLuma 实现）。
 
@@ -330,7 +333,7 @@ timeout 60 frida -p "$PID" -l ./qqnt-dbkey-hook.js
 
 ## 12. 参考资料
 
-- [NTQQ 解密数据库](/decrypt/decode_db)
+- [统一解密 NTQQ 数据库](/decrypt/decrypt_db)
 - 相关项目：[msojocs/nt-hook](https://github.com/msojocs/nt-hook)
 - **工程验证**：[SnowLuma PR #69 — Request decrypt database key](https://github.com/SnowLuma/SnowLuma/pull/69)（仅依赖 `key_meta` 主动请求 `0xcde` sub=2）
   - 实现：[packages/protocol/src/oidb-services/misc/request-decrypt-key.ts](https://github.com/SnowLuma/SnowLuma/blob/main/packages/protocol/src/oidb-services/misc/request-decrypt-key.ts)

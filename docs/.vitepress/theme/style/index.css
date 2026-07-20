@@ -1,3 +1,10 @@
 /* index.css */
 @import './var.css';
 @import './custom-block.css';
+
+/* 没有子页面的主入口仍保持一级导航标题的视觉层级 */
+.VPSidebarItem.level-0 > .item > a[href*="/decrypt/decrypt_db"] .text {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
