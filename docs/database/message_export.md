@@ -68,7 +68,7 @@ QQ中的表情元素可分为四类
 
 ### 路径生成规律
 
-在图片消息的<a href="https://qq.sbcnm.top/view/db_file_analysis/nt_msg.db.html#:~:text=%E6%AD%A4%E5%AD%97%E6%AE%B5-,40080,-protobuf" target="_blank">40080</a> 值中，Field Number`45406`称作 `md5HexStr` 值（32位小写），以下称为 ``{MD5}``,**所需格式为32位大写**
+在图片消息的<a href="https://qq.sbcnm.top/database/db_file_analysis/nt_msg.db.html#:~:text=%E6%AD%A4%E5%AD%97%E6%AE%B5-,40080,-protobuf" target="_blank">40080</a> 值中，Field Number`45406`称作 `md5HexStr` 值（32位小写），以下称为 ``{MD5}``,**所需格式为32位大写**
 
 将目标文件夹名与 `{MD5}` 拼接，格式：
 ```

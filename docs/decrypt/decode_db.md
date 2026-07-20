@@ -88,4 +88,4 @@ uv run python 1.decrypt.py
 
 ## 下一步
 
-`nt_msg_plain.db` 是解密阶段的最终结果。请进入[读取数据库](../view/read_db)继续查看表结构、解析消息或进行后续导出。
+`nt_msg_plain.db` 是解密阶段的最终结果。请进入[读取数据库](../database/read_db)继续查看表结构、解析消息或进行后续导出。

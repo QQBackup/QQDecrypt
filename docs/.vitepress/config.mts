@@ -26,6 +26,34 @@ const descriptionSidebar = decryptItems.find((item) => item.text === '说明(必
 const viewSidebar = sidebarItems.find((item) => item.text === '数据库解析');
 const researchSidebar = sidebarItems.find((item) => item.text === '研究笔记');
 const aboutSidebar = sidebarItems.find((item) => item.text === '关于');
+const c2cSidebar = viewSidebar?.items?.find((item) => item.text === 'c2c_msg_table 字段总览');
+const c2cPath = '/database/c2c_msg_table';
+const c2cTableSidebar = c2cSidebar
+  ? {
+      ...c2cSidebar,
+      text: 'c2c_msg_table',
+      link: `${c2cPath}/`,
+      items: [],
+    }
+  : undefined;
+const viewItems = (viewSidebar?.items ?? [])
+  .filter((item) => item.text !== 'c2c_msg_table 字段总览')
+  .flatMap((item) => {
+    if (item.text !== 'db文件分析' || !c2cTableSidebar) {
+      return [item];
+    }
+
+    return (item.items ?? []).map((database) => {
+      if (database.text !== 'nt_msg.db') {
+        return database;
+      }
+
+      return {
+        ...database,
+        items: [...(database.items ?? []), c2cTableSidebar],
+      };
+    });
+  });
 
 export default defineConfig({
   base: '/QQDecrypt/',
@@ -79,7 +107,7 @@ export default defineConfig({
         ? [{ text: '解密数据库', link: decodeSidebar.link, items: [] }]
         : []),
       ...(viewSidebar
-        ? [{ ...viewSidebar, text: '数据库内容解析', link: '/view/' }]
+        ? [{ ...viewSidebar, text: '数据库内容解析', link: '/database/', items: viewItems }]
         : []),
       ...(researchSidebar ? [researchSidebar] : []),
       ...(aboutSidebar
