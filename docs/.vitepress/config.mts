@@ -21,6 +21,7 @@ const sidebarItems = Array.isArray(generatedSidebar) ? generatedSidebar : [];
 const decryptSidebar = sidebarItems.find((item) => item.text === '解密教程');
 const decryptItems = decryptSidebar?.items ?? [];
 const extractionSidebar = decryptItems.find((item) => item.text === '分平台提取');
+const decodeSidebar = decryptItems.find((item) => item.text === '统一解密 NTQQ 数据库');
 const descriptionSidebar = decryptItems.find((item) => item.text === '说明(必看)');
 const viewSidebar = sidebarItems.find((item) => item.text === '数据库解析');
 const researchSidebar = sidebarItems.find((item) => item.text === '研究笔记');
@@ -75,8 +76,11 @@ export default defineConfig({
             ],
           }]
         : []),
+      ...(decodeSidebar
+        ? [{ text: '解密数据库', link: decodeSidebar.link, items: [] }]
+        : []),
       ...(viewSidebar
-        ? [{ ...viewSidebar, text: '数据库内容解析', link: '/database/', items: viewItems }]
+        ? [{ ...viewSidebar, text: '数据库内容解析', link: undefined, items: viewItems }]
         : []),
       ...(researchSidebar ? [researchSidebar] : []),
       ...(aboutSidebar
