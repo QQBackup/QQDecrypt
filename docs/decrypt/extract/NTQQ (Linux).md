@@ -92,4 +92,4 @@ gdb -x <PATH_TO_LINUX_QQ_GET_KEY_PY> qq
 
 # 转移到 Windows
 
-拿到 key 后，请将原始数据库文件和 key 复制到 Windows，再按[统一解密](../decode_db)处理。
+拿到 key 后，请将原始数据库文件和 key 复制到 Windows，再按[统一解密](../decrypt_db)处理。

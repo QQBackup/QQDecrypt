@@ -13,7 +13,7 @@ order: 3
 > 
 > **确认时间：** `2026-07-19`
 > 
-> 本确认覆盖 Windows NTQQ 的原始数据库与 key 提取步骤；后续解密请按[统一解密](../decode_db)完成。
+> 本确认覆盖 Windows NTQQ 的原始数据库与 key 提取步骤；后续解密请按[统一解密](../decrypt_db)完成。
 >
 > 如果你确认本教程在其他 Windows QQ 版本上依然可用，请打开 [PR](https://github.com/QQBackup/QQDecrypt/pulls) 或 [issue](https://github.com/QQBackup/QQDecrypt/issues) 通知维护者，并注明 QQ 版本、Windows 版本，以及是否成功提取原始数据库和 key。
 
@@ -39,7 +39,7 @@ irm https://raw.githubusercontent.com/QQBackup/qq-win-db-key/master/scripts/wind
 
 ### 后续处理（Windows）
 
-请将脚本输出的 key 与原始数据库文件保存在一起，再按[统一解密](../decode_db)处理。
+请将脚本输出的 key 与原始数据库文件保存在一起，再按[统一解密](../decrypt_db)处理。
 
 ## 拓展阅读与原理分析
 

@@ -290,4 +290,4 @@ frida -H 192.168.1.163:27043 QQ -l ios_get_key.js
 
 8. 转移到 Windows
 
-复制 `pKey` 和 `zFilename` 对应的原始数据库文件到 Windows，再按[统一解密](../decode_db)处理。
+复制 `pKey` 和 `zFilename` 对应的原始数据库文件到 Windows，再按[统一解密](../decrypt_db)处理。

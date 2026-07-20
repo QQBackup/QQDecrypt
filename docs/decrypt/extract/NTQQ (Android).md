@@ -77,7 +77,7 @@ order: 2
 
 #### 转移到 Windows
 
-取得数据库密钥后，请复制原始数据库文件和 key 到 Windows，再按[统一解密](../decode_db)处理。
+取得数据库密钥后，请复制原始数据库文件和 key 到 Windows，再按[统一解密](../decrypt_db)处理。
 
 如果文件头中出现`HMAC_SHA1`字样（[示例](https://github.com/QQBackup/qq-win-db-key/issues/29#issuecomment-2227660390)），则将其作为`cipher_hmac_algorithm`的值。否则，可尝试`HMAC_SHA512`（默认值）或`HMAC_SHA256`。
 
@@ -152,7 +152,7 @@ python android_get_key.py 8.9.58
 
 ### 转移到 Windows
 
-确认命令行输出 `pKey` 后，请复制原始数据库文件和 key 到 Windows，再按[统一解密](../decode_db)处理。
+确认命令行输出 `pKey` 后，请复制原始数据库文件和 key 到 Windows，再按[统一解密](../decrypt_db)处理。
 
 ## 说明
 

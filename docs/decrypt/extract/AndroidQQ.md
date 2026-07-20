@@ -45,7 +45,7 @@ order: 9
 
 ## 后续处理（Windows）
 
-本页只负责把原始文件从 Android 设备提取出来。请将数据库和 key 复制到 Windows，再按[统一解密](../decode_db)处理。
+本页只负责把原始文件从 Android 设备提取出来。请将数据库和 key 复制到 Windows，再按[统一解密](../decrypt_db)处理。
 
 建议使用以下项目（本列表可能随时间更新）：
 

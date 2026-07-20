@@ -333,7 +333,7 @@ timeout 60 frida -p "$PID" -l ./qqnt-dbkey-hook.js
 
 ## 12. 参考资料
 
-- [统一解密 NTQQ 数据库](/decrypt/decode_db)
+- [统一解密 NTQQ 数据库](/decrypt/decrypt_db)
 - 相关项目：[msojocs/nt-hook](https://github.com/msojocs/nt-hook)
 - **工程验证**：[SnowLuma PR #69 — Request decrypt database key](https://github.com/SnowLuma/SnowLuma/pull/69)（仅依赖 `key_meta` 主动请求 `0xcde` sub=2）
   - 实现：[packages/protocol/src/oidb-services/misc/request-decrypt-key.ts](https://github.com/SnowLuma/SnowLuma/blob/main/packages/protocol/src/oidb-services/misc/request-decrypt-key.ts)

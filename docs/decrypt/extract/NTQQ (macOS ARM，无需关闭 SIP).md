@@ -221,7 +221,7 @@ cp ~/Library/Application\ Support/QQ/nt_qq_*/nt_db/nt_msg.db ~/qq-extract/
 
 ## 6. 转移到 Windows
 
-本页到这里完成 macOS 端的原始数据库与 key 提取。请将 `~/qq-extract/nt_msg.db` 和上一步得到的 key 一起复制到 Windows，不要在 macOS 上直接解密或覆盖原文件；后续按[统一解密](../decode_db)处理。
+本页到这里完成 macOS 端的原始数据库与 key 提取。请将 `~/qq-extract/nt_msg.db` 和上一步得到的 key 一起复制到 Windows，不要在 macOS 上直接解密或覆盖原文件；后续按[统一解密](../decrypt_db)处理。
 
 ---
 
@@ -234,7 +234,7 @@ cp ~/Library/Application\ Support/QQ/nt_qq_*/nt_db/nt_msg.db ~/qq-extract/
 | 断点没有命中 | QQ 已自动登录且密钥已传递 | 在 QQ 内点头像 → 「退出账号」后重新登录（不要关闭 QQ） |
 | 菜单栏「切换账号」导致断点失效 | 该选项会重启 QQ 进程，原断点消失 | 改用 QQ 应用内的「退出账号」，保持进程不变 |
 | `image list` 找不到 wrapper.node | 进程太早被暂停，模块未加载 | `process continue` 等几秒再 Ctrl-C |
-| 解密参数报错 | 应在 Windows 统一解密页中按脚本 1 处理 | 参阅[统一解密](../decode_db) |
+| 解密参数报错 | 应在 Windows 统一解密页中按脚本 1 处理 | 参阅[统一解密](../decrypt_db) |
 | 密钥长度不是 16 | 版本差异，以 x3 寄存器值为准 | `--count <x3值>` |
 
 ---

@@ -118,7 +118,7 @@ int sqlite3_key_v2(
 
 ## 4. 转移到 Windows
 
-本页到这里完成 macOS 端的 key 提取。请复制原始数据库文件和 key 到 Windows，不要在 macOS 上直接改写数据库；后续按[统一解密](../decode_db)处理。
+本页到这里完成 macOS 端的 key 提取。请复制原始数据库文件和 key 到 Windows，不要在 macOS 上直接改写数据库；后续按[统一解密](../decrypt_db)处理。
 
 出于隐私考虑， 不展示解密后的数据库内容。
 

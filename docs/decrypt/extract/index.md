@@ -7,7 +7,7 @@ order: 2
 
 本区只负责从 QQ 所在的平台取得两项输入：**原始数据库文件**和对应的 **key**。请不要在 Android、iOS、Linux 或 macOS 上直接改写、解密或转换数据库。
 
-完成提取后，将数据库原文件和 key 一起复制到 Windows，再进入[统一解密](../decode_db)。统一解密的输出是未加密的原始 SQLite 数据库 `nt_msg_plain.db`。
+完成提取后，将数据库原文件和 key 一起复制到 Windows，再进入[统一解密](../decrypt_db)。统一解密的输出是未加密的原始 SQLite 数据库 `nt_msg_plain.db`。
 
 ## 平台教程
 
