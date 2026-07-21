@@ -7,7 +7,7 @@ order: 2
 
 私聊消息表。本项目的字段研究已迁移至独立仓库：
 
-> [QQBackup/ntqq_msg_db_util — c2c_msg_table 字段总览](https://github.com/QQBackup/ntqq_msg_db_util/blob/master/db_docs/c2c_msg_table/summary.md)
+> [QQBackup/nt_msg_db_util — c2c_msg_table 字段总览](https://github.com/QQBackup/nt_msg_db_util/blob/master/db_docs/c2c_msg_table/summary.md)
 
 ## 常用外层字段速查
 

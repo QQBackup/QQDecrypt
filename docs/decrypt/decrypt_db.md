@@ -6,7 +6,7 @@ order: 3
 
 # 统一解密 NTQQ 数据库
 
-本文是[分平台提取](./extract/)之后的唯一解密教程。所有平台都先得到原始 `nt_msg.db` 和 key，再在 Windows 上使用 [QQBackup/ntqq_msg_db_util](https://github.com/QQBackup/ntqq_msg_db_util) 的脚本 1 `1.decrypt.py`。
+本文是[分平台提取](./extract/)之后的唯一解密教程。所有平台都先得到原始 `nt_msg.db` 和 key，再在 Windows 上使用 [QQBackup/nt_msg_db_util](https://github.com/QQBackup/nt_msg_db_util) 的脚本 1 `1.decrypt.py`。
 
 本教程只负责得到**未加密的原始 SQLite 数据库**，不包含数据库精简、消息转换或其它导出步骤。
 
@@ -41,12 +41,12 @@ irm https://astral.sh/uv/install.ps1 | iex
 ## 获取脚本
 
 ```powershell
-git clone https://github.com/QQBackup/ntqq_msg_db_util.git
-Set-Location ntqq_msg_db_util
+git clone https://github.com/QQBackup/nt_msg_db_util.git
+Set-Location nt_msg_db_util
 uv sync
 ```
 
-将 `nt_msg.db` 复制到 `ntqq_msg_db_util` 目录下（或修改脚本中的路径指向它）。
+将 `nt_msg.db` 复制到 `nt_msg_db_util` 目录下（或修改脚本中的路径指向它）。
 
 ## 配置并执行
 

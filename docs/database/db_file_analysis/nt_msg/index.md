@@ -11,8 +11,8 @@ order: 1
 
 | 表名 | 说明 | 文档 |
 | --- | --- | --- |
-| `group_msg_table` | 群聊消息 | [group_msg_table](./group_msg_table) |
-| `c2c_msg_table` | 私聊消息 | [c2c_msg_table](./c2c_msg_table)（详细研究见[上游仓库](https://github.com/QQBackup/ntqq_msg_db_util/blob/master/db_docs/c2c_msg_table/summary.md)） |
+| `group_msg_table` | 群聊消息 | [group_msg_table](./group_msg_table)（详细研究见[上游仓库](https://github.com/QQBackup/nt_msg_db_util/blob/master/db_docs/group_msg_table/summary.md)） |
+| `c2c_msg_table` | 私聊消息 | [c2c_msg_table](./c2c_msg_table)（详细研究见[上游仓库](https://github.com/QQBackup/nt_msg_db_util/blob/master/db_docs/c2c_msg_table/summary.md)） |
 | `group_at_me_msg` | 被 @ 消息 | [group_at_me_msg](./group_at_me_msg) |
 | `recent_contact_top_table` | 置顶聊天 | [recent_contact_top_table](./recent_contact_top_table) |
 | `recent_contact_v3_table` | 聊天对象资料 | [recent_contact_v3_table](./recent_contact_v3_table) |
