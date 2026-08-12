@@ -154,6 +154,61 @@ python android_get_key.py 8.9.58
 
 确认命令行输出 `pKey` 后，请复制原始数据库文件和 key 到 Windows，再按[统一解密](../decrypt_db)处理。
 
+## gpro 数据库密钥
+
+`gpro_v1-6_{nt_uid}.db` 位于与 `nt_msg.db` 相同的目录下：
+
+```plain
+/data/user/0/com.tencent.mobileqq/databases/nt_db/nt_qq_{QQ_path_hash}/gpro_v1-6_{nt_uid}.db
+```
+
+> [!TIP] 注意
+> 文件名中的 `{nt_uid}` 是 `nt_uid` 字符串（如 `u_mIicAReWrdCB-kST6TXH7A`），但**密钥计算使用 QQ 号（uin）**，而非 `nt_uid`。
+
+### 获取头部盐值
+
+使用 `HxD` 或其他二进制查看工具打开 `gpro_v1-6_{nt_uid}.db`，读取文件头部的前 **16 个可读字符**，记为 `header`（形如 `vgdBdzWwwrNNGORk`）。
+
+### 计算密钥
+
+<GproKeyCalculator />
+
+<details>
+<summary>Python 参考实现</summary>
+
+```python
+import hashlib
+
+def get_gpro_key(uin: str | int, header_bytes: bytes) -> str:
+    uin_bytes = str(uin).encode('utf-8')
+    md5_uin   = hashlib.md5(uin_bytes).hexdigest()
+    sha1_raw  = hashlib.sha1(uin_bytes).digest()
+    md5_sha1  = hashlib.md5(sha1_raw).hexdigest()
+    user_seed   = hashlib.md5((md5_uin + md5_sha1).encode()).hexdigest()
+    header_seed = hashlib.md5(header_bytes).hexdigest()
+    return hashlib.md5((header_seed + user_seed).encode()).hexdigest()
+
+# 示例：
+# get_gpro_key("1707889225", b"vgdBdzWwwrNNGORk")
+# → "2a4e04f77fd4ab2f4a42717e3e69e3d3"
+```
+
+</details>
+
+### 解密
+
+解密步骤与标准 NTQQ 数据库相同（参考[统一解密](../decrypt_db)），但注意以下参数差异：
+
+| 参数 | 标准数据库（`nt_msg.db` 等） | gpro 数据库 |
+| --- | --- | --- |
+| 自定义文件头 | 1024 字节 | 1024 字节 |
+| Page Size | 4096 | 4096 |
+| KDF Iterations | 4000 | 4000 |
+| KDF Algorithm | `PBKDF2_HMAC_SHA512` | `PBKDF2_HMAC_SHA512` |
+| **HMAC Algorithm** | **`HMAC_SHA1`** | **`HMAC_SHA512`** |
+
+唯一差异在于 HMAC 算法：gpro 数据库固定使用 `HMAC_SHA512`，而非标准数据库的 `HMAC_SHA1`。使用解密工具时请注意手动指定此参数。
+
 ## 说明
 
 旧版文档曾提供在 Android 端直接导出明文数据库的方法。为保持流程一致并降低源设备上的改写风险，该方法不再作为当前教程步骤；请使用前面的方式提取原始数据库和 key，再在 Windows 上完成解密与转换。

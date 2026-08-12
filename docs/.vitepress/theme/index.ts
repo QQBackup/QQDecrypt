@@ -2,6 +2,7 @@ import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import HashCalculator from './components/HashCalculator.vue'
 import QQCachePath from './components/QQCachePath.vue'
+import GproKeyCalculator from './components/GproKeyCalculator.vue'
 import { onMounted, watch, nextTick } from 'vue'
 import { useRoute, useData } from 'vitepress'
 import type { Theme } from 'vitepress'
@@ -35,5 +36,6 @@ export default {
   enhanceApp({ app }) {
     app.component('HashCalculator', HashCalculator)
     app.component('QQCachePath', QQCachePath)
+    app.component('GproKeyCalculator', GproKeyCalculator)
   }
 } satisfies Theme

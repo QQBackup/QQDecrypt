@@ -22,7 +22,7 @@ order: 1
 | 🤔            | <span style="color:blue;">rich_media.db</span>          | 群聊或私聊发送/接收的文件信息存贮路径    |
 | ✅            | <span style="color:blue;">files_in_chat.db</span>       | 媒体文件信息（包括下载的图片视频路径）    |
 | 🤔            | <span style="color:blue;">recent_contact.db</span>      | (推测为黑名单，待测试)                       |
-| ❓             | <span style="color:blue;">gpro_v1-6_{nt_uid}.db</span> | (由于暂未实现数据库解密无法分析)             |
+| ❓             | <span style="color:blue;">gpro_v1-6_{nt_uid}.db</span> | QQ 频道数据，仅 Android 平台存在，见 [gpro.db 分析](/database/db_file_analysis/gpro/) |
 | ✅            | <span style="color:blue;">group_info.db</span>          | 	群聊信息 |
 | 🤔            | <span style="color:blue;"> guild_msg.db</span>           | 频道聊天数据 |
 | ✅ | collection.db | QQ收藏数据 |
