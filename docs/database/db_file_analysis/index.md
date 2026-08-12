@@ -19,6 +19,7 @@ title: db 文件分析
 | `files_in_chat.db` | 聊天媒体文件 | [files_in_chat.db](./files_in_chat/) |
 | `rich_media.db` | 富媒体文件下载 | [rich_media.db](./rich_media/) |
 | `login.db` | 已登录账号列表（密钥为固定值） | [login.db](./login/) |
+| `gpro_v1-6_{nt_uid}.db` | QQ 频道数据（仅 Android） | [gpro.db](./gpro/) |
 
 ---
 
