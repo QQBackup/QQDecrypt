@@ -199,7 +199,43 @@ const SQLLiteKeyV2Offset = 0xDA1BFB4;
 
 ![在 IDA 中分析 sqlcipher_codec_ctx_set_pagesize 的调用关系](/img/image-ios-2.webp)
 
-## III Frida 附加到 QQ 进程，获取密钥
+## III 离线推导（无需 Frida）
+
+> [!TIP] 说明
+> `nt_msg.db` 等数据库的口令可以**直接从数据库文件本身离线推导**，无需越狱、无需 Frida、也无需 hook `sqlite3_key_v2`。该算法与 [NTQQ (Android)](./NTQQ%20(Android)) 的「方法1」完全一致，本节只补充 iOS 侧 `nt_uid` 的获取方式。
+
+一共需要两个输入：`nt_uid` 和数据库头部私有头里的 `rand`。
+
+### 获取 nt_uid
+
+- 解密全局 `login.db`（不在账号目录 `nt_qq_{QQ_path_hash}` 内，而在其父级的 `global/nt_db/` 下）：其密钥为固定值 `BD156D6710D54D8782F4`，解密后读 `login_table` 表，`1001` 列即为 `nt_uid`。详见 [login.db 文档](/database/db_file_analysis/login/index)。
+- 已知账号目录名（`nt_qq_{QQ_path_hash}`）时，可用下方的目录名公式反查 `nt_uid`，两个来源可互相印证。
+
+### 获取 rand
+
+用 `HxD` 或其他二进制查看工具打开 `nt_msg.db`，文件头前 1024 字节为 QQ 私有头，其中 protobuf `field 2` 是一段 8 个可打印字符的字符串（明文），即为 `rand`。
+
+### 计算密钥
+
+<HashCalculator />
+
+公式与 Android 一致（`md5` 均为 32 位小写十六进制）：
+
+```text
+QQ_UID_hash  = md5(nt_uid)
+QQ_path_hash = md5(QQ_UID_hash + "nt_kernel")
+key          = md5(QQ_UID_hash + rand)
+```
+
+`key` 即为传给 `sqlite3_key_v2` 的口令。
+
+> [!WARNING] 两个容易踩的坑
+> 1. 这 1024 字节私有头是真实存在的，文件大小恒为 `≡ 1024 (mod 4096)`；按「标准 SQLCipher 从偏移 0 取 salt」会怎么都解不开。
+> 2. 第 1 页密文区是 4032 字节（salt 占掉了前 16 字节），普通页是 4048 字节；重建明文时第 1 页要补回 `"SQLite format 3\0"` 这 16 字节魔数（而不是补 100 字节的合成头），否则整页错位 84 字节，SQLite 会报 `database disk image is malformed`。
+
+取得 `key` 后，请复制原始数据库文件和 key 到 Windows，再按[统一解密](../decrypt_db)处理。
+
+## IV Frida 附加到 QQ 进程，获取密钥
 
 1. **在 PC 上安装** frida（确保 Python 已安装）
 

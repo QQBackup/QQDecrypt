@@ -42,6 +42,7 @@ order: 2
 ![2](https://ooo.0x0.ooo/2024/10/05/O48Vyv.jpg)
 - 若使用了[QAuxiliary](https://github.com/cinit/QAuxiliary)模块，可以通过打开`[辅助功能]聊天和消息-[消息]转发消息点头像查看详细信息`功能，合并转发由自己发送的消息，查看消息的`senderUid`属性获取，详见[#32](https://github.com/QQBackup/qq-win-db-key/issues/32#issue-2418610093)。
 ![3](https://ooo.0x0.ooo/2024/10/05/O48Ysq.jpg)
+- 新版本中，若使用过 QQ 频道，与 `nt_msg.db` 同目录下会出现 QQ 频道的数据库 `gpro_v1-6_{nt_uid}.db`（仅 Android 平台存在），文件名中的 `{nt_uid}` 即为 `nt_uid`；若从未使用过频道则没有该文件。
 
 对`nt_uid`取`md5`即可得到`QQ_UID_hash`（即`QQ_UID_hash = md5(nt_uid) = md5("u_mIicAReWrdCB-kST6TXH7A") = "255c42fc0f4d295678e6ff0135fcf5dd"`）
 
