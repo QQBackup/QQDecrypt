@@ -163,9 +163,9 @@ License: AGPL-3.0 License
 
 项目地址: https://github.com/miniyu157/qq-dump
 
-项目描述: 极速的 Android 端 NTQQ 数据库密钥提取、解密及聊天记录导出工具。遵循 KISS 原则与 Unix 哲学, 针对移动端闪存优化 I/O 策略, 最小化读写磨损。支持后台自动更新以保证代码为最新。
+项目描述: ⛏ 全方位友好的 QQNT 数据库到信息一站式流水线：涵盖数据库解密与转储、消息解析与导出、统计分析、好友查询及 WebUI，并提供专为逆向研究与开发设计的数据库和消息研究分析套件。
 
-License: GPL-3.0
+License: MIT License
 
 收录时间：2025-12-13
 
